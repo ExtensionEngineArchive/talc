@@ -1,0 +1,4 @@
+
+Router.route('/', {
+  name: 'dashboard'
+});

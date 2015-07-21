@@ -1,0 +1,4 @@
+
+Router.configure({
+  layoutTemplate: 'MainLayout'
+});
