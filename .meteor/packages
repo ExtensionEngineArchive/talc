@@ -9,3 +9,4 @@ less
 iron:router
 accounts-password
 zimme:iron-router-auth
+fortawesome:fontawesome
