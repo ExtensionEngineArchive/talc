@@ -10,3 +10,4 @@ iron:router
 accounts-password
 zimme:iron-router-auth
 fortawesome:fontawesome
+mizzao:autocomplete
