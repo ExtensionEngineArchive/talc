@@ -2,7 +2,7 @@
   <div class="sidebar-b">
     {{#each competencies}}
       <div class="competency-card-a">
-        <h3>{{name}}</h3>
+        <h3><a href="{{pathFor route='competency-editor' data=this }}">{{name}}</a></h3>
         <div class="progress">
           <div class="progress-bar progress-bar-success" style="width: 40%"></div>
         </div>
