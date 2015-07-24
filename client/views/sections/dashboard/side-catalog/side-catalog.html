@@ -1,4 +1,12 @@
 <template name="dashboardSideCatalog">
   <div class="sidebar-b">
+    {{#each competencies}}
+      <div class="competency-card-a">
+        <h3>{{name}}</h3>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+        </div>
+      </div>
+    {{/each}}
   </div>
 </template>
