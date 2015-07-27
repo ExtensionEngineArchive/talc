@@ -36,6 +36,7 @@ less@1.0.14
 livedata@1.0.13
 localstorage@1.0.3
 logging@1.0.7
+maxkfranz:cytoscape@2.4.4
 meteor@1.1.6
 meteor-platform@1.2.2
 minifiers@1.1.5
@@ -46,6 +47,7 @@ mongo@1.1.0
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ordered-dict@1.0.3
+ostrio:neo4jdriver@0.2.15
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
