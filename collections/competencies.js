@@ -1,2 +1,2 @@
 
-Competencies = new Mongo.Collection("competencies");
+Competencies = Meteor.neo4j.collection('competencies');
