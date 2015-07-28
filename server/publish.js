@@ -1,5 +1,5 @@
 
 // TODO: Publish user related competencies
-Meteor.publish("allCompetencies", function() {
-  return Competencies.find();
+Competencies.publish('allCompetencies', function(){
+  return 'MATCH (competencies:Competency) RETURN competencies';
 });
