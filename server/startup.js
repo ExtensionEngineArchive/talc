@@ -60,6 +60,13 @@ Meteor.startup(function() {
         }
       };
 
+      temp.elements.nodes.push({
+        data: {
+          id: mockCompetencies[i],
+          type: 'C'
+        }
+      });
+
       // Add topics
       for (j = 0; j < 5; j++) {
         temp.elements.nodes.push({
