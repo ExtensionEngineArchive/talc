@@ -1,4 +1,23 @@
-<template name="competencyEditorBrowser">
+<template name="ceBrowser">
   <div class="sidebar-c">
+    {{#if $neq root.type 'C'}}
+      <div class="sidebar-block-a navigate-backward">
+        <span class="fa fa-angle-left"></span>
+        Return
+      </div>
+    {{/if}}
+    <div class="sidebar-block-b">All skills</div>
+    {{#each items}}
+      <div class="browser-card">
+        <div class="block-a">
+          <h3><a href="#">{{name}}</a></h3>
+        </div>
+        {{#if $eq type 'T'}}
+          <div class="block-b navigate-forward">
+            <span class="fa fa-angle-right"></span>
+          </div>
+        {{/if}}
+      </div>
+    {{/each}}
   </div>
 </template>
