@@ -1,0 +1,73 @@
+
+.ce-browser {
+  position:fixed;
+  overflow: scroll;
+  top: 45px;
+  left: 55px;
+  width: 250px;
+  height: 100%;
+  border-right: 1px solid #ccc;
+  background-color: #ccc;
+
+  .sidebar-block-a {
+    padding: 10px 10px 8px 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #34495e;
+
+    &:hover {
+      background-color: #2c3e50;
+    }
+
+    .fa {
+      font-size: 16px;
+      padding-right: 2px;
+    }
+  }
+
+  .sidebar-block-b {
+    padding: 25px 10px 25px 10px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .browser-card {
+    min-height: 75px;
+    background-color: #fefefe;
+    border-bottom: 1px solid #ccc;
+
+    .block-a {
+      float: left;
+      width: 228px;
+      height: 74px;
+
+      h3 {
+        margin: 0;
+        padding: 23px 5px 0px 10px;
+        font-size: 13px;
+
+        a {
+          color: #666;
+        }
+      }
+    }
+
+    .block-b {
+      float: left;
+      width: 21px;
+      height: 74px;
+      cursor: pointer;
+      border-left: 1px solid #ddd;
+
+      &:hover {
+        background-color: #eaeaea;
+      }
+
+      .fa {
+        font-size: 28px;
+        padding: 20px 0 0 5px;
+      }
+    }
+  }
+}
