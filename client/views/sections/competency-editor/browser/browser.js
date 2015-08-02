@@ -13,11 +13,13 @@ Template.ceBrowser.helpers({
     return browserService.parent();
   },
   items: function() {
-    return Nodes.find({
-      _id : {
-        $in : Competencies.getChildren(Template.currentData().graph, browserService.root().id)
-      }
-    });
+    if (Template.currentData() && Template.currentData().competency) {
+      return Nodes.find({
+        _id : {
+          $in : Competencies.getChildren(Template.currentData().graph, browserService.root().id)
+        }
+      });
+    }
   }
 });
 

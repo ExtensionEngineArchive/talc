@@ -7,10 +7,12 @@ Dependency.autorun(function() {
 
 Template.ceMain.helpers({
   'skills': function() {
-    return Nodes.find({
-      _id : {
-        $in : Competencies.getSkills(Template.currentData().graph, browserService.root().id)
-      }
-    });
+    if (Template.currentData() && Template.currentData().competency) {
+      return Nodes.find({
+        _id : {
+          $in : Competencies.getSkills(Template.currentData().graph, browserService.root().id)
+        }
+      });
+    }
   }
 });
