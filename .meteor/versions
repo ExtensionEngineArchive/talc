@@ -39,6 +39,7 @@ logging@1.0.7
 maxkfranz:cytoscape@2.4.4
 meteor@1.1.6
 meteor-platform@1.2.2
+meteorflux:reactive-dependency@0.1.1
 minifiers@1.1.5
 minimongo@1.0.8
 mizzao:autocomplete@0.5.1
