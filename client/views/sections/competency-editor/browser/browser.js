@@ -1,24 +1,21 @@
 
+var browserService;
+
+Dependency.autorun(function() {
+  browserService = Dependency.get('browserService');
+});
+
 Template.ceBrowser.helpers({
   root: function() {
-    var browser = Session.get('ceBrowser');
-    var root = browser.path[browser.path.length-1];
-    return root;
+    return browserService.root();
   },
   parent: function() {
-    var browser = Session.get('ceBrowser');
-    
-    if (browser.path.length > 1) {
-      var parent = browser.path[browser.path.length-2];
-      return parent;
-    }
+    return browserService.parent();
   },
   items: function() {
-    var browser = Session.get('ceBrowser');
-    var root = browser.path[browser.path.length-1];
     return Nodes.find({
       _id : {
-        $in : Competencies.getChildren(Template.currentData().graph, root.id)
+        $in : Competencies.getChildren(Template.currentData().graph, browserService.root().id)
       }
     });
   }
@@ -26,19 +23,9 @@ Template.ceBrowser.helpers({
 
 Template.ceBrowser.events({
   'click .navigate-forward': function() {
-    var browser = Session.get('ceBrowser');
-
-    browser.path.push({
-      id: this._id,
-      name: this.name,
-      type: this.type
-    });
-
-    Session.set('ceBrowser', browser);
+    browserService.forward(this);
   },
   'click .navigate-backward': function() {
-    var browser = Session.get('ceBrowser');
-    browser.path.pop();
-    Session.set('ceBrowser', browser);
+    browserService.back();
   }
 });
