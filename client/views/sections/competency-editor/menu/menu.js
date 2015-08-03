@@ -1,6 +1,9 @@
 
-Template.competencyEditorMenu.events({
+Template.ceMenu.events({
+  'click #createNode': function() {
+    $('#ceNodeModal').modal('show');
+  },
   'click #showGraph': function() {
-    $('#graphModal').modal('show');
+    $('#ceGraphModal').modal('show');
   }
 });
