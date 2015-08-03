@@ -5,14 +5,6 @@ Dependency.add('browserService', (function browserService() {
     path: new ReactiveVar([])
   };
 
-  function processNode(node) {
-    return {
-      id: node._id,
-      name: node.name,
-      type: (node.type || 'C')
-    };
-  }
-
   s.init = function(root) {
     var node = processNode(root);
     data.path.set([node]);
@@ -48,6 +40,34 @@ Dependency.add('browserService', (function browserService() {
   s.path = function() {
     return data.path.get();
   };
+
+  function processNode(node) {
+    var result = {
+      id: node._id,
+      name: node.name,
+      type: {
+        code: (node.type || 'C')
+      }
+    };
+
+    if (result.type.code === 'C') {
+      result.type.name = 'Competency';
+      result.style = 'success';
+    } else if (result.type.code === 'T') {
+      result.type.name = 'Topic';
+      result.style = 'primary';
+    } else if (result.type.code === 'O') {
+      result.type.name = 'Learning Objective';
+      result.style = 'info';
+    } else if (result.type.code === 'S') {
+      result.type.name = 'Skill';
+      result.style = 'danger';
+    } else {
+      throw 'Unknown node type';
+    }
+
+    return result;
+  }
 
   return s;
 })());
