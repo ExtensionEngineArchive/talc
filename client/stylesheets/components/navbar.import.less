@@ -1,16 +1,14 @@
 
 .navbar-default {
-  min-height: 45px;
+  min-height: 60px;
+  //background-image: url("/images/pattern.png");
+  background-color: #2a4150;
+  box-shadow: 0px 5px 10px rgba(35, 57, 73, .64);
 
   .navbar-brand {
-    height: 45px;
-    padding: 13px 21px;
+    height: 60px;
+    padding: 16px 21px;
     color: #444;
-
-    img {
-      float: left;
-      margin-right: 15px;
-    }
   }
 
   .navbar-nav {
@@ -18,9 +16,18 @@
 
     li {
       a {
-        padding-top: 10px;
-        padding-bottom: 12px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        color: #fff;
+
+        &:hover {
+          color: #fff;
+        }
       }
     }
   }
+}
+
+.subnav {
+  height: 39px;
 }
