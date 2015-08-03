@@ -1,20 +1,39 @@
 
 .competency-card-a {
-  min-height: 85px;
-  background-color: #fefefe;
-  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 3px;
+  border-top: 2px solid #4ECDC4;
+  box-shadow: 0 2px 0 0 #d4d4d5, 0 0 0 1px #d4d4d5;
 
-  h3 {
-    margin: 0;
-    padding: 23px 5px 0px 10px;
-    font-size: 13px;
+  .competency-card-header {
+    .fa-cog {
+      cursor: pointer;
+      font-size: 16px;
+      color: #cfcfcf;
 
-    a {
-      color: #666;
+      &:hover {
+        color: #999;
+      }
     }
   }
 
-  .progress {
-    margin: 25px 20px 0px 12px
+  .competency-card-title {
+    margin: 5px 0px;
+    font-size: 18px;
+
+    a {
+      color: #555;
+    }
+  }
+
+  .competency-card-body {
+    height: 140px;
+  }
+
+  .competency-card-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
   }
 }
