@@ -1,0 +1,27 @@
+
+<template name="nodeInputComponent">
+  <div class="node-input">
+    <div>
+      <input type="text" class="search form-control" placeholder="Search">
+    </div>
+    <div class="search-list">
+      <ul class="list-group">
+        {{#each searchResult}}
+          <li class="list-group-item">
+            {{name}}
+            <button type="button" class="btn btn-xs btn-primary add pull-right">+</button>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div>
+      <ul class="list-group">
+        {{#each items}}
+          <li class="list-group-item">
+            {{name}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>
