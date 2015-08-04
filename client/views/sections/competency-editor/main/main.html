@@ -2,13 +2,20 @@
   <div class="ce-main">
     <div class="row">
       <div class="col-lg-12">
-        <ul class="list-group">
-          {{#each skills}}
-            <li class="list-group-item">
-              {{name}}
-            </li>
-          {{/each}}
-        </ul>
+        <div class="panel panel-primary panel-a">
+          <div class="panel-heading">
+            <h3 class="panel-title">Skills</h3>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              {{#each skills}}
+                <li class="list-group-item">
+                  {{name}}
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
