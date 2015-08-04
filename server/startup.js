@@ -11,14 +11,13 @@ Meteor.startup(function() {
   var mockSkills = [];
 
   // Uncomment to delete existing nodes
-  // Competencies.remove({});
   // Nodes.remove({});
 
-  if (!Competencies.findOne()) {
-
+  if (!Nodes.findOne()) {
     // Create competencies
     for (i = 1; i < 6; i++) {
-      mockCompetencies.push(Competencies.insert({
+      mockCompetencies.push(Nodes.insert({
+        type: 'C',
         name: 'Competency ' + i,
         elements: {
           nodes: [],
@@ -118,7 +117,7 @@ Meteor.startup(function() {
         }
       }
 
-      Competencies.update(mockCompetencies[i], {
+      Nodes.update(mockCompetencies[i], {
         $set: {
           elements: temp.elements
         }

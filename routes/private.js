@@ -1,10 +1,9 @@
 Router.route('/:_id/competency-editor', function() {
   this.render('competencyEditor', {
     data: function() {
-      var competency = Competencies.findOne({ _id: this.params._id });
+      var competency = Nodes.findOne({ _id: this.params._id });
       if (competency) {
-        var browserService = Dependency.get('browserService');
-        browserService.init(competency);
+        Dependency.get('competencyService').init(competency);
 
         return {
           competency: competency,

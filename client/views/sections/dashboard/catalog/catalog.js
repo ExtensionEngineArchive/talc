@@ -1,6 +1,6 @@
 
 Template.dCatalog.helpers({
   competencies: function() {
-    return Competencies.find();
+    return Nodes.find({ type: 'C' });
   }
 });
