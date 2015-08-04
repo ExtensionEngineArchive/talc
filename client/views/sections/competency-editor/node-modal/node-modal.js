@@ -1,13 +1,13 @@
 
 Template.ceNodeModal.onCreated(function() {
   this.tempStorage = {
-    parents: [],
-    prerequisites: []
+    parents: new ReactiveVar([]),
+    prerequisites: new ReactiveVar([])
   };
 });
 
 Template.ceNodeModal.helpers({
-});
-
-Template.ceNodeModal.events({
+  parents: function() {
+    return Template.instance().tempStorage.parents;
+  }
 });
