@@ -1,7 +1,11 @@
 <template name="dashboard">
-  {{> dashboardMenu}}
-  <div class="container-b">
-    {{> dCatalog}}
+  <div class="dashboard">
+    <a id="showCreateModal" href="#" class="btn btn-a">
+      <span class="fa fa-plus span-a"></span>
+    </a>
+    <div class="container-b">
+      {{> dCatalog}}
+    </div>
+    {{> dashboardCreateModal}}
   </div>
-  {{> dashboardCreateModal}}
 </template>
