@@ -1,14 +1,23 @@
 
 .navbar-default {
   min-height: 60px;
-  //background-image: url("/images/pattern.png");
-  background-color: #2a4150;
-  box-shadow: 0px 5px 10px rgba(35, 57, 73, .64);
+
+  .navbar-wrapper {
+    background-image: url("/images/pattern.png");
+
+    .topnav {
+      background-color: rgba(42, 65, 80, 0.95);
+    }
+  }
 
   .navbar-brand {
     height: 60px;
     padding: 16px 21px;
     color: #444;
+  }
+
+  .navbar-wrapper {
+
   }
 
   .navbar-nav {
@@ -28,6 +37,40 @@
   }
 }
 
-.subnav {
+.subnav-wrapper {
+  position: relative;
   height: 39px;
+  background-color: #2a4150;
+  box-shadow: inset 0 5px 10px rgba(35, 57, 73, .64);
+
+  .btn-add {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background-color: #85d64f;
+    box-shadow: 0 5px 10px rgba(30, 88, 75, .52);
+    color: #fff;
+    position: absolute;
+    top: 13px;
+    right: 100px;
+    outline:none;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      background-color: #6fce30;
+      box-shadow: 0 5px 10px rgba(30, 88, 75, .57);
+    }
+  }
+
+  .span-a {
+    font-size: 20px;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
 }

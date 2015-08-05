@@ -1,32 +1,41 @@
 <template name="navbarComponent">
   <div class="navbar navbar-default navbar-fixed-top">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navOptions" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">
-        <img src="/images/logo.png" />
-      </a>
+    <div class="navbar-wrapper">
+      <div class="topnav">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navOptions" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="navbar-brand">
+            <img src="/images/logo.png" />
+          </a>
+        </div>
+        <div id="navOptions" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            {{#if currentUser}}
+              <li><a href="#">{{user.firstName}} {{user.lastName}}</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="fa fa-cog"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a id="logout" href="#">Logout</a></li>
+                </ul>
+              </li>
+            {{else}}
+              <li><a href="/signin">Sign in</a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
     </div>
-    <div id="navOptions" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        {{#if currentUser}}
-          <li><a href="#">{{user.firstName}} {{user.lastName}}</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <span class="fa fa-cog"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a id="logout" href="#">Logout</a></li>
-            </ul>
-          </li>
-        {{else}}
-          <li><a href="/signin">Sign in</a></li>
-        {{/if}}
-      </ul>
+    <div class="subnav-wrapper">
+      <a href="#" class="btn btn-add">
+        <span class="fa fa-plus span-a"></span>
+      </a>
     </div>
   </div>
 </template>
