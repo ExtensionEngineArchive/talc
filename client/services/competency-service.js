@@ -41,6 +41,20 @@ Dependency.add('competencyService', (function competencyService() {
     return result;
   };
 
+  s.nodes.add = function(node, parents) {
+    parents = parents || [s.context.competency()];
+
+    Meteor.call('nodes.insert', node, function(error, _id) {
+      var params = {
+        competency: s.context.competency(),
+        node: Nodes.findOne({ _id: _id }),
+        parents: parents
+      };
+
+      Meteor.call('competencies.node.add', params);
+    });
+  };
+
   s.nodes.findAllByName = function(search, limit) {
     limit = limit || 30;
     return Nodes.find({
