@@ -6,8 +6,11 @@ Template.navbarComponent.helpers({
         firstName: Meteor.user().profile.firstName,
         lastName: Meteor.user().profile.lastName,
         email: Meteor.user().emails[0].address
-      }
+      };
     }
+  },
+  onDashboard: function() {
+    return Router.current().route.getName() === 'dashboard';
   }
 });
 

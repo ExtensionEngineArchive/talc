@@ -15,6 +15,13 @@
         </div>
         <div id="navOptions" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            {{#if $not onDashboard}}
+              <li>
+                <a href="/"><img src="/images/home.png"/>
+                  <span>My Dashboard</span>
+                </a>
+              </li>
+            {{/if}}
             {{#if currentUser}}
               <li><a href="#">{{user.firstName}} {{user.lastName}}</a></li>
               <li class="dropdown">
