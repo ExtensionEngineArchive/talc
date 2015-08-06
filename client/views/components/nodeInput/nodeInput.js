@@ -7,6 +7,7 @@ Dependency.autorun(function() {
 
 Template.nodeInputComponent.onCreated(function() {
   this.searchResult = new ReactiveVar([]);
+  this.searchDisplay = new ReactiveVar(false);
 });
 
 Template.nodeInputComponent.helpers({
@@ -15,6 +16,9 @@ Template.nodeInputComponent.helpers({
   },
   searchResult: function() {
     return Template.instance().searchResult.get();
+  },
+  searchDisplay: function() {
+    return Template.instance().searchDisplay.get();
   }
 });
 
@@ -25,11 +29,19 @@ Template.nodeInputComponent.events({
   },
   'focusout .search': function() {
     Template.instance().searchResult.set([]);
+    Template.instance().searchDisplay.set(false);
+  },
+  'click .show-input': function(e, t) {
+    Template.instance().searchDisplay.set(true);
+    setTimeout(function() {
+      t.$('.search').focus();
+    }, 100);
   },
   'click .add': function(e, t) {
     var selected = t.data.selected.get();
     selected.push(this);
     t.data.selected.set(selected);
     Template.instance().searchResult.set([]);
+    Template.instance().searchDisplay.set(false);
   }
 });

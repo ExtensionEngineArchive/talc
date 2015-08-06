@@ -1,9 +1,13 @@
 
 <template name="nodeInputComponent">
   <div class="node-input">
-    <div>
-      <input type="text" class="search form-control" placeholder="Search">
-    </div>
+    {{#if searchDisplay}}
+      <div>
+        <input type="text" class="search form-control" placeholder="Search">
+      </div>
+    {{else}}
+      <div class="btn btn-block btn-primary show-input">+ Add</div>
+    {{/if}}
     <div class="search-list">
       <ul class="list-group">
         {{#each searchResult}}
@@ -14,14 +18,16 @@
         {{/each}}
       </ul>
     </div>
-    <div>
-      <ul class="list-group">
-        {{#each items}}
-          <li class="list-group-item">
-            {{name}}
-          </li>
-        {{/each}}
-      </ul>
+    <div class="list-b">
+      {{#if items}}
+        <ul class="list-group">
+          {{#each items}}
+            <li class="list-group-item">
+              {{name}}
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
     </div>
   </div>
 </template>
