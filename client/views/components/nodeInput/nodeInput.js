@@ -27,13 +27,17 @@ Template.nodeInputComponent.events({
     var result = competencyService.nodes.findAllByName(t.$('.search').val(), 20);
     Template.instance().searchResult.set(result);
   },
+  'focusout .search': function() {
+    Template.instance().searchResult.set([]);
+    Template.instance().searchDisplay.set(false);
+  },
   'click .show-input': function(e, t) {
     Template.instance().searchDisplay.set(true);
     setTimeout(function() {
       t.$('.search').focus();
     }, 100);
   },
-  'click .list-group-item': function(e, t) {
+  'click .add': function(e, t) {
     var selected = t.data.selected.get();
     selected.push(this);
     t.data.selected.set(selected);
