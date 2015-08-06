@@ -19,12 +19,12 @@ Template.ceNodeModal.helpers({
 });
 
 Template.ceNodeModal.events({
-  'submit #nodeForm': function(e) {
+  'submit #nodeForm': function(e, t) {
     e.preventDefault();
 
     var node = {
       name: e.target.name.value,
-      type: 'T'
+      type: e.target.type.value
     };
 
     e.target.name.value = '';
