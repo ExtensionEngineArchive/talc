@@ -15,7 +15,7 @@ Meteor.startup(function() {
 
   if (!Nodes.findOne()) {
     // Create competencies
-    for (i = 1; i < 6; i++) {
+    for (i = 1; i < 5; i++) {
       mockCompetencies.push(Nodes.insert({
         type: 'C',
         name: 'Competency ' + i,
