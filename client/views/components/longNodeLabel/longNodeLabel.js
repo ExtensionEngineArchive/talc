@@ -1,11 +1,4 @@
-
-Template.nodeLabel.helpers({
-  color: function(type) {
-    return Nodes.TYPE[type].color;
-  }
-});
-
-Template.nodeLabelFull.helpers({
+Template.longNodeLabelComponent.helpers({
   color: function(type) {
     return Nodes.TYPE[type].color;
   },
