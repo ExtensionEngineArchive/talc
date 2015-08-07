@@ -43,5 +43,9 @@ Template.nodeInputComponent.events({
     t.data.selected.set(selected);
     Template.instance().searchResult.set([]);
     Template.instance().searchDisplay.set(false);
+  },
+  'click .remove': function(e, t) {
+    var selected = t.data.selected.get();
+    t.data.selected.set(Lazy(selected).without(this).toArray());
   }
 });
