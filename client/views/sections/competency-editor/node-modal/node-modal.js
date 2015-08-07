@@ -27,9 +27,12 @@ Template.ceNodeModal.events({
       type: e.target.type.value
     };
 
-    e.target.name.value = '';
-
     competencyService.nodes.add(node, Template.instance().tempStorage.parents.get());
+
+    e.target.name.value = '';
+    e.target.type.value = 'T';
+    Template.instance().tempStorage.parents.set([]);
+
     $('#ceNodeModal').modal('hide');
   }
 });
