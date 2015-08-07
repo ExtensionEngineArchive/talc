@@ -31,5 +31,8 @@ Template.ceBrowser.events({
   },
   'click .navigate-backward': function() {
     browserService.back();
+  },
+  'click .browser-card': function() {
+    browserService.select(this);
   }
 });
