@@ -10,7 +10,7 @@ Template.ceMain.helpers({
     if (Template.currentData() && Template.currentData().competency) {
       return Nodes.find({
         _id : {
-          $in : Nodes.getSkills(Template.currentData().graph, browserService.root()._id)
+          $in : Nodes.getSkills(Template.currentData().graph, browserService.selected()._id)
         }
       });
     }
