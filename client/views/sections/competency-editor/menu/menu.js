@@ -1,8 +1,8 @@
 
-var competencyService;
+var editorService;
 
 Dependency.autorun(function() {
-  competencyService = Dependency.get('competencyService');
+  editorService = Dependency.get('editorService');
 });
 
 Template.ceMenu.events({
@@ -10,9 +10,9 @@ Template.ceMenu.events({
     $('#ceNodeModal').modal('show');
   },
   'click #showGraph': function() {
-    competencyService.editor.view.switchToGraph();
+    editorService.view.switchToGraph();
   },
   'click #showList': function() {
-    competencyService.editor.view.switchToList();
+    editorService.view.switchToList();
   }
 });
