@@ -7,6 +7,10 @@ Dependency.autorun(function() {
 
 Template.ceDetails.helpers({
   node: function() {
-    return browserService.selected();
+    if (browserService.selected()) {
+      return Nodes.findOne({ _id: browserService.selected().id });
+    } else {
+      return { name: '', type: 'C' };
+    }
   }
 });
