@@ -4,10 +4,12 @@ Template.dashboardCreateModal.events({
     e.preventDefault();
 
     var competency = {
-      name: e.target.name.value
+      name: e.target.name.value,
+      description: e.target.description.value
     };
 
     e.target.name.value = '';
+    e.target.description.value = '';
 
     Meteor.call('competencies.insert', competency);
 
