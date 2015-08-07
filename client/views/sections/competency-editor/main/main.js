@@ -16,3 +16,9 @@ Template.ceMain.helpers({
     }
   }
 });
+
+Template.ceMain.events({
+  'click .ce-main .skill': function() {
+    browserService.select(this);
+  }
+});
