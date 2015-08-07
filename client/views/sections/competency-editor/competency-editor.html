@@ -5,7 +5,9 @@
       {{> ceBrowser}}
       {{> ceMain}}
     {{else}}
-      <div id="competencyGraph"></div>
+      <div id="competencyGraph">
+        {{> graphLegendComponent}}
+      </div>
     {{/if}}
     {{> ceDetails}}
   </div>

@@ -1,5 +1,13 @@
 Template.graphLegendComponent.helpers({
-  nodeTypes: function () {
-    return Lazy(Nodes.TYPE).omit('list').values().toArray();
+  items: function () {
+    var results = [];
+
+    Lazy(Nodes.TYPE.list).each(function (it) {
+      results.push({
+        type: it
+      });
+    });
+
+    return results;
   }
 });
