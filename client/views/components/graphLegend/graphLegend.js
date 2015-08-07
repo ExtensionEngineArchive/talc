@@ -4,10 +4,11 @@ Template.graphLegendComponent.helpers({
 
     Lazy(Nodes.TYPE.list).each(function (it) {
       results.push({
-        type: it
+        type: it,
+        name: Nodes.TYPE[it].name
       });
     });
-
+    
     return results;
   }
 });
