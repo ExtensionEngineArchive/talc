@@ -1,8 +1,10 @@
 
 var browserService;
+var editorService;
 
 Dependency.autorun(function() {
   browserService = Dependency.get('browserService');
+  editorService = Dependency.get('editorService');
 });
 
 Dependency.add('competencyService', (function competencyService() {
@@ -24,6 +26,7 @@ Dependency.add('competencyService', (function competencyService() {
     data.competency.set(competency);
     data.graph.set(cytoscape({ headless: true, elements: competency.elements }));
     browserService.init(data.competency.get());
+    editorService.init(competency);
   };
 
   /**

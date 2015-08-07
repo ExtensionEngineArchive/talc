@@ -13,7 +13,24 @@ Dependency.add('editorService', (function editorService() {
   // Private data
   var data = {
     view: new ReactiveVar('list'),
-    graph: false
+    graph: false,
+    competency: null,
+    plotBackoff: null
+  };
+
+  /**
+   * @summary Initialize service context
+   * @method init
+   * @param {Object} [competency] Competency node
+   */
+  s.init = function(competency) {
+    data.competency = competency;
+    if (data.graph && s.view.isGraph()) {
+      clearTimeout(data.plotBackoff);
+      data.plotBackoff = setTimeout(function() {
+        createGraph();
+      }, 50);
+    }
   };
 
   /**
@@ -60,7 +77,7 @@ Dependency.add('editorService', (function editorService() {
    * @method createGraph
    */
   function createGraph() {
-    var competency = competencyService.competency();
+    var competency = data.competency;
 
     data.graph = cytoscape({
       container: document.getElementById('competencyGraph'),
