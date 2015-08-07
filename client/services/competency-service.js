@@ -90,6 +90,8 @@ Dependency.add('competencyService', (function competencyService() {
    */
   s.nodes.findAllByName = function(search, limit) {
     limit = limit || 30;
+    search = search || '';
+
     return Nodes.find({
       $and: [
         { _id: { $in: s.nodes.ids() } },
