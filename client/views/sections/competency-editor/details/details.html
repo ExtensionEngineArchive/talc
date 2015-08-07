@@ -1,6 +1,5 @@
 <template name="ceDetails">
   <div class="sidebar-c">
-    <h3>{{node.name}}</h3>
-    <span class="label label-{{node.style}}">{{node.type.name}}</span>
+    <h3>{{>shortNodeLabelComponent node=node}} {{node.name}}</h3>
   </div>
 </template>
