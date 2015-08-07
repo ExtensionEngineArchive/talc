@@ -1,8 +1,8 @@
 Template.longNodeLabelComponent.helpers({
-  color: function(type) {
-    return Nodes.TYPE[type].color;
+  color: function() {
+    return Nodes.TYPE[this.node.type].color;
   },
-  fullName: function (type) {
-    return Nodes.TYPE[type].name;
+  fullName: function () {
+    return Nodes.TYPE[this.node.type].name;
   }
 });

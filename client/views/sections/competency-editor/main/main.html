@@ -11,8 +11,8 @@
               {{#each skills}}
                 <li class="list-group-item skill">
                   {{name}}
-                  {{>shortNodeLabelComponent}}
-                  {{>longNodeLabelComponent}}
+                  {{> shortNodeLabelComponent node=this}}
+                  {{> longNodeLabelComponent node=this}}
                 </li>
               {{/each}}
             </ul>
