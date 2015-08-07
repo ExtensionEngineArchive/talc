@@ -23,28 +23,29 @@ Template.nodeInputComponent.helpers({
 });
 
 Template.nodeInputComponent.events({
-  'focus, keyup .search': function(e, t) {
+  'input .search': function(e, t) {
     var result = competencyService.nodes.findAllByName(t.$('.search').val(), 20);
     Template.instance().searchResult.set(result);
   },
-  'focusout .search': function() {
+  'blur .search': function(e, t) {
     Template.instance().searchResult.set([]);
     Template.instance().searchDisplay.set(false);
   },
-  'click .show-input': function(e, t) {
+  'mousedown .show-input': function(e, t) {
     Template.instance().searchDisplay.set(true);
+    Template.instance().searchResult.set(competencyService.nodes.findAllByName('', 20));
     setTimeout(function() {
       t.$('.search').focus();
     }, 100);
   },
-  'click .add': function(e, t) {
+  'mousedown .add': function(e, t) {
     var selected = t.data.selected.get();
     selected.push(this);
     t.data.selected.set(selected);
     Template.instance().searchResult.set([]);
     Template.instance().searchDisplay.set(false);
   },
-  'click .remove': function(e, t) {
+  'mousedown .remove': function(e, t) {
     var selected = t.data.selected.get();
     t.data.selected.set(Lazy(selected).without(this).toArray());
   }
