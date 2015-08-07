@@ -12,12 +12,13 @@ Dependency.add('browserService', (function browserService() {
     data.selected.set(node);
   };
 
-  s.forward = function(root) {
-    var node = root;
-    var path = data.path.get();
-    path.push(node);
-    data.path.set(path);
-    data.selected.set(node);
+  s.forward = function(node) {
+    if (node.type === 'T') {
+      var path = data.path.get();
+      path.push(node);
+      data.path.set(path);
+      data.selected.set(node);
+    }
   };
 
   s.back = function() {
