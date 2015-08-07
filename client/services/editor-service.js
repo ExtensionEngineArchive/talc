@@ -1,8 +1,10 @@
 
 var competencyService;
+var browserService;
 
 Dependency.autorun(function() {
   competencyService = Dependency.get('competencyService');
+  browserService = Dependency.get('browserService');
 });
 
 Dependency.add('editorService', (function editorService() {
@@ -105,6 +107,11 @@ Dependency.add('editorService', (function editorService() {
           'content': 'data(type)'
         }
       }]
+    });
+
+    data.graph.on('tap', 'node', {}, function(e) {
+      var node = Nodes.findOne({ _id: e.cyTarget.id() });
+      browserService.select(node);
     });
   }
 

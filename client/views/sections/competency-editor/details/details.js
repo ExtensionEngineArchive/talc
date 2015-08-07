@@ -7,6 +7,6 @@ Dependency.autorun(function() {
 
 Template.ceDetails.helpers({
   node: function() {
-    return browserService.root();
+    return browserService.selected();
   }
 });
