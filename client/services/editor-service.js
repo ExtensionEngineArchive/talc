@@ -58,7 +58,7 @@ Dependency.add('editorService', (function editorService() {
    * @method createGraph
    */
   function createGraph() {
-    var competency = competencyService.context.competency();
+    var competency = competencyService.competency();
 
     data.graph = cytoscape({
       container: document.getElementById('competencyGraph'),
