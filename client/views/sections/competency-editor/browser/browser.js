@@ -25,7 +25,9 @@ Template.ceBrowser.helpers({
 
 Template.ceBrowser.events({
   'click .navigate-forward': function() {
-    browserService.forward(this);
+    if (this.type === 'T') {
+      browserService.forward(this);
+    }
   },
   'click .navigate-backward': function() {
     browserService.back();
