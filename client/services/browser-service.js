@@ -7,13 +7,13 @@ Dependency.add('browserService', (function browserService() {
   };
 
   s.init = function(root) {
-    var node = Nodes.processNode(root);
+    var node = root;
     data.path.set([node]);
     data.selected.set(node);
   };
 
   s.forward = function(root) {
-    var node = Nodes.processNode(root);
+    var node = root;
     var path = data.path.get();
     path.push(node);
     data.path.set(path);
@@ -28,7 +28,7 @@ Dependency.add('browserService', (function browserService() {
   };
 
   s.select = function(node) {
-    var temp = Nodes.processNode(node);
+    var temp = node;
     data.selected.set(temp);
   };
 

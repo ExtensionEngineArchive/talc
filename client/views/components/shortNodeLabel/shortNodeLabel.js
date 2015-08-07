@@ -1,5 +1,8 @@
+
 Template.shortNodeLabelComponent.helpers({
   color: function() {
-    return Nodes.TYPE[this.node.type].color;
+    if (this.node) {
+      return Nodes.TYPE[this.node.type].color;
+    }
   }
 });

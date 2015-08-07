@@ -16,7 +16,7 @@ Template.ceBrowser.helpers({
     if (Template.currentData() && Template.currentData().competency) {
       return Nodes.find({
         _id : {
-          $in : Nodes.getChildren(Template.currentData().graph, browserService.root().id)
+          $in : Nodes.getChildren(Template.currentData().graph, browserService.root()._id)
         }
       });
     }
