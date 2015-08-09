@@ -6,11 +6,21 @@
         Return
       </div>
     {{/if}}
-    <div class="sidebar-block-b">All skills</div>
+    <div class="browser-card">
+      <div class="block-a">
+        <h3><a>{{root.name}}</a></h3>
+      </div>
+    </div>
     {{#each items}}
       <div class="browser-card">
         <div class="block-a">
           <h3><a href="#" class="navigate-forward">{{name}}</a></h3>
+        </div>
+      </div>
+    {{else}}
+      <div class="browser-notification-card">
+        <div class="block-a">
+          <span class="notification">No subitems</span>
         </div>
       </div>
     {{/each}}
