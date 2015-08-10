@@ -1,0 +1,9 @@
+<template name="graphLegendComponent">
+  <div class="legend-container">
+    <ul>
+      {{#each items}}
+        <li>{{> shortNodeLabelComponent node=this}} <span class='label-legend'>{{name}}</span></li>
+      {{/each}}
+    </ul>
+  </div>
+</template>

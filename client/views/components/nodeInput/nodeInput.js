@@ -24,46 +24,30 @@ Template.nodeInputComponent.helpers({
 });
 
 Template.nodeInputComponent.events({
-  'focus, keyup .search': function(e, t) {
-
-    // Parent arrow key selection
-    if (e.which == 38 || e.which == 40){
-      items = t.$('.search-list .list-group-item');
-      Template.instance().highlightedResult.set(Template.instance().highlightedResult.get() + e.which - 39);
-      items.eq(Template.instance().highlightedResult.get()).mouseenter();
-      return false;
-    }
-
-    // Enter key handling
-    if (e.which == 13){
-      t.$('.search-list .list-group-item').eq(Template.instance().highlightedResult.get()).click();
-      e.preventDefault();
-      e.stopImmediatePropagation();
-    }
-
-    // Search for results
+  'input .search': function(e, t) {
     var result = competencyService.nodes.findAllByName(t.$('.search').val(), 20);
     Template.instance().searchResult.set(result);
-
   },
-  'click .show-input': function(e, t) {
+  'blur .search': function(e, t) {
+    Template.instance().searchResult.set([]);
+    Template.instance().searchDisplay.set(false);
+  },
+  'mousedown .show-input': function(e, t) {
     Template.instance().searchDisplay.set(true);
-    Template.instance().highlightedResult.set(0);
+    Template.instance().searchResult.set(competencyService.nodes.findAllByName('', 20));
     setTimeout(function() {
       t.$('.search').focus();
     }, 100);
   },
-  'click .list-group-item': function(e, t) {
+  'mousedown .add': function(e, t) {
     var selected = t.data.selected.get();
     selected.push(this);
     t.data.selected.set(selected);
     Template.instance().searchResult.set([]);
     Template.instance().searchDisplay.set(false);
   },
-
-  'mouseover .list-group-item': function(e, t) {
-    t.$('.search-list .list-group-item').removeClass('hover');
-    t.$(e.currentTarget).addClass('hover');
-    Template.instance().highlightedResult.set(t.$(e.currentTarget).index());
+  'mousedown .remove': function(e, t) {
+    var selected = t.data.selected.get();
+    t.data.selected.set(Lazy(selected).without(this).toArray());
   }
 });

@@ -16,7 +16,7 @@ Template.ceBrowser.helpers({
     if (Template.currentData() && Template.currentData().competency) {
       return Nodes.find({
         _id : {
-          $in : Nodes.getChildren(Template.currentData().graph, browserService.root().id)
+          $in : Nodes.getChildren(Template.currentData().graph, browserService.root()._id)
         }
       });
     }
@@ -25,9 +25,14 @@ Template.ceBrowser.helpers({
 
 Template.ceBrowser.events({
   'click .navigate-forward': function() {
-    browserService.forward(this);
+    if (this.type === 'T') {
+      browserService.forward(this);
+    }
   },
   'click .navigate-backward': function() {
     browserService.back();
+  },
+  'click .browser-card': function() {
+    browserService.select(this);
   }
 });
