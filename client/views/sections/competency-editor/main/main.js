@@ -1,8 +1,8 @@
 
-var browserService;
+var editorService;
 
 Dependency.autorun(function() {
-  browserService = Dependency.get('browserService');
+  editorService = Dependency.get('editorService');
 });
 
 Template.ceMain.helpers({
@@ -10,7 +10,7 @@ Template.ceMain.helpers({
     if (Template.currentData() && Template.currentData().competency) {
       return Nodes.find({
         _id : {
-          $in : Nodes.getSkills(Template.currentData().graph, browserService.selected()._id)
+          $in : Nodes.getSkills(Template.currentData().graph, editorService.context.selected.group()._id)
         }
       });
     }
@@ -19,6 +19,6 @@ Template.ceMain.helpers({
 
 Template.ceMain.events({
   'click .ce-main .skill': function() {
-    browserService.select(this);
+    editorService.context.select(this);
   }
 });
