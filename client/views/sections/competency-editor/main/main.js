@@ -6,6 +6,9 @@ Dependency.autorun(function() {
 });
 
 Template.ceMain.helpers({
+  'node': function() {
+    return editorService.context.selected.group();
+  },
   'skills': function() {
     if (Template.currentData() && Template.currentData().competency) {
       return Nodes.find({
