@@ -24,7 +24,6 @@ Template.nodeInputComponent.helpers({
 });
 
 Template.nodeInputComponent.events({
-
   'keydown .search': function(e, t) {
     // Arrow keys suggestion traversal
     if (e.which == 38 || e.which == 40){
@@ -43,14 +42,14 @@ Template.nodeInputComponent.events({
 
     // Do search
     var result = competencyService.nodes.findAllByName(t.$('.search').val(), 20);
-    Template.instance().searchResult.set(result);
+    t.searchResult.set(result);
   },
   'blur .search': function(e, t) {
     resetSearchState();
   },
   'mousedown .show-input': function(e, t) {
-    Template.instance().searchDisplay.set(true);
-    Template.instance().searchResult.set(competencyService.nodes.findAllByName('', 20));
+    t.searchDisplay.set(true);
+    t.searchResult.set(competencyService.nodes.findAllByName('', 20));
     setTimeout(function() {
       t.$('.search').focus();
     }, 100);
