@@ -42,14 +42,21 @@ Template.nodeInputComponent.events({
 
     // Do search
     var result = competencyService.nodes.findAllByName(t.$('.search').val(), 20);
+    result = Lazy(result).filter(function (it) {
+      return !Lazy(t.data.selected.get()).pluck('_id').contains(it._id);
+    }).toArray();
     t.searchResult.set(result);
   },
   'blur .search': function(e, t) {
     resetSearchState();
   },
   'mousedown .show-input': function(e, t) {
-    t.searchDisplay.set(true);
-    t.searchResult.set(competencyService.nodes.findAllByName('', 20));
+    var result = competencyService.nodes.findAllByName(t.$('.search').val(), 20);
+    result = Lazy(result).filter(function (it) {
+      return !Lazy(t.data.selected.get()).pluck('_id').contains(it._id);
+    }).toArray();
+    t.searchResult.set(result);
+
     setTimeout(function() {
       t.$('.search').focus();
     }, 100);
