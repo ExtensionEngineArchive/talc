@@ -1,15 +1,16 @@
 <template name="ceBrowser">
   <div class="ce-browser">
-    {{#if $neq root.type 'C'}}
-      <div class="sidebar-block-a navigate-backward">
-        <span class="fa fa-angle-left"></span>
-        Return
-      </div>
-    {{/if}}
-    <div class="browser-card">
-      <div class="block-a">
-        <h3><a>{{root.name}}</a></h3>
-      </div>
+    <div class="sidebar-block-c">
+      <ul>
+        {{#each path}}
+          <li>
+            <a href="#" class="navigate-backward path-item-{{type}}">
+              <span class="fa fa-angle-double-right"></span>
+              {{name}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
     </div>
     {{#each items}}
       <div class="browser-card">

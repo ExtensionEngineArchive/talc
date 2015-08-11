@@ -8,6 +8,9 @@ Dependency.autorun(function() {
 });
 
 Template.ceBrowser.helpers({
+  path: function() {
+    return browserService.path();
+  },
   root: function() {
     return browserService.root();
   },
@@ -32,7 +35,7 @@ Template.ceBrowser.events({
     }
   },
   'click .navigate-backward': function() {
-    browserService.back();
+    browserService.back(this);
   },
   'click .browser-card': function() {
     editorService.context.select(this);

@@ -39,9 +39,13 @@ Dependency.add('browserService', (function browserService() {
    * @summary Go to the previous level of competency hierarchy
    * @method back
    */
-  s.back = function() {
+  s.back = function(root) {
     var path = data.path.get();
-    path.pop();
+
+    while (path[path.length-1]._id !== root._id) {
+      path.pop();
+    }
+    
     data.path.set(path);
     editorService.context.select(s.root());
   };
