@@ -1,47 +1,66 @@
 
+var editorService;
+
+Dependency.autorun(function() {
+  editorService = Dependency.get('editorService');
+});
+
 Dependency.add('browserService', (function browserService() {
   var s = {};
+
   var data = {
-    path: new ReactiveVar([]),
-    selected: new ReactiveVar()
+    path: new ReactiveVar([])
   };
 
+  /**
+   * @summary Initialize browser service
+   * @method init
+   * @param {Object} [root] Root node (competency)
+   */
   s.init = function(root) {
-    var node = root;
-    data.path.set([node]);
-    data.selected.set(node);
+    data.path.set([root]);
   };
 
+  /**
+   * @summary Set the next level of competency hierarchy
+   * @method forward
+   * @param {Object} [node] Topic node
+   */
   s.forward = function(node) {
     if (node.type === 'T') {
       var path = data.path.get();
       path.push(node);
       data.path.set(path);
-      data.selected.set(node);
+      editorService.context.select(node);
     }
   };
 
+  /**
+   * @summary Go to the previous level of competency hierarchy
+   * @method back
+   */
   s.back = function() {
     var path = data.path.get();
     path.pop();
     data.path.set(path);
-    data.selected.set(s.root());
+    editorService.context.select(s.root());
   };
 
-  s.select = function(node) {
-    var temp = node;
-    data.selected.set(temp);
-  };
-
-  s.selected = function() {
-    return data.selected.get();
-  };
-
+  /**
+   * @summary Get root node of browser context
+   * @method root
+   * @return {Object}
+   */
   s.root = function() {
     var path = data.path.get();
     return path[path.length-1];
   };
 
+  /**
+   * @summary Retrieve root node parent
+   * @method parent
+   * @return {Object}
+   */
   s.parent = function() {
     var path = data.path.get();
     if (path.length > 1) {
@@ -51,6 +70,11 @@ Dependency.add('browserService', (function browserService() {
     return null;
   };
 
+  /**
+   * @summary Get browser path
+   * @method path
+   * @return {Array}
+   */
   s.path = function() {
     return data.path.get();
   };

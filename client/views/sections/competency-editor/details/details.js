@@ -1,16 +1,35 @@
 
-var browserService;
+var competencyService;
+var editorService;
 
 Dependency.autorun(function() {
-  browserService = Dependency.get('browserService');
+  competencyService = Dependency.get('competencyService');
+  editorService = Dependency.get('editorService');
 });
 
 Template.ceDetails.helpers({
   node: function() {
-    if (browserService.selected()) {
-      return Nodes.findOne({ _id: browserService.selected()._id });
-    } else {
-      return { name: '', type: 'C' };
+    var node = editorService.context.selected.node();
+
+    if (node) {
+      return node;
     }
+
+    return { name: '', type: 'C' };
+  },
+  parents: function() {
+    var node = editorService.context.selected.node();
+    if (node) {
+      var parentIds = Nodes.getParents(competencyService.graph(), node._id);
+      if (parentIds && parentIds.length > 0) {
+        return Nodes.find({
+          _id : {
+            $in : parentIds
+          }
+        });
+      }
+    }
+
+    return [];
   }
 });

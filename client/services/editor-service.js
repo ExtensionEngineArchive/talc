@@ -1,21 +1,21 @@
 
-var competencyService;
-var browserService;
-
-Dependency.autorun(function() {
-  competencyService = Dependency.get('competencyService');
-  browserService = Dependency.get('browserService');
-});
-
 Dependency.add('editorService', (function editorService() {
-  var s = { view: {} };
+  var s = {
+    view: {},
+    context: { selected: {} }
+  };
 
-  // Private data
   var data = {
     view: new ReactiveVar('list'),
     graph: false,
     competency: null,
-    plotBackoff: null
+    plotBackoff: null,
+    context: {
+      selected: {
+        node: new ReactiveVar(''),
+        group: new ReactiveVar('')
+      }
+    }
   };
 
   /**
@@ -25,12 +25,44 @@ Dependency.add('editorService', (function editorService() {
    */
   s.init = function(competency) {
     data.competency = competency;
+    s.context.select(competency);
+
     if (data.graph && s.view.isGraph()) {
       clearTimeout(data.plotBackoff);
       data.plotBackoff = setTimeout(function() {
         createGraph();
       }, 50);
     }
+  };
+
+  /**
+   * @summary Select node
+   * @method context.select
+   * @param {Object} [node] Nodes instance
+   */
+  s.context.select = function(node) {
+    data.context.selected.node.set(node);
+    if (node.type !== 'S') {
+      data.context.selected.group.set(node);
+    }
+  };
+
+  /**
+   * @summary Get selected node
+   * @method context.selected.node
+   * @return {Object}
+   */
+  s.context.selected.node = function() {
+    return data.context.selected.node.get();
+  };
+
+  /**
+   * @summary Get last selected grouping node (C, T or O)
+   * @method context.selected.group
+   * @return {Object}
+   */
+  s.context.selected.group = function() {
+    return data.context.selected.group.get();
   };
 
   /**
@@ -128,7 +160,7 @@ Dependency.add('editorService', (function editorService() {
 
     data.graph.on('tap', 'node', {}, function(e) {
       var node = Nodes.findOne({ _id: e.cyTarget.id() });
-      browserService.select(node);
+      s.context.select(node);
     });
   }
 

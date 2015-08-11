@@ -1,8 +1,10 @@
 
 var browserService;
+var editorService;
 
 Dependency.autorun(function() {
   browserService = Dependency.get('browserService');
+  editorService = Dependency.get('editorService');
 });
 
 Template.ceBrowser.helpers({
@@ -33,6 +35,6 @@ Template.ceBrowser.events({
     browserService.back();
   },
   'click .browser-card': function() {
-    browserService.select(this);
+    editorService.context.select(this);
   }
 });

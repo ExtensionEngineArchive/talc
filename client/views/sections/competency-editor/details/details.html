@@ -1,5 +1,11 @@
 <template name="ceDetails">
   <div class="sidebar-c">
     <h3>{{>shortNodeLabelComponent node=node}} <span>{{node.name}}</span></h3>
+    <h4>Parents</h4>
+    <ul class="list-group">
+      {{#each parents}}
+        <li class="list-group-item">{{name}}</li>
+      {{/each}}
+    </ul>
   </div>
 </template>
