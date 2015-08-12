@@ -8,7 +8,7 @@ Template.graphLegendComponent.helpers({
         name: Nodes.TYPE[it].name
       });
     });
-    
+
     return results;
   }
 });
