@@ -12,18 +12,41 @@
         {{/each}}
       </ul>
     </div>
-    {{#each items}}
-      <div class="browser-card">
-        <div class="block-a">
-          <h3><a href="#" class="navigate-forward">{{name}}</a></h3>
+    <div class="node-list">
+      {{#if topics}}
+        <div>
+          <div class="header">Topics</div>
+          {{#each topics}}
+            <div class="browser-card">
+              <div class="block-a">
+                <h3><a href="#">{{cutString name 90}}</a></h3>
+              </div>
+              <div class="block-b">
+                <span class="fa fa-angle-right navigate-forward"></span>
+              </div>
+            </div>
+          {{/each}}
         </div>
-      </div>
-    {{else}}
-      <div class="browser-notification-card">
-        <div class="block-a">
-          <span class="notification">No subitems</span>
+      {{/if}}
+      {{#if objectives}}
+        <div>
+          <div class="header">Objectives</div>
+          {{#each objectives}}
+            <div class="browser-card">
+              <div class="block-a">
+                <h3><a href="#" class="navigate-forward">{{cutString name 90}}</a></h3>
+              </div>
+            </div>
+          {{/each}}
         </div>
-      </div>
-    {{/each}}
+      {{/if}}
+      {{#if $eq total 0}}
+        <div class="browser-notification-card">
+          <div class="block-a">
+            <span class="notification">No subitems</span>
+          </div>
+        </div>
+      {{/if}}
+    </div>
   </div>
 </template>
