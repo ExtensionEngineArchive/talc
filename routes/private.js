@@ -1,3 +1,8 @@
+
+Router.route('/', {
+  name: 'dashboard'
+});
+
 Router.route('/:_id/graph-editor', function() {
   this.render('graphEditor', {
     data: function() {
