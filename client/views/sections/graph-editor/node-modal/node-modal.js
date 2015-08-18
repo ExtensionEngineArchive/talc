@@ -1,8 +1,8 @@
 
-var competencyService;
+var editorService;
 
 Dependency.autorun(function() {
-  competencyService = Dependency.get('competencyService');
+  editorService = Dependency.get('editorService');
 });
 
 Template.geNodeModal.onCreated(function() {
@@ -27,7 +27,7 @@ Template.geNodeModal.events({
       type: e.target.type.value
     };
 
-    competencyService.nodes.add(node, Template.instance().tempStorage.parents.get());
+    editorService.nodes.add(node, Template.instance().tempStorage.parents.get());
 
     e.target.name.value = '';
     e.target.type.value = 'T';

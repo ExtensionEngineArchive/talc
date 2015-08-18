@@ -1,8 +1,8 @@
 
-var competencyService;
+var editorService;
 
 Dependency.autorun(function() {
-  competencyService = Dependency.get('competencyService');
+  editorService = Dependency.get('editorService');
 });
 
 Template.nodeInputComponent.onCreated(function() {
@@ -24,7 +24,7 @@ Template.nodeInputComponent.helpers({
 
 Template.nodeInputComponent.events({
   'input .search': function(e, t) {
-    var result = competencyService.nodes.findAllByName(t.$('.search').val(), 20);
+    var result = editorService.nodes.findAllByName(t.$('.search').val(), 20);
     Template.instance().searchResult.set(result);
   },
   'blur .search': function(e, t) {
@@ -33,7 +33,7 @@ Template.nodeInputComponent.events({
   },
   'mousedown .show-input': function(e, t) {
     Template.instance().searchDisplay.set(true);
-    Template.instance().searchResult.set(competencyService.nodes.findAllByName('', 20));
+    Template.instance().searchResult.set(editorService.nodes.findAllByName('', 20));
     setTimeout(function() {
       t.$('.search').focus();
     }, 100);
