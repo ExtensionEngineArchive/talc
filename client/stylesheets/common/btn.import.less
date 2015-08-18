@@ -1,0 +1,28 @@
+
+.btn-a {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  background-color: #85d64f;
+  box-shadow: 0 5px 10px rgba(30, 88, 75, .52);
+  color: #fff;
+  z-index: 9000;
+  outline: none;
+
+  &:active, &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background-color: #6fce30;
+    box-shadow: 0 5px 10px rgba(30, 88, 75, .57);
+  }
+
+  .fa {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+  }
+}
