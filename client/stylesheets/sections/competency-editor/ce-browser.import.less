@@ -4,10 +4,19 @@
   overflow: scroll;
   top: 99px;
   left: 55px;
-  width: 333px;
+  width: 313px;
   height: 100%;
   border-right: 1px solid #ccc;
   background-color: #D8DFE3;
+
+  .header {
+    height: 32px;
+    padding-top: 4px;
+    background-color: #4E545C;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+  }
 
   .sidebar-block-a {
     padding: 10px 10px 8px 8px;
@@ -44,6 +53,7 @@
       color: white;
 
       li {
+        margin-bottom: 20px;
         font-size: 16px;
       }
 
@@ -65,21 +75,41 @@
 
   .browser-card {
     min-height: 70px;
+    line-height: 68px;
     background-color: #fefefe;
     border-bottom: 1px solid #ccc;
 
     .block-a {
       float: left;
-      width: 227px;
-      height: 69px;
+      width: 220px;
+      height: 100%;
 
       h3 {
+        display: inline-block;
         margin: 0;
-        padding: 23px 5px 0px 15px;
+        padding: 0px 5px 0px 15px;
         font-size: 13px;
+        vertical-align: middle;
 
         a {
+          text-decoration: none;
           color: #666;
+        }
+      }
+    }
+
+    .block-b {
+      float: right;
+      line-height: 28px;
+
+      .fa {
+        margin: 20px 18px 0px 0px;
+        font-size: 28px;
+        color: #aaa;
+        cursor: pointer;
+
+        &:hover {
+          color: #bbb;
         }
       }
     }
