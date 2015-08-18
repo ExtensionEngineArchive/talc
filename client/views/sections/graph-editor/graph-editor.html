@@ -1,15 +1,15 @@
-<template name="competencyEditor">
-  {{> ceMenu}}
+<template name="graphEditor">
+  {{> geMenu}}
   <div class="container-a">
     {{#if listView}}
-      {{> ceBrowser}}
-      {{> ceMain}}
+      {{> geBrowser}}
+      {{> geMain}}
     {{else}}
       <div id="knowledgeGraph">
         {{> graphLegendComponent}}
       </div>
     {{/if}}
-    {{> ceDetails}}
+    {{> geDetails}}
   </div>
-  {{> ceNodeModal}}
+  {{> geNodeModal}}
 </template>

@@ -5,7 +5,7 @@ Dependency.autorun(function() {
   editorService = Dependency.get('editorService');
 });
 
-Template.ceMenu.events({
+Template.geMenu.events({
   'click #createNode': function() {
     $('#ceNodeModal').modal('show');
   },

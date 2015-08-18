@@ -5,20 +5,20 @@ Dependency.autorun(function() {
   competencyService = Dependency.get('competencyService');
 });
 
-Template.ceNodeModal.onCreated(function() {
+Template.geNodeModal.onCreated(function() {
   this.tempStorage = {
     parents: new ReactiveVar([]),
     prerequisites: new ReactiveVar([])
   };
 });
 
-Template.ceNodeModal.helpers({
+Template.geNodeModal.helpers({
   parents: function() {
     return Template.instance().tempStorage.parents;
   }
 });
 
-Template.ceNodeModal.events({
+Template.geNodeModal.events({
   'submit #nodeForm': function(e, t) {
     e.preventDefault();
 

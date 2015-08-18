@@ -5,7 +5,7 @@ Dependency.autorun(function() {
   editor = Dependency.get('editorService');
 });
 
-Template.ceDetails.helpers({
+Template.geDetails.helpers({
   node: function() {
     var node = editor.context.selected.node();
     return node || { name: '', type: 'C' };

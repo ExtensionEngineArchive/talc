@@ -1,5 +1,5 @@
-Router.route('/:_id/competency-editor', function() {
-  this.render('competencyEditor', {
+Router.route('/:_id/graph-editor', function() {
+  this.render('graphEditor', {
     data: function() {
       var competency = Nodes.findOne({ _id: this.params._id });
       if (competency) {

@@ -7,7 +7,7 @@ Dependency.autorun(function() {
   editor = Dependency.get('editorService');
 });
 
-Template.ceBrowser.helpers({
+Template.geBrowser.helpers({
   path: function() {
     return browser.path();
   },
@@ -37,7 +37,7 @@ Template.ceBrowser.helpers({
   }
 });
 
-Template.ceBrowser.events({
+Template.geBrowser.events({
   'click .navigate-forward': function() {
     if (this.type === 'T') {
       browser.forward(this);

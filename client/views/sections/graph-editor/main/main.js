@@ -5,7 +5,7 @@ Dependency.autorun(function() {
   editorService = Dependency.get('editorService');
 });
 
-Template.ceMain.helpers({
+Template.geMain.helpers({
   'node': function() {
     return editorService.context.selected.group();
   },
@@ -20,7 +20,7 @@ Template.ceMain.helpers({
   }
 });
 
-Template.ceMain.events({
+Template.geMain.events({
   'click .ce-main .skill': function() {
     editorService.context.select(this);
   }
