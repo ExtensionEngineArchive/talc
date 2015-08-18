@@ -34,7 +34,7 @@ Dependency.add('editorService', (function editorService() {
   s.init = function(root) {
     data.root.set(root);
     data.graph.set(cytoscape({ headless: true, elements: root.elements }));
-    browser.init(root);
+    browser.init();
     visualisation.init();
   };
 
