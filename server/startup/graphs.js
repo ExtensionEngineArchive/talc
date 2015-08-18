@@ -11,7 +11,7 @@ Meteor.startup(function() {
   var mockSkills = [];
 
   // Uncomment to delete existing nodes
-  //Nodes.remove({});
+  // Nodes.remove({});
 
   if (!Nodes.findOne()) {
     // Create competencies
