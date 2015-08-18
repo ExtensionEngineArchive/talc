@@ -1,8 +1,10 @@
 
 .navbar-default {
   min-height: 60px;
+  z-index: 800;
 
   .navbar-wrapper {
+    z-index: 802;
     background-image: url("/images/pattern.png");
 
     .topnav {
@@ -14,10 +16,6 @@
     height: 60px;
     padding: 16px 21px;
     color: #444;
-  }
-
-  .navbar-wrapper {
-
   }
 
   .navbar-nav {
@@ -35,9 +33,22 @@
       }
     }
   }
+
+  .dropdown-menu {
+    li {
+      a {
+        color: #777;
+
+        &:hover {
+          color: #555;
+        }
+      }
+    }
+  }
 }
 
 .subnav-wrapper {
+  z-index: 801;
   position: relative;
   height: 39px;
   background-color: #2a4150;
