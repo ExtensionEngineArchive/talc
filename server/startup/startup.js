@@ -1,6 +1,6 @@
 
 Meteor.startup(function() {
-  if (0) {
+  if (!Meteor.users.findOne() || 0) {
     var users = createUsers();
     createCompetencies(users);
   }
@@ -26,6 +26,36 @@ function createUsers() {
     profile: {
       firstName: 'Damir',
       lastName: 'Perisic',
+      admin: true
+    }
+  });
+
+  Accounts.createUser({
+    email: 'scout@extensionengine.com',
+    password: 'test',
+    profile: {
+      firstName: 'Scout',
+      lastName: 'Stevenson',
+      admin: true
+    }
+  });
+
+  Accounts.createUser({
+    email: 'roya@extensionengine.com',
+    password: 'test',
+    profile: {
+      firstName: 'Roya',
+      lastName: 'Rakhshan',
+      admin: true
+    }
+  });
+
+  Accounts.createUser({
+    email: 'jared@extensionengine.com',
+    password: 'test',
+    profile: {
+      firstName: 'Jared',
+      lastName: 'Moore',
       admin: true
     }
   });
