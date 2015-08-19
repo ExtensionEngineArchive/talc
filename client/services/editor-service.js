@@ -102,14 +102,8 @@ Dependency.add('editorService', (function editorService() {
    * @returns {Array}
    */
   s.nodes.ids = function(graph) {
-    var result = [];
     graph = graph || s.context.graph();
-
-    graph.nodes().forEach(function(it) {
-      result.push(it.id());
-    });
-
-    return result;
+    return Nodes.graph.ids(graph);
   };
 
   /**
