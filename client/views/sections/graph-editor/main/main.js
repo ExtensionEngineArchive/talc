@@ -10,10 +10,10 @@ Template.geMain.helpers({
     return editorService.context.selected.group();
   },
   'skills': function() {
-    if (Template.currentData() && Template.currentData().competency) {
+    if (editorService.context.root()) {
       return Nodes.find({
         _id : {
-          $in : Nodes.getSkills(Template.currentData().graph, editorService.context.selected.group()._id)
+          $in : Nodes.getSkills(editorService.context.graph(), editorService.context.selected.group()._id)
         }
       });
     }

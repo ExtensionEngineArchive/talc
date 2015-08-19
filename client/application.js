@@ -1,2 +1,2 @@
 
-Meteor.subscribe("allNodes");
+Meteor.subscribe("knowledgeGraphs");

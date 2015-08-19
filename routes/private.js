@@ -3,20 +3,23 @@ Router.route('/', {
   name: 'dashboard'
 });
 
-Router.route('/:_id/graph-editor', function() {
-  this.render('graphEditor', {
-    data: function() {
-      var competency = Nodes.findOne({ _id: this.params._id });
-      if (competency) {
-        Dependency.get('editorService').init(competency);
-
-        return {
-          competency: competency,
-          graph: cytoscape({ elements: competency.elements })
-        };
-      }
+Router.route('/:_id/graph-editor', {
+  name: 'graph.editor',
+  template: 'graphEditor',
+  subscriptions: function() {
+    this.subscribe('knowledgeGraphNodes', this.params._id).wait();
+  },
+  data: function() {
+    var root = Nodes.findOne({ _id: this.params._id });
+    if (root) {
+      Dependency.get('editorService').init(root);
     }
-  });
-}, {
-  name: 'competency-editor'
+  },
+  action: function () {
+    if (this.ready()) {
+      this.render();
+    } else {
+      this.render('Loader');
+    }
+  }
 });
