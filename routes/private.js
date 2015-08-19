@@ -18,8 +18,6 @@ Router.route('/:_id/graph-editor', {
   action: function () {
     if (this.ready()) {
       this.render();
-    } else {
-      this.render('Loader');
     }
   }
 });

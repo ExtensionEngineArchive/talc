@@ -17,3 +17,4 @@ raix:handlebar-helpers
 meteorflux:reactive-dependency
 ryanswrt:lazyjs
 fongandrew:find-and-modify
+multiply:iron-router-progress
