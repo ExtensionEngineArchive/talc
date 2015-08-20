@@ -3,7 +3,7 @@ Template.dashboardCreateModal.events({
   'submit #dashboardCreateForm': function(e) {
     e.preventDefault();
 
-    var competency = {
+    var graph = {
       name: e.target.name.value,
       description: e.target.description.value
     };
@@ -11,7 +11,7 @@ Template.dashboardCreateModal.events({
     e.target.name.value = '';
     e.target.description.value = '';
 
-    Meteor.call('competencies.insert', competency);
+    Meteor.call('graph.create', graph);
 
     $('#dashboardCreateModal').modal('hide');
   }
