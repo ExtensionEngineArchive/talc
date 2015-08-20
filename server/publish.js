@@ -1,11 +1,15 @@
 
-Meteor.publish("knowledgeGraphs", function() {
-  if (this.userId) {
-    var user = Meteor.users.findOne(this.userId);
-    return TALCH.user.graphs(user);
-  } else {
-    this.ready();
-  }
+Meteor.publishComposite('knowledgeGraphs', {
+  find: function() {
+    if (this.userId) {
+      return Meteor.users.find({ _id: this.userId }, { limit: 1 });
+    }
+  },
+  children: [{
+    find: function(user) {
+      return TALCH.user.graphs(user);
+    }
+  }]
 });
 
 Meteor.publish("knowledgeGraphNodes", function(_id) {
