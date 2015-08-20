@@ -270,6 +270,7 @@ function createCompetencies(users) {
       if (u.roles.global[0] == 'admin') {
         Roles.addUsersToRoles(u._id, u.roles.global, 'global');
       } else {
+        Roles.addUsersToRoles(u._id, u.roles.global, 'global');
         Roles.addUsersToRoles(u._id, u.roles.other, c);
       }
     });
