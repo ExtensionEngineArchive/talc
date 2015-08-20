@@ -10,53 +10,73 @@ function createUsers() {
   var users = [];
   Meteor.users.remove({});
 
-  Accounts.createUser({
-    email: 'admin@talc.io',
-    password: 'test',
-    profile: {
-      firstName: 'Administrator',
-      lastName: '',
-      admin: true
+  users.push({
+    _id: Accounts.createUser({
+      email: 'admin@talc.io',
+      password: 'test',
+      profile: {
+        firstName: 'Administrator',
+        lastName: ''
+      }
+    }),
+    roles: {
+      'global': ['admin']
     }
   });
 
-  Accounts.createUser({
-    email: 'dperisic@extensionengine.com',
-    password: 'test',
-    profile: {
-      firstName: 'Damir',
-      lastName: 'Perisic',
-      admin: true
+  users.push({
+    _id: Accounts.createUser({
+      email: 'dperisic@extensionengine.com',
+      password: 'test',
+      profile: {
+        firstName: 'Damir',
+        lastName: 'Perisic',
+      }
+    }),
+    roles: {
+      'global': ['admin']
     }
   });
 
-  Accounts.createUser({
-    email: 'scout@extensionengine.com',
-    password: 'test',
-    profile: {
-      firstName: 'Scout',
-      lastName: 'Stevenson',
-      admin: true
+  users.push({
+    _id: Accounts.createUser({
+      email: 'scout@extensionengine.com',
+      password: 'test',
+      profile: {
+        firstName: 'Scout',
+        lastName: 'Stevenson'
+      }
+    }),
+    roles: {
+      'global': ['admin']
     }
   });
 
-  Accounts.createUser({
-    email: 'roya@extensionengine.com',
-    password: 'test',
-    profile: {
-      firstName: 'Roya',
-      lastName: 'Rakhshan',
-      admin: true
+  users.push({
+    _id: Accounts.createUser({
+      email: 'roya@extensionengine.com',
+      password: 'test',
+      profile: {
+        firstName: 'Roya',
+        lastName: 'Rakhshan'
+      }
+    }),
+    roles: {
+      'global': ['admin']
     }
   });
 
-  Accounts.createUser({
-    email: 'jared@extensionengine.com',
-    password: 'test',
-    profile: {
-      firstName: 'Jared',
-      lastName: 'Moore',
-      admin: true
+  users.push({
+    _id: Accounts.createUser({
+      email: 'jared@extensionengine.com',
+      password: 'test',
+      profile: {
+        firstName: 'Jared',
+        lastName: 'Moore'
+      }
+    }),
+    roles: {
+      'global': ['admin']
     }
   });
 
@@ -66,11 +86,12 @@ function createUsers() {
       password: 'test',
       profile: {
         firstName: 'Furqan',
-        lastName: 'Nazeeri',
-        admin: false
+        lastName: 'Nazeeri'
       }
     }),
-    role: 'A'
+    roles: {
+      'global': ['admin']
+    }
   });
 
   users.push({
@@ -79,11 +100,13 @@ function createUsers() {
       password: 'test',
       profile: {
         firstName: 'Evan',
-        lastName: 'Brown',
-        admin: false
+        lastName: 'Brown'
       }
     }),
-    role: 'AC'
+    roles: {
+      'global': ['graph-create'],
+      'other': ['active-collaborator']
+    }
   });
 
   users.push({
@@ -92,11 +115,13 @@ function createUsers() {
       password: 'test',
       profile: {
         firstName: 'Niksa',
-        lastName: 'Radovic',
-        admin: false
+        lastName: 'Radovic'
       }
     }),
-    role: 'AC'
+    roles: {
+      'global': ['graph-create'],
+      'other': ['active-collaborator']
+    }
   });
 
   users.push({
@@ -105,11 +130,13 @@ function createUsers() {
       password: 'test',
       profile: {
         firstName: 'Bob',
-        lastName: 'Allard',
-        admin: false
+        lastName: 'Allard'
       }
     }),
-    role: 'PC'
+    roles: {
+      'global': [],
+      'other': ['passive-collaborator']
+    }
   });
 
   return users;
@@ -133,7 +160,6 @@ function createCompetencies(users) {
     mockCompetencies.push(Nodes.insert({
       type: 'C',
       name: 'Competency ' + i,
-      users: users,
       elements: {
         nodes: [],
         edges: []
@@ -238,4 +264,14 @@ function createCompetencies(users) {
       }
     });
   }
+
+  Lazy(mockCompetencies).each(function(c) {
+    Lazy(users).each(function(u) {
+      if (u.roles.global[0] == 'admin') {
+        Roles.addUsersToRoles(u._id, u.roles.global, 'global');
+      } else {
+        Roles.addUsersToRoles(u._id, u.roles.other, c);
+      }
+    });
+  });
 }
