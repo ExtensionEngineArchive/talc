@@ -1,0 +1,14 @@
+<template name="geAccessManagement">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <ul class="list-group">
+        {{#each members}}
+          <li class="list-group-item">
+            {{this.profile.firstName}}
+            {{this.profile.lastName}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>
