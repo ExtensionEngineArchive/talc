@@ -3,7 +3,7 @@ Router.route('/', {
   name: 'dashboard'
 });
 
-Router.route('/:_id/graph-editor', {
+Router.route('/graph/:_id/editor', {
   name: 'graph.editor',
   template: 'graphEditor',
   subscriptions: function() {
@@ -20,4 +20,9 @@ Router.route('/:_id/graph-editor', {
       this.render();
     }
   }
+});
+
+Router.route('/graph/:_id/settings', {
+  name: 'graph.settings',
+  template: 'geSettings'
 });
