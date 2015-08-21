@@ -3,12 +3,18 @@
     <div class="row">
       <div class="col-md-3">
         <ul class="list-group">
-          <li class="list-group-item"><a href="#">General</a></li>
-          <li class="list-group-item"><a href="#">Access management</a></li>
+          {{#each categories}}
+            <li class="list-group-item graph-settings-item"><a href="#">{{this}}</a></li>
+          {{/each}}
         </ul>
       </div>
       <div class="col-lg-9">
-        {{> geAccessManagement}}
+        {{#if $eq view 'General'}}
+          {{> geGeneralSettings}}
+        {{/if}}
+        {{#if $eq view 'Access Management'}}
+          {{> geAccessManagement}}
+        {{/if}}
       </div>
     </div>
   </div>

@@ -20,7 +20,7 @@ Dependency.add('graphSettingsService', (function graphSettingsService() {
   };
 
   s.view.switch = function(view) {
-    if (Lazy(data.view.list).contains(view)) {
+    if (Lazy(data.view.categories).contains(view)) {
       data.view.current.set(view);
     } else {
       throw new Error('Graph settings: Unknown view');
