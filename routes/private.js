@@ -10,9 +10,9 @@ Router.route('/graph/:_id/editor', {
     this.subscribe('knowledgeGraphNodes', this.params._id).wait();
   },
   data: function() {
-    var root = Nodes.findOne({ _id: this.params._id });
-    if (root) {
-      Dependency.get('editorService').init(root);
+    var graphRoot = Nodes.findOne({ _id: this.params._id });
+    if (graphRoot) {
+      Dependency.get('editorService').init(graphRoot);
     }
   },
   action: function () {
@@ -24,5 +24,11 @@ Router.route('/graph/:_id/editor', {
 
 Router.route('/graph/:_id/settings', {
   name: 'graph.settings',
-  template: 'geSettings'
+  template: 'geSettings',
+  data: function() {
+    var graphRoot = Nodes.findOne({ _id: this.params._id });
+    if (graphRoot) {
+      return { graphRoot: graphRoot };
+    }
+  }
 });
