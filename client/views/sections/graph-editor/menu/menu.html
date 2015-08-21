@@ -5,5 +5,10 @@
       <li><a id="showList" href="#"><span class="fa fa-tasks"></span></a></li>
       <li><a id="showGraph" href="#"><span class="fa fa-sitemap"></span></a></li>
     </ul>
+    <ul class="sidebar-a-bottom">
+      {{#if userIsAdmin}}
+        <li><a href="{{pathFor route='graph.settings' data=graph}}"><span class="fa fa-cog"></span></a></li>
+      {{/if}}
+    </ul>
   </div>
 </template>
