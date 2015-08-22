@@ -23,5 +23,13 @@
         "color": "#DC85DA"
       }
     }
+  },
+  "private": {
+    "email": {
+      "username": "****",
+      "password": "****",
+      "server": "****",
+      "port": "25"
+    }
   }
 }
