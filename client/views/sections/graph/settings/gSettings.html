@@ -1,4 +1,4 @@
-<template name="geSettings">
+<template name="gSettings">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
@@ -10,10 +10,10 @@
       </div>
       <div class="col-lg-9">
         {{#if $eq view 'General'}}
-          {{> geGeneralSettings}}
+          {{> gsGeneral}}
         {{/if}}
         {{#if $eq view 'Access Management'}}
-          {{> geAccessManagement}}
+          {{> gsAccessManagement}}
         {{/if}}
       </div>
     </div>

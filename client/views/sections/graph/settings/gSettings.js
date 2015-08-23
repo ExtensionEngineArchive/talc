@@ -5,7 +5,7 @@ Dependency.autorun(function() {
   settings = Dependency.get('graphSettingsService');
 });
 
-Template.geSettings.helpers({
+Template.gSettings.helpers({
   categories: function() {
     return settings.view.categories();
   },
@@ -14,7 +14,7 @@ Template.geSettings.helpers({
   }
 });
 
-Template.geSettings.events({
+Template.gSettings.events({
   'click .graph-settings-item': function() {
     settings.view.switch(this.toString());
   }

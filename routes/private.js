@@ -24,7 +24,7 @@ Router.route('/graph/:_id/editor', {
 
 Router.route('/graph/:_id/settings', {
   name: 'graph.settings',
-  template: 'geSettings',
+  template: 'gSettings',
   data: function() {
     var graphRoot = Nodes.findOne({ _id: this.params._id });
     if (graphRoot) {
