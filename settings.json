@@ -1,7 +1,7 @@
 {
   "public": {
     "node": {
-      "types": ["R", "T", "O", "S"],
+      "list": ["R", "T", "O", "S"],
       "R": {
         "name": "Knowledge graph",
         "code": "G",
