@@ -33,7 +33,7 @@ Dependency.add('browserService', (function browserService() {
    * @param {Object} [node] R or T node
    */
   s.forward = function(node) {
-    if ((node.type === 'T') || node.type === 'C') {
+    if ((node.type === 'T') || node.type === 'R') {
       var path = data.path.get();
       path.push(node);
       data.path.set(path);
