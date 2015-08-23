@@ -1,6 +1,28 @@
 <template name="gsAccessManagement">
-  <div class="panel panel-primary">
+  <div class="panel">
     <div class="panel-body">
+      <h2 class="page-header">Access management</h2>
+      <form class="form">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              {{> inputAutocomplete  settings=autocompleteEmail class="form-control" placeholder="Email"}}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <select class="form-control">
+                <option value="admin">Admin</option>
+                <option value="active-collaborator">Active collaborator</option>
+                <option value="passive-collaborator">Passive collaborator</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-1">
+            <button type="submit" class="btn btn-primary btn-block">Add</button>
+          </div>
+        </div>
+      </form>
       <ul class="list-group">
         {{#each members}}
           <li class="list-group-item">
