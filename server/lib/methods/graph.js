@@ -14,7 +14,7 @@ Meteor.methods({
     var _id = Nodes.insert({
       name: params.name,
       description: params.description,
-      type: 'C',
+      type: 'R',
       elements: {
         nodes: [],
         edges: []

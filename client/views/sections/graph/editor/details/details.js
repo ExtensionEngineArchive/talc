@@ -8,7 +8,7 @@ Dependency.autorun(function() {
 Template.geDetails.helpers({
   node: function() {
     var node = editor.context.selected.node();
-    return node || { name: '', type: 'C' };
+    return node || { name: '', type: 'R' };
   },
   parents: function() {
     var node = editor.context.selected.node();
