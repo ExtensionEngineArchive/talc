@@ -158,7 +158,7 @@ function createCompetencies(users) {
   // Create competencies
   for (i = 1; i < 5; i++) {
     mockCompetencies.push(Nodes.insert({
-      type: 'C',
+      type: 'R',
       name: 'Competency ' + i,
       elements: {
         nodes: [],
@@ -203,7 +203,7 @@ function createCompetencies(users) {
     temp.elements.nodes.push({
       data: {
         id: mockCompetencies[i],
-        type: 'C'
+        type: 'R'
       }
     });
 
