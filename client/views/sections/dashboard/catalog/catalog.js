@@ -1,6 +1,6 @@
 
 Template.dCatalog.helpers({
-  competencies: function() {
-    return Nodes.find({ type: 'C' });
+  knowledgeGraphs: function() {
+    return Nodes.find({ type: 'R' });
   }
 });
