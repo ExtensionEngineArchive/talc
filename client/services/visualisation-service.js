@@ -41,9 +41,9 @@ Dependency.add('visualisationService', (function visualisationService() {
         padding: 10
       },
       style: [{
-        selector: '[type = "C"]',
+        selector: '[type = "R"]',
         style: {
-          'background-color': Nodes.TYPE.C.color,
+          'background-color': Nodes.TYPE.R.color,
           'width': 50,
           'height': 50,
           'content': 'data(type)'
