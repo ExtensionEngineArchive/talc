@@ -2,16 +2,16 @@
   <div class="panel">
     <div class="panel-body">
       <h2 class="page-header">Access management</h2>
-      <form class="form">
+      <form class="form" id="addGraphMember" name="addGraphMember">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              {{> inputAutocomplete  settings=autocompleteEmail class="form-control" placeholder="Email"}}
+              {{> inputAutocomplete name="email" settings=autocompleteEmail class="form-control" placeholder="Email"}}
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <select class="form-control">
+              <select class="form-control" name="role">
                 <option value="admin">Admin</option>
                 <option value="active-collaborator">Active collaborator</option>
                 <option value="passive-collaborator">Passive collaborator</option>
@@ -27,7 +27,8 @@
         {{#each members}}
           <li class="list-group-item">
             {{this.profile.firstName}}
-            {{this.profile.lastName}}
+            {{this.profile.lastName}} |
+            {{this.emails.[0].address}}
           </li>
         {{/each}}
       </ul>

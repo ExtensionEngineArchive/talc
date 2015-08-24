@@ -18,7 +18,9 @@ Template.gsAccessManagement.helpers({
 });
 
 Template.gsAccessManagement.events({
-  'click .addMember': function(e, t) {
-    // Meteor.call('invites.send', email);
+  'submit #addGraphMember': function(e, t) {
+    e.preventDefault();
+    Meteor.call('invites.graph', e.target.email.value, Template.parentData(1).graphRoot._id, e.target.role.value);
+    e.target.email.value = '';
   }
 });
