@@ -47,6 +47,8 @@ meteorflux:reactive-dependency@0.1.1
 minifiers@1.1.5
 minimongo@1.0.8
 mizzao:autocomplete@0.5.1
+mizzao:timesync@0.3.3
+mizzao:user-status@0.6.5
 mobile-status-bar@1.0.3
 mongo@1.1.0
 mrt:moment@2.8.1
