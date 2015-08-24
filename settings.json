@@ -29,7 +29,8 @@
       "username": "****",
       "password": "****",
       "server": "****",
-      "port": "25"
+      "port": "25",
+      "address": "****"
     }
   }
 }
