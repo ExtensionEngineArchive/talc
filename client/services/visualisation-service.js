@@ -80,7 +80,7 @@ Dependency.add('visualisationService', (function visualisationService() {
 
     graph.on('tap', 'node', {}, function(e) {
       var node = Nodes.findOne({ _id: e.cyTarget.id() });
-      editor.context.select(node);
+      editor.select(node);
     });
 
     return graph;
