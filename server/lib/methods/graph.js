@@ -37,14 +37,21 @@ Meteor.methods({
     }
   },
   'graph.node.add': function(params) {
-    // Create new node
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    var user = Meteor.user();
+    if (!TALCH.user.hasEditGraphPermission(user, params.root._id)) {
+      throw new Meteor.Error("not-authorized");
+    }
+
     params.node._id = Nodes.insert({
       name: params.node.name,
       type: params.node.type,
       roots: [params.root._id]
     });
 
-    // Update graph structure
     Nodes.findAndModify({
       query: { _id: params.root._id },
       update: {
@@ -53,6 +60,31 @@ Meteor.methods({
           'elements.edges': {
             $each: Nodes.graph.createEdges(Lazy(params.parents).pluck('_id'), params.node._id)
           }
+        }
+      }
+    });
+  },
+  'graph.node.remove': function(nodeId, rootId) {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    var user = Meteor.user();
+    if (!TALCH.user.hasEditGraphPermission(user, rootId)) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    var node = Nodes.findOne({ _id: nodeId });
+    if (node.roots.length === 1) {
+      Nodes.remove({ _id: nodeId });
+    }
+
+    Nodes.findAndModify({
+      query: { _id: rootId },
+      update: {
+        $pull: {
+          'elements.nodes': { 'data.id': nodeId },
+          'elements.edges': { 'data.target': nodeId },
         }
       }
     });
