@@ -36,9 +36,17 @@ Meteor.methods({
       Roles.addUsersToRoles(user._id, ['admin'], _id);
     }
   },
-  'competencies.node.add': function(params) {
+  'graph.node.add': function(params) {
+    // Create new node
+    params.node._id = Nodes.insert({
+      name: params.node.name,
+      type: params.node.type,
+      roots: [params.root._id]
+    });
+
+    // Update graph structure
     Nodes.findAndModify({
-      query: { _id: params.competency._id },
+      query: { _id: params.root._id },
       update: {
         $push: {
           'elements.nodes': Nodes.graph.createNode(params.node),
