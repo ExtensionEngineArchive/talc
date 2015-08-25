@@ -13,6 +13,7 @@ Dependency.add('editorService', (function editorService() {
     context: { root: null, graph: null, view: null, selected: {} },
     view: {},
     nodes: {},
+    modals: { edit: {} },
     select: null
   };
 
@@ -23,6 +24,12 @@ Dependency.add('editorService', (function editorService() {
     selected: {
       node: new ReactiveVar(),
       group: new ReactiveVar()
+    },
+    modals: {
+      edit: {
+        rendered: new ReactiveVar(false),
+        node: new ReactiveVar()
+      }
     }
   };
 
@@ -96,6 +103,66 @@ Dependency.add('editorService', (function editorService() {
   };
 
   /**
+   * @summary Check if edit modal should be rendered
+   * @method modals.edit.rendered
+   * @return {Boolean}
+   */
+  s.modals.edit.rendered = function() {
+    return data.modals.edit.rendered.get();
+  };
+
+  /**
+   * @summary Show create node modal
+   * @method modals.edit.new
+   */
+  s.modals.edit.new = function() {
+    s.modals.edit.hide();
+    data.modals.edit.node.set(null);
+    s.modals.edit.show();
+  };
+
+  /**
+   * @summary Show update node modal
+   * @method modals.edit.update
+   * @param {Object} [node]
+   */
+  s.modals.edit.update = function(node) {
+    s.modals.edit.hide();
+    data.modals.edit.node.set(node);
+    s.modals.edit.show();
+  };
+
+  /**
+   * @summary Show edit (node) modal
+   * @method modals.edit.show
+   */
+  s.modals.edit.show = function() {
+    setTimeout(function() {
+      data.modals.edit.rendered.set(true);
+      setTimeout(function() { $('#ceNodeModal').modal('show'); }, 10);
+    }, 10);
+  };
+
+  /**
+   * @summary Hide edit (node) modal
+   * @method modals.edit.hide
+   */
+  s.modals.edit.hide = function() {
+    if (s.modals.edit.rendered()) {
+      data.modals.edit.rendered.set(false);
+    }
+  };
+
+  /**
+   * @summary Data context for edit (node) modal
+   * @method modals.edit.node
+   * @return {Object}
+   */
+  s.modals.edit.node = function() {
+    return data.modals.edit.node.get();
+  };
+
+  /**
    * @summary Get node ids
    * @method nodes.ids
    * @param {Object} [graph] Cytoscape instance, optional, context is used otherwise
@@ -104,6 +171,16 @@ Dependency.add('editorService', (function editorService() {
   s.nodes.ids = function(graph) {
     graph = graph || s.context.graph();
     return Nodes.graph.ids(graph);
+  };
+
+  /**
+   * @summary Get node parents
+   * @method nodes.parents
+   * @param {String} [_id] Node id
+   * @returns {Collection.Cursor}
+   */
+  s.nodes.parents = function(_id) {
+    return Nodes.find({ _id: { $in: Nodes.getParents(s.context.graph(), _id) }});
   };
 
   /**
