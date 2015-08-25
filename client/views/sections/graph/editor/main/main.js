@@ -22,6 +22,6 @@ Template.geMain.helpers({
 
 Template.geMain.events({
   'click .ce-main .skill': function() {
-    editorService.context.select(this);
+    editorService.select(this);
   }
 });
