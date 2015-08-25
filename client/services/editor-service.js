@@ -202,6 +202,15 @@ Dependency.add('editorService', (function editorService() {
   };
 
   /**
+   * @summary Remove node from graph
+   * @method nodes.remove
+   * @param {String} [nodeId] Node id
+   */
+  s.nodes.remove = function(nodeId) {
+    Meteor.call('graph.node.remove', nodeId, s.context.root()._id);
+  };
+
+  /**
    * @summary Filter nodes by name
    * @method nodes.findAllByName
    * @param {String} [search] Search string

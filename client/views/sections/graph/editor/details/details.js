@@ -30,5 +30,8 @@ Template.geDetails.helpers({
 Template.geDetails.events({
   'click .fa-edit': function() {
     editor.modals.edit.update(editor.context.selected.node());
+  },
+  'click .fa-trash': function() {
+    editor.nodes.remove(editor.context.selected.node()._id);
   }
 });
