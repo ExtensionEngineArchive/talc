@@ -26,3 +26,9 @@ Template.geDetails.helpers({
     return [];
   }
 });
+
+Template.geDetails.events({
+  'click .fa-edit': function() {
+    editor.modals.edit.update(editor.context.selected.node());
+  }
+});
