@@ -12,30 +12,20 @@
             <div class="form-group">
               <label for="nodeNameInput" class="col-sm-2 control-label">Name</label>
               <div class="col-sm-9">
-                <input id="nodeNameInput" class="form-control" name="name" type="text">
+                <input id="nodeNameInput" class="form-control" name="name" type="text" value="{{name}}">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-2 control-label">Type</label>
               <div class="col-lg-10">
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="type" value="T" checked="">
-                    Topic
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="type" value="O">
-                    Learning objective
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="type" value="S">
-                    Skill
-                  </label>
-                </div>
+                {{#each types}}
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="type" value="{{this.type}}" checked="{{this.checked}}">
+                      {{this.name}}
+                    </label>
+                  </div>
+                {{/each}}
               </div>
             </div>
             <div class="form-group">

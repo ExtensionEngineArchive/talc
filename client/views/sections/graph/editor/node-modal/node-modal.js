@@ -1,18 +1,34 @@
 
-var editorService;
+var editor;
 
 Dependency.autorun(function() {
-  editorService = Dependency.get('editorService');
+  editor = Dependency.get('editorService');
 });
 
 Template.geNodeModal.onCreated(function() {
-  this.tempStorage = {
-    parents: new ReactiveVar([]),
-    prerequisites: new ReactiveVar([])
-  };
+  var node = editor.modals.edit.node();
+  if (node) {
+    this.tempStorage = {
+      name: node.name,
+      types: getTypes(node.type),
+      parents: new ReactiveVar(editor.nodes.parents(node._id))
+    };
+  } else {
+    this.tempStorage = {
+      name: '',
+      types: getTypes(),
+      parents: new ReactiveVar([])
+    };
+  }
 });
 
 Template.geNodeModal.helpers({
+  name: function() {
+    return Template.instance().tempStorage.name;
+  },
+  types: function() {
+    return Template.instance().tempStorage.types;
+  },
   parents: function() {
     return Template.instance().tempStorage.parents;
   }
@@ -27,12 +43,22 @@ Template.geNodeModal.events({
       type: e.target.type.value
     };
 
-    editorService.nodes.add(node, Template.instance().tempStorage.parents.get());
-
-    e.target.name.value = '';
-    e.target.type.value = 'T';
-    Template.instance().tempStorage.parents.set([]);
-
+    editor.nodes.add(node, Template.instance().tempStorage.parents.get());
     $('#ceNodeModal').modal('hide');
   }
 });
+
+function getTypes(type) {
+  var result = [];
+  type = type || 'T';
+
+  Lazy(['T', 'O', 'S']).each(function(it) {
+    result.push({
+      name: Nodes.TYPE[it].name,
+      type: it,
+      checked: it === type ? true : false
+    });
+  });
+
+  return result;
+}
