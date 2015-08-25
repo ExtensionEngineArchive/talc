@@ -1,6 +1,6 @@
 
 Meteor.startup(function() {
-  if (!Meteor.users.findOne() || 0) {
+  if (!Meteor.users.findOne() && Meteor.settings.private.dev.mocks) {
     var users = createUsers();
     createCompetencies(users);
   }
