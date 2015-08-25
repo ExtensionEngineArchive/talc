@@ -115,15 +115,13 @@ Dependency.add('editorService', (function editorService() {
   s.nodes.add = function(node, parents) {
     parents = parents || [s.context.root()];
 
-    Meteor.call('nodes.insert', node, function(error, _id) {
-      var params = {
-        competency: s.context.root(),
-        node: Nodes.findOne({ _id: _id }),
-        parents: parents
-      };
+    var params = {
+      node: node,
+      root: s.context.root(),
+      parents: parents
+    };
 
-      Meteor.call('competencies.node.add', params);
-    });
+    Meteor.call('graph.node.add', params);
   };
 
   /**
