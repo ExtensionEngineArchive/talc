@@ -171,7 +171,8 @@ function createCompetencies(users) {
   for (i = 1; i < 21; i++) {
     mockTopics.push(Nodes.insert({
       type: 'T',
-      name: 'Topic ' + i
+      name: 'Topic ' + i,
+      roots: [mockCompetencies[Math.floor((i-1)/5)]]
     }));
   }
 
@@ -179,7 +180,8 @@ function createCompetencies(users) {
   for (i = 1; i < 81; i++) {
     mockObjectives.push(Nodes.insert({
       type: 'O',
-      name: 'Learning Objective ' + i
+      name: 'Learning Objective ' + i,
+      roots: [mockCompetencies[Math.floor((i-1)/20)]]
     }));
   }
 
@@ -187,7 +189,8 @@ function createCompetencies(users) {
   for (i = 1; i < 321; i++) {
     mockSkills.push(Nodes.insert({
       type: 'S',
-      name: 'Skill ' + i
+      name: 'Skill ' + i,
+      roots: [mockCompetencies[Math.floor((i-1)/80)]]
     }));
   }
 
