@@ -1,5 +1,5 @@
 
-Template.dashboard.events({
+Template.dMenu.events({
   'click #showCreateModal': function() {
     $('#dashboardCreateModal').modal('show');
   }
