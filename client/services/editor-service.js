@@ -12,7 +12,7 @@ Dependency.add('editorService', (function editorService() {
     init: null,
     context: { root: null, graph: null, view: null, selected: {} },
     view: {},
-    nodes: {},
+    nodes: { parent: {} },
     modals: { edit: {} },
     select: null
   };
@@ -208,6 +208,26 @@ Dependency.add('editorService', (function editorService() {
    */
   s.nodes.remove = function(nodeId) {
     Meteor.call('graph.node.remove', nodeId, s.context.root()._id);
+  };
+
+  /**
+   * @summary Add parent node
+   * @method nodes.parent.add
+   * @param {String} [nodeId]
+   * @param {String} [parentId]
+   */
+  s.nodes.parent.add = function(nodeId, parentId) {
+    Meteor.call('graph.parent.add', s.context.root()._id, nodeId, parentId);
+  };
+
+  /**
+   * @summary Remove parent node
+   * @method nodes.parent.add
+   * @param {String} [nodeId]
+   * @param {String} [parentId]
+   */
+  s.nodes.parent.remove = function(nodeId, parentId) {
+    Meteor.call('graph.parent.remove', s.context.root()._id, nodeId, parentId);
   };
 
   /**
