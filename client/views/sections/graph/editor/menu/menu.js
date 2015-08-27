@@ -23,5 +23,8 @@ Template.geMenu.events({
   },
   'click #showList': function() {
     editor.view.switchToList();
+  },
+  'click #showOutline': function() {
+    editor.view.switchToOutline();
   }
 });
