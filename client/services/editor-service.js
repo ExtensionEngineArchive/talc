@@ -184,6 +184,16 @@ Dependency.add('editorService', (function editorService() {
   };
 
   /**
+   * @summary Get node children
+   * @method nodes.children
+   * @param {String} [_id] Node id
+   * @returns {Collection.Cursor}
+   */
+  s.nodes.children = function(_id) {
+    return Nodes.find({ _id: { $in: Nodes.getChildren(s.context.graph(), _id) }});
+  };
+
+  /**
    * @summary Add node
    * @method nodes.add
    * @param {Object} [node] Node data
@@ -267,6 +277,14 @@ Dependency.add('editorService', (function editorService() {
   };
 
   /**
+   * @summary Check if editor is in outline view mode
+   * @method view.isOutline
+   */
+  s.view.isOutline = function() {
+    return data.view.get() === 'outline';
+  };
+
+  /**
    * @summary Switch graph editor to list view
    * @method view.switchToList
    */
@@ -283,6 +301,16 @@ Dependency.add('editorService', (function editorService() {
   s.view.switchToGraph = function() {
     if (!s.view.isGraph()) {
       data.view.set('graph');
+    }
+  };
+
+  /**
+   * @summary Switch graph editor to outline view
+   * @method view.switchToOutline
+   */
+  s.view.switchToOutline = function() {
+    if (!s.view.isOutline()) {
+      data.view.set('outline');
     }
   };
 
