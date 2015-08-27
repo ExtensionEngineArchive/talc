@@ -1,5 +1,9 @@
 
-// TODO: Graph creation must be transactional
+// --------------------------------------------------------------------
+// Graph creation and editing
+// TODO: Transactional
+// --------------------------------------------------------------------
+
 Meteor.methods({
   'graph.create': function(params) {
     if (!Meteor.userId()) {
@@ -27,7 +31,7 @@ Meteor.methods({
       query: { _id: _id },
       update: {
         $push: {
-          'elements.nodes': Nodes.graph.createNode(Nodes.findOne({ _id: _id })),
+          'elements.nodes': Nodes.graph.createNode(Nodes.findOne({ _id: _id }))
         }
       }
     });
@@ -37,12 +41,7 @@ Meteor.methods({
     }
   },
   'graph.node.add': function(params) {
-    if (!Meteor.userId()) {
-      throw new Meteor.Error("not-authorized");
-    }
-
-    var user = Meteor.user();
-    if (!TALCH.user.hasEditGraphPermission(user, params.root._id)) {
+    if (!hasEditGraphPermission(params.root._id)) {
       throw new Meteor.Error("not-authorized");
     }
 
@@ -65,12 +64,7 @@ Meteor.methods({
     });
   },
   'graph.node.remove': function(nodeId, rootId) {
-    if (!Meteor.userId()) {
-      throw new Meteor.Error("not-authorized");
-    }
-
-    var user = Meteor.user();
-    if (!TALCH.user.hasEditGraphPermission(user, rootId)) {
+    if (!hasEditGraphPermission(rootId)) {
       throw new Meteor.Error("not-authorized");
     }
 
@@ -84,9 +78,59 @@ Meteor.methods({
       update: {
         $pull: {
           'elements.nodes': { 'data.id': nodeId },
-          'elements.edges': { 'data.target': nodeId },
+          'elements.edges': {
+            $or: [
+              { 'data.target': nodeId },
+              { 'data.source': nodeId }
+            ]
+          }
+        }
+      }
+    });
+  },
+  'graph.parent.add': function(rootId, nodeId, parentId) {
+    if (!hasEditGraphPermission(rootId)) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Nodes.findAndModify({
+      query: { _id: rootId },
+      update: {
+        $push: {
+          'elements.edges': Nodes.graph.createEdge(parentId, nodeId)
+        }
+      }
+    });
+  },
+  'graph.parent.remove': function(rootId, nodeId, parentId) {
+    if (!hasEditGraphPermission(rootId)) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Nodes.findAndModify({
+      query: { _id: rootId },
+      update: {
+        $pull: {
+          'elements.edges': { 'data.source': parentId, 'data.target': nodeId }
         }
       }
     });
   }
 });
+
+// --------------------------------------------------------------------
+// Helpers
+// --------------------------------------------------------------------
+
+function hasEditGraphPermission(graphId) {
+  if (!Meteor.userId()) {
+    return false;
+  }
+
+  var user = Meteor.user();
+  if (!TALCH.user.hasEditGraphPermission(user, graphId)) {
+    return false;
+  }
+
+  return true;
+}
