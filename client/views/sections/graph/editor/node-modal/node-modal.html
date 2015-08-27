@@ -31,12 +31,26 @@
             <div class="form-group">
               <label class="col-lg-2 control-label">Parents</label>
               <div class="col-lg-9">
-                {{> nodeInputComponent selected=parents }}
+                {{> nodeSelectComponent selected=selected }}
+                <div class="list-b">
+                  {{#if parents}}
+                    <ul class="list-group">
+                      {{#each parents}}
+                        <li class="list-group-item">
+                          {{this.name}}
+                          <button type="button" class="btn btn-xs btn-primary remove pull-right">x</button>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  {{/if}}
+                </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Create</button>
+            {{#if create}}
+              <button type="submit" class="btn btn-primary">Save</button>
+            {{/if}}
           </div>
         </div>
       </form>
