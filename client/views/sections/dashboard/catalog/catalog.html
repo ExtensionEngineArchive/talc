@@ -1,36 +1,51 @@
 <template name="dCatalog">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <input id="catalogSearch" class="form-control">
+  <div class="container-fluid catalog">
+    <div class="row row-a">
+      <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="input-group">
+          <input id="catalogSearch" class="form-control" placeholder="Search ...">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="button"><span class="zmdi zmdi-search"></span></button>
+          </span>
+        </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row row-b">
       {{#each knowledgeGraphs}}
         <div class="col-lg-4">
           <div class="competency-card-a">
-            <div class="competency-card-header">
-              <span class="fa fa-cog pull-right edit-competency"></span>
-            </div>
             <div class="competency-card-body">
               <h2 class="competency-card-title">
                 <a href="{{pathFor route='graph.editor' data=this}}">{{name}}</a>
               </h2>
-              <p>{{description}}</p>
+              <p>{{cutString description 160}}</p>
             </div>
             <div class="competency-card-footer row">
-              <div class="col-md-6">
-                <div>
-                  <span>2</span>
-                  <span class="fa fa-users"></span>
-                </div>
+              <div class="col-md-4">
+                <span class="item item-a">
+                  <span class="block-a">10</span>
+                  <span class="zmdi zmdi-circle"></span>
+                </span>
               </div>
-              <div class="col-md-6">
-                <div class="pull-right">
-                  <div class="label label-primary label-a">102</div>
-                </div>
+              <div class="col-md-4">
+                <span class="item item-b">
+                  <span class="block-a">10</span>
+                  <span class="zmdi zmdi-help-outline"></span>
+                </span>
+              </div>
+              <div class="col-md-4">
+                <span class="item item-c">
+                  <span class="block-a">10</span>
+                  <span class="zmdi zmdi-account"></span>
+                </span>
               </div>
             </div>
+          </div>
+        </div>
+      {{else}}
+        <div class="col-lg-12">
+          <div class="well">
+            <span>No matches found</span>
           </div>
         </div>
       {{/each}}
