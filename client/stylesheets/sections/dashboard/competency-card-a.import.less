@@ -1,26 +1,17 @@
 
 .competency-card-a {
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 25px;
   background-color: #fff;
-  border-radius: 3px;
-  border-top: 2px solid #4ECDC4;
-  box-shadow: 0 2px 0 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.2s ease-in-out;
 
-  .competency-card-header {
-    .fa-cog {
-      cursor: pointer;
-      font-size: 16px;
-      color: #cfcfcf;
-
-      &:hover {
-        color: #999;
-      }
-    }
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 5px 5px rgba(0,0,0,0.23);
   }
 
   .competency-card-title {
-    margin: 5px 0px;
+    margin: 5px 0px 20px 0px;
     font-size: 18px;
 
     a {
@@ -29,11 +20,52 @@
   }
 
   .competency-card-body {
-    height: 140px;
+    height: 160px;
+    border-bottom: 1px solid #ddd;
   }
 
   .competency-card-footer {
-    border-top: 1px solid #ddd;
-    padding-top: 15px;
+    padding-top: 10px;
+
+    .item {
+      display: block;
+      width: 100%;
+
+      .zmdi {
+        font-size: 18px;
+      }
+
+      .block-a {
+        padding-left: 5px;
+        font-size: 14px;
+        color: #777;
+        vertical-align: bottom;
+      }
+    }
+
+    .item-a {
+      padding-left: 20px;
+
+      .zmdi {
+        color: #8A7FA8;
+      }
+    }
+
+    .item-b {
+      text-align: center;
+
+      .zmdi {
+        color: #22B78D;
+      }
+    }
+
+    .item-c {
+      padding-right: 25px;
+      text-align: right;
+
+      .zmdi {
+        color: #5160B8;
+      }
+    }
   }
 }
