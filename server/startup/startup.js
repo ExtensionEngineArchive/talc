@@ -158,6 +158,7 @@ function createCompetencies(users) {
   // Create competencies
   for (i = 1; i < 5; i++) {
     mockCompetencies.push(Nodes.insert({
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fermentum iaculis dui at tincidunt. Nam congue feugiat massa, nec fermentum ligula mollis non. Suspendisse sed nisi metus. Cras posuere magna et placerat pellentesque. Etiam interdum sagittis justo, sit amet egestas est tristique vel. Etiam quis libero vel diam fermentum elementum vitae at turpis. Praesent tellus urna, vestibulum eu molestie eu, faucibus ut nunc. Nulla faucibus purus id ligula pharetra, vitae lacinia felis laoreet.",
       type: 'R',
       name: 'Competency ' + i,
       elements: {
