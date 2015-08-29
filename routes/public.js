@@ -8,4 +8,7 @@ Router.plugin('auth', {
   ]
 });
 
-Router.route('/sign-in', { name: 'signIn' });
+Router.route('/sign-in', {
+  name: 'signIn',
+  layoutTemplate: 'AuthLayout'
+});
