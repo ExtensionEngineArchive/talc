@@ -1,16 +1,20 @@
 <template name="graphEditor">
   {{> geMenu}}
-  <div class="container-a">
-    {{#if listView}}
+  {{#if listView}}
+    <div class="container-a">
       {{> geBrowser}}
       {{> geMain}}
-    {{else}}
-      <div id="knowledgeGraph">
-        {{> graphLegendComponent}}
-      </div>
-    {{/if}}
-    {{> geDetails}}
-  </div>
+    </div>
+  {{/if}}
+  {{#if graphView}}
+    <div id="knowledgeGraph">
+      {{> graphLegendComponent}}
+    </div>
+  {{/if}}
+  {{#if outlineView}}
+    {{> outlineItemComponent root=root}}
+  {{/if}}
+  {{> geDetails}}
   {{#if renderNodeModal}}
     {{> geNodeModal}}
   {{/if}}
