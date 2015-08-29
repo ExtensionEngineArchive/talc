@@ -1,3 +1,18 @@
 <template name="AuthLayout">
-  {{> yield}}
+  <div class="container container-auth">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 main">
+        <div class="row row-a">
+          <div class="col-xs-12">
+            <img src="/images/logo-big.png" width="150" align="middle"/>
+          </div>
+        </div>
+        <div class="row row-b">
+          <div class="col-xs-12">
+            {{> yield}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
