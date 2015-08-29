@@ -1,4 +1,5 @@
 
 Router.configure({
-  layoutTemplate: 'MainLayout'
+  layoutTemplate: 'MainLayout',
+  progressSpinner: false
 });
