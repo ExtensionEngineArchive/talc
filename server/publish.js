@@ -32,3 +32,14 @@ Meteor.publish("users", function() {
     this.ready();
   }
 });
+
+Meteor.publish("graphComments", function(graphId) {
+  if (this.userId) {
+    var user = Meteor.users.findOne(this.userId);
+    if (TALCH.graph.hasAccess(user, graphId)) {
+      return Comments.find({ graphId: graphId });
+    }
+  } else {
+    this.ready();
+  }
+});
