@@ -10,7 +10,7 @@ Template.signIn.helpers({
     return _.values(Session.get(ERRORS_KEY));
   },
   errorClass: function(key) {
-    return Session.get(ERRORS_KEY)[key] && 'error';
+    return Session.get(ERRORS_KEY)[key] && 'has-error';
   }
 });
 
