@@ -17,7 +17,10 @@ Router.route('/sign-in', {
 
 Router.route('/enroll-account/:token', {
   name: 'enrollAccount',
-  layoutTemplate: 'AuthLayout'
+  layoutTemplate: 'AuthLayout',
+  data: function() {
+    return { token: this.params.token };
+  }
 });
 
 Router.route('/reset-password/:token', {
