@@ -13,5 +13,17 @@
         <li class="list-group-item">{{name}}</li>
       {{/each}}
     </ul>
+    <ul class="side-comments">
+      {{#each comments}}
+        <li class="comment">
+          <span class="block-a">{{user userId}}</span>
+          <span class="block-b">{{text}}</span>
+        </li>
+      {{/each}}
+    </ul>
+    <form>
+      <textarea class="form-control" rows="3" name="comment"></textarea>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
   </div>
 </template>
