@@ -1,0 +1,93 @@
+
+.comments {
+  width: 100%;
+
+  .comment {
+    .row-a {
+      margin-top: 10px;
+      margin-left: 45px;
+    }
+
+    .row-b {
+      .message-wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin: 0 0;
+        padding: 0 0;
+
+        .user-img {
+          height: 35px;
+          width: 35px;
+          float: left;
+          color: #777;
+          border-radius: 50%;
+          box-shadow: 0px 1px 0px 0px rgba(50, 50, 50, 0.2);
+          background: #EEE;
+
+          .zmdi {
+            font-size: 32px;
+            padding: 2px 4px;
+          }
+        }
+
+        .text-wrapper {
+          position: relative;
+          float: left;
+          padding: 10px;
+          min-height: 35px;
+          width: 80%;
+          margin: 0 0 0 8px;
+          box-shadow: 0px 1px 0px 0px rgba(50, 50, 50, 0.2);
+          border-radius: 2px;
+          font-weight: 300;
+          background: #EEE;
+          color: #777;
+
+          &:before {
+            position: absolute;
+            top: 0;
+            left: -9px;
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 10px 10px 0;
+            border-color: transparent #EEE transparent transparent;
+          }
+        }
+      }
+    }
+  }
+
+  form {
+    textarea {
+      display: block;
+      margin: 25px 0px 15px;
+      padding: 5px 10px;
+      width: 100%;
+      height: 64px;
+      border: none;
+      resize: none;
+      overflow: scroll;
+      background: #EEEEEE;
+
+      &:focus {
+        outline: none;
+      }
+
+      -ms-overflow-style: none;
+      overflow: -moz-scrollbars-none;
+
+      &::-webkit-scrollbar {
+        width: 0 !important
+      }
+    }
+
+    .btn {
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
