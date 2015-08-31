@@ -12,7 +12,11 @@
     </div>
   {{/if}}
   {{#if outlineView}}
-    {{> outlineItemComponent root=root}}
+    <div class="outline-view">
+      <div class="outline-container">
+        {{> outlineItemComponent root=root}}
+      </div>
+    </div>
   {{/if}}
   {{> geDetails}}
   {{#if renderNodeModal}}

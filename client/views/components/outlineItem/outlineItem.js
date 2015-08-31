@@ -17,5 +17,11 @@ Template.outlineItemComponent.helpers({
     var itemRoot = Template.instance().data.root;
     var graphRoot = editor.context.root();
     return itemRoot._id == graphRoot._id ? 'in' : '';
+  },
+  'getNodeType': function(node) {
+    return Nodes.TYPE[node.type].code;
+  },
+  'getNodeColor': function(node) {
+    return Nodes.TYPE[node.type].color;
   }
 });
