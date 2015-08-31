@@ -22,6 +22,9 @@
     </div>
   {{else}}
     <div class="outline-leaf">
+      <span class="node-type" style="color:{{getNodeColor root}}">
+        {{getNodeType root}}
+      </span>
       {{root.name}}
     </div>
   {{/if}}
