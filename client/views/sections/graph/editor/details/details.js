@@ -35,10 +35,10 @@ Template.geDetails.helpers({
 });
 
 Template.geDetails.events({
-  'click .fa-edit': function() {
+  'click .zmdi-edit': function() {
     editor.modals.edit.update(editor.context.selected.node());
   },
-  'click .fa-trash': function() {
+  'click .zmdi-delete': function() {
     editor.nodes.remove(editor.context.selected.node()._id);
   },
   'submit': function(e, t) {

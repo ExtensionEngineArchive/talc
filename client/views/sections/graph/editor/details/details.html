@@ -1,29 +1,49 @@
 <template name="geDetails">
   <div class="sidebar-c">
-    <div>
-      {{#if $neq node.type 'R'}}
-        <span class="fa fa-trash"></span>
-        <span class="fa fa-edit"></span>
-      {{/if}}
+    <div class="sidebar-header">
+      <div class="row-a">
+        {{#if $neq node.type 'R'}}
+          <span class="zmdi zmdi-delete"></span>
+          <span class="zmdi zmdi-edit"></span>
+        {{/if}}
+      </div>
+      <div class="row-b">
+        <h3><span>{{node.name}}</span></h3>
+      </div>
     </div>
-    <h3><span>{{node.name}}</span></h3>
-    <h4>Parents</h4>
-    <ul class="list-group">
-      {{#each parents}}
-        <li class="list-group-item">{{name}}</li>
-      {{/each}}
-    </ul>
-    <ul class="side-comments">
-      {{#each comments}}
-        <li class="comment">
-          <span class="block-a">{{user userId}}</span>
-          <span class="block-b">{{text}}</span>
-        </li>
-      {{/each}}
-    </ul>
-    <form>
-      <textarea class="form-control" rows="3" name="comment"></textarea>
-      <button type="submit" class="btn btn-primary">Post</button>
-    </form>
+    <div class="sidebar-body">
+      <h4>Parents</h4>
+      <ul class="list-side-a">
+        {{#each parents}}
+          <li>{{name}}</li>
+        {{/each}}
+      </ul>
+      <h4>Comments</h4>
+      <div class="comments">
+        {{#momentum plugin='growl'}}
+          {{#each comments}}
+            <div class="comment">
+              <div class="row-a">
+                {{user userId}}
+              </div>
+              <div class="row-b">
+                <div class="message-wrapper">
+                  <div class="user-img">
+                    <span class="zmdi zmdi-account-circle"></span>
+                  </div>
+                  <div class="text-wrapper">
+                    {{text}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{/momentum}}
+        <form>
+          <textarea name="comment"></textarea>
+          <button class="btn btn-sm btn-default" type="submit">Comment</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
