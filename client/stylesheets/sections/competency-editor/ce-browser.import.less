@@ -1,13 +1,23 @@
 
 .ce-browser {
-  position:fixed;
+  position: fixed;
   overflow: scroll;
   top: 64px;
   left: 55px;
   width: 313px;
   height: 100%;
-  border-right: 1px solid #ccc;
-  background-color: #D8DFE3;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  .path {
+    li.active {
+      background-color: #FF4081;
+
+      a {
+        color: white;
+      }
+    }
+  }
 
   .node-list {
     position: relative;
@@ -46,19 +56,21 @@
   }
 
   .sidebar-block-c {
-    padding: 38px 10px 25px 28px;
-    min-height: 200px;
-    background-color: #E8847B;
-
     ul {
-      padding: 0;
       margin: 0;
+      padding: 0px 0px 10px 0px;
       list-style: none;
-      color: white;
+      color: #656565;
 
       li {
-        margin-bottom: 20px;
+        display: block;
+        padding: 20px 10px 20px 20px;
         font-size: 16px;
+
+        .zmdi {
+          font-size: 30px;
+          margin-right: 10px;
+        }
       }
 
       .path-item-C {
@@ -72,16 +84,14 @@
     }
 
     a {
-      color: white;
+      color: #656565;
       text-decoration: none;
     }
   }
 
   .browser-card {
-    min-height: 70px;
-    line-height: 68px;
-    background-color: #fefefe;
-    border-bottom: 1px solid #ccc;
+    min-height: 50px;
+    line-height: 48px;
 
     .block-a {
       float: left;

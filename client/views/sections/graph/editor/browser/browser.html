@@ -1,11 +1,11 @@
 <template name="geBrowser">
   <div class="ce-browser">
     <div class="sidebar-block-c">
-      <ul>
+      <ul class="path">
         {{#each path}}
-          <li>
+          <li class="{{nodeClass this}}">
             <a href="#" class="navigate-backward path-item-{{type}}">
-              <span class="fa fa-angle-double-right"></span>
+              <span class="zmdi zmdi-chevron-up pull-right"></span>
               {{name}}
             </a>
           </li>
@@ -15,14 +15,10 @@
     <div class="node-list">
       {{#if topics}}
         <div>
-          <div class="header">Topics</div>
           {{#each topics}}
             <div class="browser-card">
               <div class="block-a">
-                <h3><a href="#">{{cutString name 90}}</a></h3>
-              </div>
-              <div class="block-b">
-                <span class="fa fa-angle-right navigate-forward"></span>
+                <h3><a class="navigate-forward" href="#">{{cutString name 90}}</a></h3>
               </div>
             </div>
           {{/each}}
@@ -30,7 +26,6 @@
       {{/if}}
       {{#if objectives}}
         <div>
-          <div class="header">Objectives</div>
           {{#each objectives}}
             <div class="browser-card">
               <div class="block-a">

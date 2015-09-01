@@ -34,6 +34,9 @@ Template.geBrowser.helpers({
   },
   total: function() {
     return browser.items().length;
+  },
+  nodeClass: function(node) {
+    return editor.context.selected.group()._id == node._id ? 'active' : '';
   }
 });
 
