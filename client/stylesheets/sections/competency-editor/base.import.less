@@ -1,5 +1,5 @@
 
-#knowledgeGraph {
+#knowledgeGraphView {
   position: absolute;
   top: 64px;
   left: 56px;
@@ -7,7 +7,15 @@
   height: 100%;
   background-color: #f8f8f8;
 
-  .legend-container{
+  #knowledgeGraph {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .legend-container {
     position: absolute;
     padding-top: 10px;
     width: 100%;
@@ -25,6 +33,33 @@
     li {
       display: inline-block;
       margin: 0 10px;
+    }
+  }
+
+  .graph-options {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 110px;
+    width: 210px;
+    background-color: #E0E0E0;
+    z-index: 100;
+
+    .zmdi {
+      display: inline-block;
+      padding: 16px 16px;
+      color: #666;
+      font-size: 21px;
+      line-height: 22px;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #CCC;
+      }
     }
   }
 }

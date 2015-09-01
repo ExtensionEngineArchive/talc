@@ -1,8 +1,10 @@
 
 var editor;
+var visualisation;
 
 Dependency.autorun(function() {
   editor = Dependency.get('editorService');
+  visualisation = Dependency.get('visualisationService');
 });
 
 Template.graphEditor.helpers({
@@ -20,5 +22,13 @@ Template.graphEditor.helpers({
   },
   'renderNodeModal': function() {
     return editor.modals.edit.rendered();
+  }
+});
+
+Template.graphEditor.events({
+  'click .graph-switch-layout': function(e) {
+    var layout = e.currentTarget.id;
+    layout = layout.replace(/show|Layout/g,'').toLowerCase();
+    visualisation.editor.setKnowledgeGraphLayout(layout);
   }
 });
