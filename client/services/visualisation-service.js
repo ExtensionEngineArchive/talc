@@ -51,7 +51,7 @@ Dependency.add('visualisationService', (function visualisationService() {
           'background-color': Nodes.TYPE.R.color,
           'width': 50,
           'height': 50,
-          'content': 'data(type)'
+          'content': 'data(number)'
         }
       },
       {
@@ -60,7 +60,7 @@ Dependency.add('visualisationService', (function visualisationService() {
           'background-color': Nodes.TYPE.T.color,
           'width': 40,
           'height': 40,
-          'content': 'data(type)'
+          'content': 'data(number)'
         }
       },
       {
@@ -69,7 +69,7 @@ Dependency.add('visualisationService', (function visualisationService() {
           'background-color': Nodes.TYPE.O.color,
           'width': 30,
           'height': 30,
-          'content': 'data(type)'
+          'content': 'data(number)'
         }
       },
       {
@@ -78,7 +78,7 @@ Dependency.add('visualisationService', (function visualisationService() {
           'background-color': Nodes.TYPE.S.color,
           'width': 20,
           'height': 20,
-          'content': 'data(type)'
+          'content': 'data(number)'
         }
       }]
     });
