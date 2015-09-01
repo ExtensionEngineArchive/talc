@@ -6,7 +6,7 @@
           <li class="{{nodeClass this}}">
             <a href="#" class="navigate-backward path-item-{{type}}">
               <span class="zmdi zmdi-chevron-up pull-right"></span>
-              {{nodeNumber this}} {{name}}
+              <span class="node-number">{{nodeNumber this}}</span> {{name}}
             </a>
           </li>
         {{/each}}
@@ -18,7 +18,12 @@
           {{#each topics}}
             <div class="browser-card">
               <div class="block-a">
-                <h3><a class="navigate-forward" href="#">{{nodeNumber this}} {{cutString name 120}}</a></h3>
+                <h3>
+                  <a class="navigate-forward" href="#">
+                    <span class="node-number">{{nodeNumber this}}</span>
+                    {{cutString name 120}}
+                  </a>
+                </h3>
               </div>
             </div>
           {{/each}}
@@ -29,7 +34,12 @@
           {{#each objectives}}
             <div class="browser-card">
               <div class="block-a">
-                <h3><a href="#" class="navigate-forward">{{nodeNumber this}} {{cutString name 120}}</a></h3>
+                <h3>
+                  <a href="#" class="navigate-forward">
+                    <span class="node-number">{{nodeNumber this}}</span>
+                    {{cutString name 120}}
+                  </a>
+                </h3>
               </div>
             </div>
           {{/each}}
