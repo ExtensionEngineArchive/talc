@@ -40,7 +40,11 @@ Dependency.add('editorService', (function editorService() {
    */
   s.init = function(root) {
     data.root.set(root);
-    data.graph.set(cytoscape({ headless: true, elements: root.elements }));
+
+    var graph = cytoscape({ headless: true, elements: root.elements });
+    TALCH.graph.numberNodes(graph.$('#' + root._id));
+    data.graph.set(graph);
+
     browser.init();
     visualisation.init();
   };
@@ -171,6 +175,19 @@ Dependency.add('editorService', (function editorService() {
   s.nodes.ids = function(graph) {
     graph = graph || s.context.graph();
     return Nodes.graph.ids(graph);
+  };
+
+  /**
+   * @summary Get node number (String)
+   * @method nodes.number
+   * @param {String} [_id] Node id
+   * @returns {String}
+   */
+  s.nodes.number = function(_id) {
+    var graph = s.context.graph();
+    var node = graph.$('#' + _id);
+
+    return node.data('number');
   };
 
   /**
