@@ -18,11 +18,14 @@ Template.outlineItemComponent.helpers({
     var graphRoot = editor.context.root();
     return itemRoot._id == graphRoot._id ? 'in' : '';
   },
-  'getNodeType': function(node) {
+  'nodeType': function(node) {
     return Nodes.TYPE[node.type].code;
   },
-  'getNodeColor': function(node) {
+  'nodeColor': function(node) {
     return Nodes.TYPE[node.type].color;
+  },
+  nodeNumber: function(node) {
+    return editor.nodes.number(node._id);
   }
 });
 

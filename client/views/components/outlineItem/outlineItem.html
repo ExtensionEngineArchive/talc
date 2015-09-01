@@ -5,9 +5,10 @@
       <div class="panel-heading" role="tab" id="heading{{root._id}}">
         <h4 class="panel-title">
           <a role="button" data-toggle="collapse" href="#collapse{{root._id}}" aria-expanded="false" aria-controls="collapse{{root._id}}">
-            <span class="node-type" style="color:{{getNodeColor root}}">
-              {{getNodeType root}}
+            <span class="node-type" style="color:{{nodeColor root}}">
+              {{nodeType root}}
             </span>
+            <span class="node-number">{{nodeNumber root}}</span>
             {{root.name}}
           </a>
         </h4>
@@ -25,9 +26,10 @@
       <div class="panel-heading" id="heading{{root._id}}">
         <h4 class="panel-title">
           <a href="#" role="button">
-            <span class="node-type" style="color:{{getNodeColor root}}">
-              {{getNodeType root}}
+            <span class="node-type" style="color:{{nodeColor root}}">
+              {{nodeType root}}
             </span>
+            <span class="node-number">{{nodeNumber root}}</span>
             {{root.name}}
           </a>
         </h4>
