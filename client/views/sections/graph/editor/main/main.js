@@ -17,6 +17,9 @@ Template.geMain.helpers({
         }
       });
     }
+  },
+  nodeNumber: function(node) {
+    return editorService.nodes.number(node._id);
   }
 });
 

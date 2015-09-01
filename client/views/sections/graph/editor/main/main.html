@@ -10,6 +10,7 @@
             <ul class="list-group">
               {{#each skills}}
                 <li id="skill{{this._id}}" class="list-group-item skill">
+                  <span class="node-number">{{nodeNumber this}}</span>
                   {{name}}
                 </li>
               {{else}}
