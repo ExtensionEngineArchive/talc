@@ -37,6 +37,9 @@ Template.geBrowser.helpers({
   },
   nodeClass: function(node) {
     return editor.context.selected.group()._id == node._id ? 'active' : '';
+  },
+  nodeNumber: function(node) {
+    return editor.nodes.number(node._id);
   }
 });
 
