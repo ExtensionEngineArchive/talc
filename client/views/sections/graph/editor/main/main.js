@@ -21,7 +21,9 @@ Template.geMain.helpers({
 });
 
 Template.geMain.events({
-  'click .ce-main .skill': function() {
+  'click .ce-main .skill': function(e, t) {
     editorService.select(this);
+    t.$('.ce-main .skill').removeClass('active');
+    t.$('#skill' + editorService.context.selected.node()._id).addClass('active');
   }
 });
