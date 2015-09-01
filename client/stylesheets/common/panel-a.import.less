@@ -1,6 +1,29 @@
 
 .panel-a {
   .panel-heading {
-    background-color: #414851;
+    background-color: #fff;
+    min-height: 50px;
+    border-bottom: 1px solid #EEE;
+
+    .panel-title {
+      font-size: 16px;
+      padding: 10px 3px 0px 13px;
+      margin: 0;
+    }
+  }
+
+  .panel-body {
+    padding: 0;
+
+    .list-group {
+      .list-group-item {
+        padding-left: 30px;
+        border: 0;
+
+        &.active {
+          background-color: #FF4081;
+        }
+      }
+    }
   }
 }
