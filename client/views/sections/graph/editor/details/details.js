@@ -31,6 +31,9 @@ Template.geDetails.helpers({
   user: function(_id) {
     var user = Meteor.users.findOne({ _id: _id });
     return user.profile.firstName + ' ' + user.profile.lastName;
+  },
+  nodeNumber: function(node) {
+    return editor.nodes.number(node._id);
   }
 });
 
