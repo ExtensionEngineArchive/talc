@@ -21,11 +21,17 @@
       </div>
     </div>
   {{else}}
-    <div class="outline-leaf">
-      <span class="node-type" style="color:{{getNodeColor root}}">
-        {{getNodeType root}}
-      </span>
-      {{root.name}}
+    <div class="panel panel-default">
+      <div class="panel-heading" id="heading{{root._id}}">
+        <h4 class="panel-title">
+          <a href="#" role="button">
+            <span class="node-type" style="color:{{getNodeColor root}}">
+              {{getNodeType root}}
+            </span>
+            {{root.name}}
+          </a>
+        </h4>
+      </div>
     </div>
   {{/if}}
 </template>

@@ -25,3 +25,11 @@ Template.outlineItemComponent.helpers({
     return Nodes.TYPE[node.type].color;
   }
 });
+
+Template.outlineItemComponent.events({
+  'click .panel-title': function(e, t) {
+    editor.select(this.root);
+    t.$('.panel-heading').removeClass('node-selected');
+    t.$('#heading' + this.root._id).addClass('node-selected');
+  }
+});
