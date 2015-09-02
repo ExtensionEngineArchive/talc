@@ -1,4 +1,5 @@
 
+// TODO: Transactions
 Meteor.methods({
   'invites.graph': function(email, graphId, role) {
     if (!Meteor.userId() || !TALCH.user.isGraphAdmin(Meteor.user(), graphId)) {
@@ -19,7 +20,12 @@ Meteor.methods({
 });
 
 function createUser(email) {
-  var _id = Accounts.createUser({ email: email, password: Random.hexString(10) });
+  var _id = Accounts.createUser({
+    email: email,
+    password: Random.hexString(10),
+    profile: {}
+  });
+
   var user = Meteor.users.findOne({ _id: _id });
 
   Meteor.setTimeout(function () {

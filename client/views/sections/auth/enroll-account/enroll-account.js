@@ -16,10 +16,16 @@ Template.enrollAccount.helpers({
 
 Template.enrollAccount.events({
   'submit': function(e, t) {
+    // TODO: Validation
     e.preventDefault();
 
     var password = t.$('[name=password]').val();
     var confirmPassword = t.$('[name=confirmPassword]').val();
+
+    var profile = {
+      firstName: t.$('[name=firstName]').val(),
+      lastName: t.$('[name=lastName]').val()
+    };
 
     var errors = {};
 
@@ -44,7 +50,9 @@ Template.enrollAccount.events({
       if (error) {
         return Session.set(ERRORS_KEY, { 'none': error.reason });
       } else {
-        Router.go('/');
+        Meteor.call('users.profile.update', profile, function() {
+          Router.go('/');
+        });
       }
     });
   }
