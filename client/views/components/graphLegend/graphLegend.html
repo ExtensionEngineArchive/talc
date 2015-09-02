@@ -2,7 +2,10 @@
   <div class="legend-container">
     <ul>
       {{#each items}}
-        <li>{{> shortNodeLabelComponent node=this}} <span class='label-legend'>{{name}}</span></li>
+        <li>
+          <span class="label label-primary" style="background-color: {{color}}">{{code}}</span>
+          <span class="node-name">{{name}}</span>
+        </li>
       {{/each}}
     </ul>
   </div>
