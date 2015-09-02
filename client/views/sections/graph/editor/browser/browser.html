@@ -5,8 +5,10 @@
         {{#each path}}
           <li class="{{nodeClass this}}">
             <a href="#" class="navigate-backward path-item-{{type}}">
-              <span class="zmdi zmdi-chevron-up pull-right"></span>
-              <span class="node-number">{{nodeNumber this}}</span> {{name}}
+              {{#if nodeNumber this}}
+                <span class="node-number">{{nodeNumber this}}</span>
+              {{/if}}
+              {{name}}
             </a>
           </li>
         {{/each}}
