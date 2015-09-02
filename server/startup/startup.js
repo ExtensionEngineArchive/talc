@@ -1,14 +1,18 @@
 
 Meteor.startup(function() {
   if (!Meteor.users.findOne() && Meteor.settings.private.dev.mocks) {
+    Nodes.remove({});
+    Comments.remove({});
+
     var users = createUsers();
-    createCompetencies(users);
+    mockGraphA();
+    mockGraphB(users);
   }
 });
 
 function createUsers() {
-  var users = [];
   Meteor.users.remove({});
+  var users = [];
 
   users.push({
     _id: Accounts.createUser({
@@ -142,7 +146,273 @@ function createUsers() {
   return users;
 }
 
-function createCompetencies(users) {
+function mockGraphA() {
+  var competency;
+  var topics = [];
+  var objectives = [];
+  var skills = [];
+  var i;
+  var j;
+
+  var temp = {
+    elements: {
+      nodes: [],
+      edges: []
+    }
+  };
+
+  competency = Nodes.insert({
+    type: 'R',
+    name: 'Classroom Management',
+    elements: {
+      nodes: [],
+      edges: []
+    }
+  });
+
+  competency = Nodes.findOne({ _id: competency });
+
+  topics.push(Nodes.insert({
+    type: 'T',
+    name: 'Identify key concepts and research related to the use of purposeful questioning and discussions to engage students in learning',
+    roots: [competency._id]
+  }));
+
+  topics.push(Nodes.insert({
+    type: 'T',
+    name: 'Identify and describe question style, wording and types and techniques for questioning that can be used with individual students or in discussions to support student learning.',
+    roots: [competency._id]
+  }));
+
+  topics.push(Nodes.insert({
+    type: 'T',
+    name: 'Identify and describe planning and facilitating needs required for purposeful discussions that support student learning.',
+    roots: [competency._id]
+  }));
+
+  topics.push(Nodes.insert({
+    type: 'T',
+    name: 'Plan and facilitate a purposeful discussion that supports student learning in both a small group and large group context.',
+    roots: [competency._id]
+  }));
+
+  temp.elements.nodes.push({
+    data: {
+      id: competency._id,
+      type: 'R'
+    }
+  });
+
+  for (j = 0; j < topics.length; j++) {
+    temp.elements.nodes.push({
+      data: {
+        id: topics[j],
+        type: 'T'
+      }
+    });
+
+    temp.elements.edges.push({
+      data: {
+        source: competency._id,
+        target: topics[j]
+      }
+    });
+  }
+
+  objectives.push(Nodes.insert({
+    type: 'O',
+    name: 'Describe the importance of questioning and discussion in terms of student learning',
+    roots: [competency._id]
+  }));
+
+  objectives.push(Nodes.insert({
+    type: 'O',
+    name: 'Describe how listening (i.e., students and teachers listening to both questions and responses from each other) contributes to effective question- and discussion-based teaching',
+    roots: [competency._id]
+  }));
+
+  objectives.push(Nodes.insert({
+    type: 'O',
+    name: 'Define “wait time” and describe its importance in student learning',
+    roots: [competency._id]
+  }));
+
+  objectives.push(Nodes.insert({
+    type: 'O',
+    name: 'Identify critical conditions for effective questioning and discussion',
+    roots: [competency._id]
+  }));
+
+  objectives.push(Nodes.insert({
+    type: 'O',
+    name: 'Identify and describe the common barriers to planning and facilitating questioning and discussions',
+    roots: [competency._id]
+  }));
+
+  for (j = 0; j < objectives.length; j++) {
+    temp.elements.nodes.push({
+      data: {
+        id: objectives[j],
+        type: 'O'
+      }
+    });
+
+    temp.elements.edges.push({
+      data: {
+        source: topics[0],
+        target: objectives[j]
+      }
+    });
+  }
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Providing opportunities for students to take responsibility for their own learning',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Discovering and activating students’ prior knowledge',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Priming students’ brains for new knowledge',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Making student thinking visible to teacher and/or peers',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Checking and clarifying  what students do or do not understand',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Deepening students’ individual and shared understanding of content and skills',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Increasing engagement',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Providing opportunities for students to formulate hypotheses and predictions',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Providing opportunities for students to make connections within the discipline and across disciplines',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Challenging students’ misconceptions and/or previously held views',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Validating and building on student ideas to increase engagement and understanding',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Developing students’ critical thinking and creative problem-solving skills',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Developing students’ ability to generate and ask their own questions in the context of independent learning and group discussion',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'Strengthening student listening, speaking, and interpretation skills',
+    roots: [competency._id]
+  }));
+
+  for (j = 0; j < skills.length; j++) {
+    temp.elements.nodes.push({
+      data: {
+        id: skills[j],
+        type: 'S'
+      }
+    });
+
+    temp.elements.edges.push({
+      data: {
+        source: objectives[0],
+        target: skills[j]
+      }
+    });
+  }
+
+  skills = [];
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'How listening validates student responses',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'How listening builds student trust',
+    roots: [competency._id]
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'How listening enables clarification and probing of student responses'
+  }));
+
+  skills.push(Nodes.insert({
+    type: 'S',
+    name: 'How listening allows others to build on student responses'
+  }));
+
+  for (j = 0; j < skills.length; j++) {
+    temp.elements.nodes.push({
+      data: {
+        id: skills[j],
+        type: 'S'
+      }
+    });
+
+    temp.elements.edges.push({
+      data: {
+        source: objectives[1],
+        target: skills[j]
+      }
+    });
+  }
+
+  Nodes.update(competency._id, {
+    $set: {
+      elements: temp.elements
+    }
+  });
+}
+
+function mockGraphB(users) {
   var i;
   var j;
   var k;
@@ -152,8 +422,6 @@ function createCompetencies(users) {
   var mockTopics = [];
   var mockObjectives = [];
   var mockSkills = [];
-
-  Nodes.remove({});
 
   // Create competencies
   for (i = 1; i < 5; i++) {
