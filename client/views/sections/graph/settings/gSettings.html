@@ -1,20 +1,23 @@
 <template name="gSettings">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <ul class="list-group">
-          {{#each categories}}
-            <li class="list-group-item graph-settings-item"><a href="#">{{this}}</a></li>
-          {{/each}}
-        </ul>
-      </div>
-      <div class="col-lg-9">
-        {{#if $eq view 'General'}}
-          {{> gsGeneral}}
-        {{/if}}
-        {{#if $eq view 'Access Management'}}
-          {{> gsAccessManagement}}
-        {{/if}}
+  <div class="sidebar-d">
+    <ul class="list-group">
+      <li class="list-group-item"><a href="{{pathFor route='graph.editor' data=root}}">Back</a></li>
+      {{#each categories}}
+        <li class="list-group-item graph-settings-item"><a href="#">{{this}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="container-c">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          {{#if $eq view 'General'}}
+            {{> gsGeneral}}
+          {{/if}}
+          {{#if $eq view 'Access Management'}}
+            {{> gsAccessManagement}}
+          {{/if}}
+        </div>
       </div>
     </div>
   </div>

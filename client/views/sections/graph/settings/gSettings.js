@@ -6,6 +6,9 @@ Dependency.autorun(function() {
 });
 
 Template.gSettings.helpers({
+  root: function() {
+    return Template.currentData() && Template.currentData().graphRoot;
+  },
   categories: function() {
     return settings.view.categories();
   },
