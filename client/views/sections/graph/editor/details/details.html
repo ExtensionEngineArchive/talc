@@ -15,12 +15,14 @@
       </div>
     </div>
     <div class="sidebar-body">
-      <h4>Parents</h4>
-      <ul class="list-side-a">
-        {{#each parents}}
-          <li>{{name}}</li>
-        {{/each}}
-      </ul>
+      {{#if $neq node.type 'R'}}
+        <h4>Parents</h4>
+        <ul class="list-side-a">
+          {{#each parents}}
+            <li>{{name}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
       <h4>Comments</h4>
       <div class="comments">
         {{#momentum plugin='growl'}}
