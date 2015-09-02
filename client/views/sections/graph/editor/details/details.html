@@ -1,12 +1,12 @@
 <template name="geDetails">
   <div class="sidebar-c">
     <div class="sidebar-header">
-      <div class="row-a">
-        {{#if $neq node.type 'R'}}
+      {{#if $neq node.type 'R'}}
+        <div class="row-a">
           <span class="zmdi zmdi-delete"></span>
           <span class="zmdi zmdi-edit"></span>
-        {{/if}}
-      </div>
+        </div>
+      {{/if}}
       <div class="row-b">
         <h3>
           <span class="node-number">{{nodeNumber node}}</span>
