@@ -11,7 +11,9 @@
               {{#each skills}}
                 <li id="skill{{this._id}}" class="list-group-item skill">
                   <span class="node-number">{{nodeNumber this}}</span>
-                  {{name}}
+                  <div class="editable-text">
+                    {{> editableText context=this collection="nodes" field="name"}}
+                  </div>
                 </li>
               {{else}}
                 <li class="list-group-item">
