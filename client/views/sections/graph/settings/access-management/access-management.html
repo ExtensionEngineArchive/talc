@@ -1,28 +1,28 @@
 <template name="gsAccessManagement">
-  <div class="panel">
-    <div class="panel-body">
-      <form class="form" id="addGraphMember" name="addGraphMember">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              {{> inputAutocomplete name="email" settings=autocompleteEmail class="form-control" placeholder="Email" autocomplete="off"}}
+  <div class="ge-access-management">
+    <div class="panel">
+      <div class="panel-body">
+        <form class="form" id="addGraphMember" name="addGraphMember">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                {{> inputAutocomplete name="email" settings=autocompleteEmail class="form-control" placeholder="Email" autocomplete="off"}}
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <select class="form-control" name="role">
+                  <option value="admin">Admin</option>
+                  <option value="active-collaborator">Active collaborator</option>
+                  <option value="passive-collaborator">Passive collaborator</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-default">Add</button>
             </div>
           </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <select class="form-control" name="role">
-                <option value="admin">Admin</option>
-                <option value="active-collaborator">Active collaborator</option>
-                <option value="passive-collaborator">Passive collaborator</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-default">Add</button>
-          </div>
-        </div>
-      </form>
-      <ul class="list-group">
+        </form>
         <table class="table table-striped table-hover ">
           <thead>
             <tr>
@@ -43,7 +43,7 @@
             {{/each}}
           </tbody>
         </table>
-      </ul>
+      </div>
     </div>
   </div>
 </template>
