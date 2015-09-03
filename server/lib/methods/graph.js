@@ -115,6 +115,18 @@ Meteor.methods({
         }
       }
     });
+  },
+  'graph.role.update': function(userId, graphId, role) {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    var user = Meteor.user();
+    if (!TALCH.user.isGraphAdmin(user)) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Roles.setUserRoles(userId, [role], graphId);
   }
 });
 
