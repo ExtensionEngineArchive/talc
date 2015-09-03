@@ -1,15 +1,14 @@
 <template name="gsAccessManagement">
   <div class="panel">
     <div class="panel-body">
-      <h2 class="page-header">Access management</h2>
       <form class="form" id="addGraphMember" name="addGraphMember">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group">
-              {{> inputAutocomplete name="email" settings=autocompleteEmail class="form-control" placeholder="Email"}}
+              {{> inputAutocomplete name="email" settings=autocompleteEmail class="form-control" placeholder="Email" autocomplete="off"}}
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-2">
             <div class="form-group">
               <select class="form-control" name="role">
                 <option value="admin">Admin</option>
@@ -18,19 +17,32 @@
               </select>
             </div>
           </div>
-          <div class="col-md-1">
-            <button type="submit" class="btn btn-primary btn-block">Add</button>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-default">Add</button>
           </div>
         </div>
       </form>
       <ul class="list-group">
-        {{#each members}}
-          <li class="list-group-item">
-            {{this.profile.firstName}}
-            {{this.profile.lastName}} |
-            {{this.emails.[0].address}}
-          </li>
-        {{/each}}
+        <table class="table table-striped table-hover ">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Admin</th>
+              <th>Active Collaborator</th>
+              <th>Passive Collaborator</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each members}}
+              <tr>
+                <td>{{this.profile.firstName}} {{this.profile.lastName}} {{this.emails.[0].address}}</td>
+                <td><input class="select-role" type="radio" value="admin" {{hasRole this 'admin'}}></td>
+                <td><input class="select-role" type="radio" value="active-collaborator" {{hasRole this 'active-collaborator'}}></td>
+                <td><input class="select-role" type="radio" value="passive-collaborator" {{hasRole this 'passive-collaborator'}}></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
       </ul>
     </div>
   </div>

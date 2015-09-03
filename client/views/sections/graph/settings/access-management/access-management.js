@@ -14,6 +14,10 @@ Template.gsAccessManagement.helpers({
         template: Template.autocompleteUser
       }]
     };
+  },
+  hasRole: function(user, role) {
+    var root = Template.parentData(1).graphRoot;
+    return Roles.userIsInRole(user, [role], root._id) ? 'checked' : '';
   }
 });
 
@@ -22,5 +26,8 @@ Template.gsAccessManagement.events({
     e.preventDefault();
     Meteor.call('invites.graph', e.target.email.value, Template.parentData(1).graphRoot._id, e.target.role.value);
     e.target.email.value = '';
+  },
+  'click .select-role': function(e, t) {
+    Meteor.call('graph.role.update', this._id, Template.parentData(1).graphRoot._id, e.currentTarget.value);
   }
 });
