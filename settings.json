@@ -5,22 +5,22 @@
       "R": {
         "name": "Knowledge graph",
         "code": "G",
-        "color": "#E98F96"
+        "color": "#F06292"
       },
       "T": {
         "name": "Topic",
         "code": "T",
-        "color": "#6382D9"
+        "color": "#5C6BC0"
       },
       "O": {
         "name": "Learning Objective",
         "code": "O",
-        "color": "#1CC0A4"
+        "color": "#9CCC65"
       },
       "S": {
         "name": "Skill",
         "code": "S",
-        "color": "#DC85DA"
+        "color": "#78909C"
       }
     }
   },
