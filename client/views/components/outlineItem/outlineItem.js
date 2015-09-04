@@ -9,6 +9,12 @@ Template.outlineItemComponent.onCreated(function() {
   this.showNodeInput = new ReactiveVar(false);
 });
 
+Template.outlineItemComponent.onRendered(function() {
+  if (editor.context.root()._id == Template.instance().data.root._id) {
+    $('#heading' + Template.instance().data.root._id + ' a').click();
+  }
+});
+
 Template.outlineItemComponent.helpers({
   root: function() {
     return Template.instance().data.root;
