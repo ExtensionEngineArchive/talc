@@ -11,7 +11,7 @@ Template.outlineItemComponent.onCreated(function() {
 
 Template.outlineItemComponent.onRendered(function() {
   if (editor.context.root()._id == Template.instance().data.root._id) {
-    $('#heading' + Template.instance().data.root._id + ' a').click();
+    $('#collapse' + Template.instance().data.root._id).addClass('in');
   }
 });
 
