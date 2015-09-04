@@ -43,7 +43,7 @@ Dependency.add('visualisationService', (function visualisationService() {
         name: layout,
         directed: true,
         roots: ('#' + root._id),
-        padding: 10
+        padding: 150
       },
       style: [{
         selector: '[type = "R"]',
