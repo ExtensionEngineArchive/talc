@@ -11,11 +11,11 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
     .panel {
+      margin-bottom: 5px;
       border: none;
       -webkit-box-shadow: none;
     	-moz-box-shadow: none;
     	box-shadow: none;
-      margin-bottom: 5px;
 
       .node-type {
         display: inline-block;
@@ -35,22 +35,38 @@
         }
       }
 
-      .node-selected {
-        background-color: #FF4081;
+      .panel-body {
+        padding: 0px 0px 0px 35px;
 
-        .panel-title {
-          a {
-            color: white;
+        .show-node-input {
+          opacity: 0;
+        }
+
+        &:hover {
+          >.show-node-input {
+            margin-left: 10px;
+            opacity: 1;
+          }
+        }
+
+        .add-node-container {
+          margin-left: 18px;
+          margin-top: 10px;
+
+          select {
+            font-size: 14px;
           }
 
-          .node-type {
-            color: white !important;
+          .btn {
+            outline: none;
           }
         }
       }
 
-      .panel-body {
-        padding: 0px 0px 0px 35px;
+      .node-selected {
+        background-color: white;
+        margin-bottom: 2px;
+        border-radius: 3px;
       }
     }
   }

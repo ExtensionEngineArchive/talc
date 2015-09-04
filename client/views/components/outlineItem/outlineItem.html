@@ -1,39 +1,44 @@
-
 <template name="outlineItemComponent">
-  {{#if children}}
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="heading{{root._id}}">
-        <h4 class="panel-title">
-          <a role="button" data-toggle="collapse" href="#collapse{{root._id}}" aria-expanded="false" aria-controls="collapse{{root._id}}">
-            <span class="node-type" style="color:{{nodeColor root}}">
-              {{nodeType root}}
-            </span>
-            <span class="node-number">{{nodeNumber root}}</span>
-            {{root.name}}
-          </a>
-        </h4>
-      </div>
-      <div id="collapse{{root._id}}" class="panel-collapse collapse {{expand}}" role="tabpanel" aria-labelledby="heading{{root._id}}">
-        <div class="panel-body">
-          {{#each children}}
-            {{> outlineItemComponent root=this}}
-          {{/each}}
-        </div>
+  <div class="panel panel-default">
+    <div id="heading{{root._id}}" class="panel-heading" role="tab">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" href="#collapse{{root._id}}" aria-expanded="false" aria-controls="collapse{{root._id}}">
+          <span class="node-type" style="color:{{nodeColor root}}">
+            {{nodeType root}}
+          </span>
+          <span class="node-number">{{nodeNumber root}}</span>
+          <span>{{root.name}}</span>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse{{root._id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{root._id}}">
+      <div class="panel-body">
+        {{#each children}}
+          {{> outlineItemComponent root=this}}
+        {{/each}}
+        {{#unless showNodeInput}}
+          <div class="btn btn-default btn-xs show-node-input">
+            <span class="zmdi zmdi-plus"></span>
+          </div>
+        {{/unless}}
+        {{#if showNodeInput}}
+          <div class="row add-node-container">
+            <div class="col-sm-6">
+              <input class="form-control" name="name"/>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-control" name="type">
+                {{#each childTypes root}}
+                  <option value="{{code}}">{{name}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-default add-node">Add</button>
+            </div>
+          </div>
+        {{/if}}
       </div>
     </div>
-  {{else}}
-    <div class="panel panel-default">
-      <div class="panel-heading" id="heading{{root._id}}">
-        <h4 class="panel-title">
-          <a href="#" role="button">
-            <span class="node-type" style="color:{{nodeColor root}}">
-              {{nodeType root}}
-            </span>
-            <span class="node-number">{{nodeNumber root}}</span>
-            {{root.name}}
-          </a>
-        </h4>
-      </div>
-    </div>
-  {{/if}}
+  </div>
 </template>
