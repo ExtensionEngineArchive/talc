@@ -1,5 +1,5 @@
 
-Template.graphLegendComponent.helpers({
+Template.gevgLegend.helpers({
   items: function () {
     var results = [];
     Lazy(Nodes.TYPE.list).each(function (it) {

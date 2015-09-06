@@ -5,17 +5,17 @@ Dependency.autorun(function() {
   editor = Dependency.get('editorService');
 });
 
-Template.outlineItemComponent.onCreated(function() {
+Template.gevoItem.onCreated(function() {
   this.showNodeInput = new ReactiveVar(false);
 });
 
-Template.outlineItemComponent.onRendered(function() {
+Template.gevoItem.onRendered(function() {
   if (editor.context.root()._id == Template.instance().data.root._id) {
     $('#collapse' + Template.instance().data.root._id).addClass('in');
   }
 });
 
-Template.outlineItemComponent.helpers({
+Template.gevoItem.helpers({
   root: function() {
     return Template.instance().data.root;
   },
@@ -61,7 +61,7 @@ Template.outlineItemComponent.helpers({
   }
 });
 
-Template.outlineItemComponent.events({
+Template.gevoItem.events({
   'click .panel-title': function(e, t) {
     editor.select(this.root);
     t.$('.panel-heading').removeClass('node-selected');
