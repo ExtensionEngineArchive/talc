@@ -1,0 +1,16 @@
+<template name="gEditor">
+  {{> geMenu}}
+  {{#if listView}}
+    {{> gevMain}}
+  {{/if}}
+  {{#if graphView}}
+    {{> gevGraph}}
+  {{/if}}
+  {{#if outlineView}}
+    {{> gevOutline}}
+  {{/if}}
+  {{> geDetails}}
+  {{#if renderNodeModal}}
+    {{> geNodeModal}}
+  {{/if}}
+</template>

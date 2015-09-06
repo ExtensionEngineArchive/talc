@@ -7,7 +7,7 @@ Dependency.autorun(function() {
   visualisation = Dependency.get('visualisationService');
 });
 
-Template.graphEditor.helpers({
+Template.gEditor.helpers({
   'listView': function() {
     return editor.view.isList();
   },
@@ -22,7 +22,7 @@ Template.graphEditor.helpers({
   }
 });
 
-Template.graphEditor.events({
+Template.gEditor.events({
   'click .graph-switch-layout': function(e) {
     var layout = e.currentTarget.id;
     layout = layout.replace(/show|Layout/g,'').toLowerCase();

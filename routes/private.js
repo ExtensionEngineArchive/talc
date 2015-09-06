@@ -5,7 +5,7 @@ Router.route('/', {
 
 Router.route('/graph/:_id/editor', {
   name: 'graph.editor',
-  template: 'graphEditor',
+  template: 'gEditor',
   subscriptions: function() {
     this.subscribe('knowledgeGraphNodes', this.params._id).wait();
     this.subscribe('graphComments', this.params._id);
