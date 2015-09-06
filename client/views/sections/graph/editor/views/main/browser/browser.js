@@ -7,7 +7,7 @@ Dependency.autorun(function() {
   editor = Dependency.get('editorService');
 });
 
-Template.geBrowser.helpers({
+Template.gevmBrowser.helpers({
   path: function() {
     return browser.path();
   },
@@ -43,7 +43,7 @@ Template.geBrowser.helpers({
   }
 });
 
-Template.geBrowser.events({
+Template.gevmBrowser.events({
   'click .navigate-forward': function() {
     if (this.type === 'T') {
       browser.forward(this);

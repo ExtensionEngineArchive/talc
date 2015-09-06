@@ -8,9 +8,6 @@ Dependency.autorun(function() {
 });
 
 Template.graphEditor.helpers({
-  root: function() {
-    return editor.context.root();
-  },
   'listView': function() {
     return editor.view.isList();
   },

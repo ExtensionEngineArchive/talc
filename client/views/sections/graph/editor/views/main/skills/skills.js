@@ -5,7 +5,7 @@ Dependency.autorun(function() {
   editorService = Dependency.get('editorService');
 });
 
-Template.geMain.helpers({
+Template.gevmSkills.helpers({
   'node': function() {
     return editorService.context.selected.group();
   },
@@ -23,7 +23,7 @@ Template.geMain.helpers({
   }
 });
 
-Template.geMain.events({
+Template.gevmSkills.events({
   'click .ce-main .skill': function(e, t) {
     editorService.select(this);
     t.$('.ce-main .skill').removeClass('active');
