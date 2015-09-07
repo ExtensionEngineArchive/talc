@@ -3,7 +3,7 @@
     <ul class="list-group">
       <li class="list-group-item"><a href="{{pathFor route='graph.editor' data=root}}">Back</a></li>
       {{#each categories}}
-        <li class="list-group-item graph-settings-item"><a href="#">{{this}}</a></li>
+        <li class="list-group-item graph-settings-item {{categoryClass this}}"><a href="#">{{this}}</a></li>
       {{/each}}
     </ul>
   </div>

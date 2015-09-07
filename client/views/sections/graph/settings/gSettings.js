@@ -14,6 +14,9 @@ Template.gSettings.helpers({
   },
   view: function() {
     return settings.view.current();
+  },
+  categoryClass: function(view) {
+    return settings.view.current() == view ? 'active' : '';
   }
 });
 
