@@ -36,7 +36,7 @@ Template.gevmBrowser.helpers({
     return browser.items().length;
   },
   nodeClass: function(node) {
-    return editor.context.selected.group()._id == node._id ? 'active' : '';
+    return browser.root()._id == node._id ? 'active' : '';
   },
   nodeNumber: function(node) {
     return editor.nodes.number(node._id);
