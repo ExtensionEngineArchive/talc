@@ -15,7 +15,7 @@ Template.gevmSkills.helpers({
         _id : {
           $in : Nodes.getSkills(editorService.context.graph(), editorService.context.selected.group()._id)
         }
-      });
+      }, { sort: { createdAt: 1 } });
     }
   },
   nodeNumber: function(node) {
