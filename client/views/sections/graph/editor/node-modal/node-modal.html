@@ -1,5 +1,5 @@
 <template name="geNodeModal">
-  <div id="ceNodeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ceNodeModal">
+  <div id="ceNodeModal" class="modal fade ge-modal" tabindex="-1" role="dialog" aria-labelledby="ceNodeModal">
     <div class="modal-dialog" role="document">
       <form id="nodeForm" class="form-horizontal" name="nodeForm">
         <div class="modal-content">
@@ -32,13 +32,17 @@
               <label class="col-lg-2 control-label">Parents</label>
               <div class="col-lg-9">
                 {{> nodeSelectComponent selected=selected }}
-                <div class="list-b">
+                <div class="list-a">
                   {{#if parents}}
                     <ul class="list-group">
                       {{#each parents}}
                         <li class="list-group-item">
-                          {{this.name}}
-                          <button type="button" class="btn btn-xs btn-primary remove pull-right">x</button>
+                          <div class="col-a">
+                            {{this.name}}
+                          </div>
+                          <div class="col-b">
+                            <button type="button" class="btn btn-xs btn-default remove">x</button>
+                          </div>
                         </li>
                       {{/each}}
                     </ul>
