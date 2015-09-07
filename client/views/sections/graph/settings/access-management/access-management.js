@@ -1,8 +1,10 @@
 
 Template.gsAccessManagement.helpers({
   members: function() {
-    var members = TALCH.graph.users(this.graphRoot._id).fetch();
-    return members.length > 0 ? members : null;
+    if (this.graphRoot) {
+      var members = TALCH.graph.users(this.graphRoot._id).fetch();
+      return members.length > 0 ? members : null;
+    }
   },
   autocompleteEmail: function() {
     return {
