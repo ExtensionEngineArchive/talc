@@ -12,6 +12,9 @@ Template.nodeSelectComponent.onCreated(function() {
 Template.nodeSelectComponent.helpers({
   searchResult: function() {
     return Template.instance().searchResult.get();
+  },
+  nodeNumber: function(node) {
+    return editor.nodes.number(node._id);
   }
 });
 
