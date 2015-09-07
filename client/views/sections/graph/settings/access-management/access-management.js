@@ -1,7 +1,8 @@
 
 Template.gsAccessManagement.helpers({
   members: function() {
-    return TALCH.graph.users(this.graphRoot._id);
+    var members = TALCH.graph.users(this.graphRoot._id).fetch();
+    return members.length > 0 ? members : null;
   },
   autocompleteEmail: function() {
     return {
@@ -26,6 +27,9 @@ Template.gsAccessManagement.events({
     e.preventDefault();
     Meteor.call('invites.graph', e.target.email.value, Template.parentData(1).graphRoot._id, e.target.role.value);
     e.target.email.value = '';
+  },
+  'click .remove': function(e, t) {
+    Meteor.call('graph.role.remove', this._id, Template.parentData(1).graphRoot._id);
   },
   'click .select-role': function(e, t) {
     Meteor.call('graph.role.update', this._id, Template.parentData(1).graphRoot._id, e.currentTarget.value);

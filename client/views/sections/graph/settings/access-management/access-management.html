@@ -23,26 +23,34 @@
             </div>
           </div>
         </form>
-        <table class="table table-striped table-hover ">
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Admin</th>
-              <th>Active Collaborator</th>
-              <th>Passive Collaborator</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each members}}
+        {{#if members}}
+          <table class="table">
+            <thead>
               <tr>
-                <td>{{this.profile.firstName}} {{this.profile.lastName}} {{this.emails.[0].address}}</td>
-                <td><input class="select-role" type="radio" value="admin" {{hasRole this 'admin'}}></td>
-                <td><input class="select-role" type="radio" value="active-collaborator" {{hasRole this 'active-collaborator'}}></td>
-                <td><input class="select-role" type="radio" value="passive-collaborator" {{hasRole this 'passive-collaborator'}}></td>
+                <th>User</th>
+                <th class="center">Admin</th>
+                <th class="center">Active Collaborator</th>
+                <th class="center">Passive Collaborator</th>
+                <th></th>
               </tr>
-            {{/each}}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {{#each members}}
+                <tr>
+                  <td>{{this.profile.firstName}} {{this.profile.lastName}} {{this.emails.[0].address}}</td>
+                  <td class="center"><input class="select-role" type="radio" value="admin" {{hasRole this 'admin'}}></td>
+                  <td class="center"><input class="select-role" type="radio" value="active-collaborator" {{hasRole this 'active-collaborator'}}></td>
+                  <td class="center"><input class="select-role" type="radio" value="passive-collaborator" {{hasRole this 'passive-collaborator'}}></td>
+                  <td class="center"><span class="zmdi zmdi-close remove"></span></td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{else}}
+          <div class="well">
+            No associated users.
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>
