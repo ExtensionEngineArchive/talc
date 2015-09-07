@@ -82,5 +82,9 @@ Template.gevoItem.events({
   'click .show-node-input': function() {
     Template.instance().showNodeInput.set(true);
     return false;
+  },
+  'click .hide-node-input': function() {
+    Template.instance().showNodeInput.set(false);
+    return false;
   }
 });
