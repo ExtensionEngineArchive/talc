@@ -48,7 +48,8 @@ Meteor.methods({
     params.node._id = Nodes.insert({
       name: params.node.name,
       type: params.node.type,
-      roots: [params.root._id]
+      roots: [params.root._id],
+      createdAt: new Date()
     });
 
     Nodes.findAndModify({
