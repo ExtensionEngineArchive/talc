@@ -127,6 +127,18 @@ Meteor.methods({
     }
 
     Roles.setUserRoles(userId, [role], graphId);
+  },
+  'graph.role.remove': function(userId, graphId) {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    var user = Meteor.user();
+    if (!TALCH.user.isGraphAdmin(user)) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Roles.setUserRoles(userId, [], graphId);
   }
 });
 
