@@ -112,7 +112,13 @@ Dependency.add('browserService', (function browserService() {
       children.push(it.id());
     });
 
-    data.items.set(Nodes.find({ _id : { $in : children } }).fetch());
+    var items = Nodes.find({
+      _id : {
+        $in : children
+      }
+    }, { sort: { createdAt: 1 } }).fetch();
+
+    data.items.set(items);
   }
 
   return s;
