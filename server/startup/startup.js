@@ -168,7 +168,8 @@ function mockGraphA() {
     elements: {
       nodes: [],
       edges: []
-    }
+    },
+    createdAt: new Date()
   });
 
   competency = Nodes.findOne({ _id: competency });
@@ -176,25 +177,29 @@ function mockGraphA() {
   topics.push(Nodes.insert({
     type: 'T',
     name: 'Identify key concepts and research related to the use of purposeful questioning and discussions to engage students in learning',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   topics.push(Nodes.insert({
     type: 'T',
     name: 'Identify and describe question style, wording and types and techniques for questioning that can be used with individual students or in discussions to support student learning.',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   topics.push(Nodes.insert({
     type: 'T',
     name: 'Identify and describe planning and facilitating needs required for purposeful discussions that support student learning.',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   topics.push(Nodes.insert({
     type: 'T',
     name: 'Plan and facilitate a purposeful discussion that supports student learning in both a small group and large group context.',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   temp.elements.nodes.push({
@@ -223,31 +228,36 @@ function mockGraphA() {
   objectives.push(Nodes.insert({
     type: 'O',
     name: 'Describe the importance of questioning and discussion in terms of student learning',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   objectives.push(Nodes.insert({
     type: 'O',
     name: 'Describe how listening (i.e., students and teachers listening to both questions and responses from each other) contributes to effective question- and discussion-based teaching',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   objectives.push(Nodes.insert({
     type: 'O',
     name: 'Define “wait time” and describe its importance in student learning',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   objectives.push(Nodes.insert({
     type: 'O',
     name: 'Identify critical conditions for effective questioning and discussion',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   objectives.push(Nodes.insert({
     type: 'O',
     name: 'Identify and describe the common barriers to planning and facilitating questioning and discussions',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   for (j = 0; j < objectives.length; j++) {
@@ -269,85 +279,99 @@ function mockGraphA() {
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Providing opportunities for students to take responsibility for their own learning',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Discovering and activating students’ prior knowledge',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Priming students’ brains for new knowledge',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Making student thinking visible to teacher and/or peers',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Checking and clarifying  what students do or do not understand',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Deepening students’ individual and shared understanding of content and skills',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Increasing engagement',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Providing opportunities for students to formulate hypotheses and predictions',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Providing opportunities for students to make connections within the discipline and across disciplines',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Challenging students’ misconceptions and/or previously held views',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Validating and building on student ideas to increase engagement and understanding',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Developing students’ critical thinking and creative problem-solving skills',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Developing students’ ability to generate and ask their own questions in the context of independent learning and group discussion',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'Strengthening student listening, speaking, and interpretation skills',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   for (j = 0; j < skills.length; j++) {
@@ -371,23 +395,29 @@ function mockGraphA() {
   skills.push(Nodes.insert({
     type: 'S',
     name: 'How listening validates student responses',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
     name: 'How listening builds student trust',
-    roots: [competency._id]
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
-    name: 'How listening enables clarification and probing of student responses'
+    name: 'How listening enables clarification and probing of student responses',
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   skills.push(Nodes.insert({
     type: 'S',
-    name: 'How listening allows others to build on student responses'
+    name: 'How listening allows others to build on student responses',
+    roots: [competency._id],
+    createdAt: new Date()
   }));
 
   for (j = 0; j < skills.length; j++) {
@@ -433,7 +463,8 @@ function mockGraphB(users) {
       elements: {
         nodes: [],
         edges: []
-      }
+      },
+      createdAt: new Date()
     }));
   }
 
@@ -442,7 +473,8 @@ function mockGraphB(users) {
     mockTopics.push(Nodes.insert({
       type: 'T',
       name: 'Topic ' + i,
-      roots: [mockCompetencies[Math.floor((i-1)/5)]]
+      roots: [mockCompetencies[Math.floor((i-1)/5)]],
+      createdAt: new Date()
     }));
   }
 
@@ -451,7 +483,8 @@ function mockGraphB(users) {
     mockObjectives.push(Nodes.insert({
       type: 'O',
       name: 'Learning Objective ' + i,
-      roots: [mockCompetencies[Math.floor((i-1)/20)]]
+      roots: [mockCompetencies[Math.floor((i-1)/20)]],
+      createdAt: new Date()
     }));
   }
 
@@ -460,7 +493,8 @@ function mockGraphB(users) {
     mockSkills.push(Nodes.insert({
       type: 'S',
       name: 'Skill ' + i,
-      roots: [mockCompetencies[Math.floor((i-1)/80)]]
+      roots: [mockCompetencies[Math.floor((i-1)/80)]],
+      createdAt: new Date()
     }));
   }
 
