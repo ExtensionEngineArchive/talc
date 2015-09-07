@@ -207,7 +207,11 @@ Dependency.add('editorService', (function editorService() {
    * @returns {Collection.Cursor}
    */
   s.nodes.children = function(_id) {
-    return Nodes.find({ _id: { $in: Nodes.getChildren(s.context.graph(), _id) }});
+    return Nodes.find({
+      _id: {
+        $in: Nodes.getChildren(s.context.graph(), _id)
+      }
+    }, { sort: { createdAt: 1 } });
   };
 
   /**
