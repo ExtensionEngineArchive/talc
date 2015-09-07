@@ -32,6 +32,9 @@ Meteor.methods({
       update: {
         $push: {
           'elements.nodes': Nodes.graph.createNode(Nodes.findOne({ _id: _id }))
+        },
+        $set: {
+          'stats.nodes.total': 1
         }
       }
     });
@@ -44,6 +47,9 @@ Meteor.methods({
     if (!hasEditGraphPermission(params.root._id)) {
       throw new Meteor.Error("not-authorized");
     }
+
+    var root = Nodes.findOne({ _id: params.root._id });
+    var graph = cytoscape({ headless: true, elements: root.elements });
 
     params.node._id = Nodes.insert({
       name: params.node.name,
@@ -60,6 +66,9 @@ Meteor.methods({
           'elements.edges': {
             $each: Nodes.graph.createEdges(Lazy(params.parents).pluck('_id'), params.node._id)
           }
+        },
+        $set: {
+          'stats.nodes.total': graph.nodes().size()
         }
       }
     });
