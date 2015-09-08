@@ -6,9 +6,8 @@ Dependency.autorun(function() {
 });
 
 Template.gevmSkills.onRendered(function() {
-  var t =  Template.instance();
-  t.$('.skill .editable-text').unbind('click');
-  t.$('.skill .editable-text').on('click', function() {
+  $('.skill .editable-text').unbind('click');
+  $('.skill .editable-text').on('click', function() {
     $(this).parent().click();
   });
 });
