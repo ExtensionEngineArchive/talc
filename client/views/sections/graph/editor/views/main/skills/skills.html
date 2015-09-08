@@ -12,7 +12,7 @@
                 <li id="skill{{this._id}}" class="list-group-item skill">
                   <span class="node-number">{{nodeNumber this}}</span>
                   <div class="editable-text">
-                    {{> editableText context=this collection="nodes" field="name"}}
+                    {{> editableText context=this collection="nodes" field="name" eventType="dblclick"}}
                   </div>
                 </li>
               {{else}}

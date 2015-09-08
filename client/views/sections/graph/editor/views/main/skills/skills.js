@@ -5,6 +5,14 @@ Dependency.autorun(function() {
   editorService = Dependency.get('editorService');
 });
 
+Template.gevmSkills.onRendered(function() {
+  var t =  Template.instance();
+  t.$('.skill .editable-text').unbind('click');
+  t.$('.skill .editable-text').on('click', function() {
+    $(this).parent().click();
+  });
+});
+
 Template.gevmSkills.helpers({
   'node': function() {
     return editorService.context.selected.group();
