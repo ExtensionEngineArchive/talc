@@ -1,6 +1,20 @@
 
 .gs-general {
-  .wide-text-edit {
-    font-size: 13px !important;
+  .panel-body {
+    min-height: 350px;
+
+    .editable-text, .text-area-edit, .wide-text-edit {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .wide-text-edit, .text-area-edit {
+      font-size: 13px !important;
+    }
+
+    .text-area-edit {
+      min-height: 200px;
+      width: 100%;
+    }
   }
 }
