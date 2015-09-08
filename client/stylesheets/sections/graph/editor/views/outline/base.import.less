@@ -19,8 +19,27 @@
 
       .node-type {
         display: inline-block;
+        float: left;
+        width: 1%;
         margin-right: 15px;
         font-weight: bold;
+
+        @media (max-width: 1100px) {
+          width: 5%;
+        }
+      }
+
+      .node-title {
+        display: inline-block;
+        width: 95%;
+
+        @media (max-width: 1100px) {
+          width: 85%;
+        }
+
+        .node-number {
+          padding-right: 5px;
+        }
       }
 
       .panel-heading {
@@ -30,6 +49,7 @@
           a {
             color: #656565;
             font-size: 14px;
+            line-height: 20px;
             text-decoration: none;
           }
         }
