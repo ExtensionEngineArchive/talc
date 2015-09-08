@@ -16,7 +16,7 @@
           <div class="competency-card-a">
             <div class="competency-card-body">
               <h2 class="competency-card-title">
-                <a href="{{pathFor route='graph.editor' data=this}}">{{name}}</a>
+                <a href="{{pathFor route='graph.editor' data=this}}">{{cutString name 65}}</a>
               </h2>
               <p>{{cutString description 160}}</p>
             </div>

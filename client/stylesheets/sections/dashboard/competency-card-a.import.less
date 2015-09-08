@@ -10,25 +10,40 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 5px 5px rgba(0,0,0,0.23);
   }
 
-  .competency-card-title {
-    margin: 0px 0px 5px 0px;
-    height: 70px;
-    font-size: 22px;
-    line-height: 30px;
-    font-weight: 300;
+  .competency-card-body {
+    border-bottom: 1px solid #ddd;
 
-    a {
-      color: #555;
+    .competency-card-title {
+      margin: 0px 0px 5px 0px;
+      height: 70px;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 26px;
 
-      &:hover {
-        text-decoration: none;
+      a {
+        color: #555;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      @media (max-width: 1500px) {
+        height: 90px;
       }
     }
-  }
 
-  .competency-card-body {
-    height: 160px;
-    border-bottom: 1px solid #ddd;
+    p {
+      height: 80px;
+
+      @media (max-width: 1500px) {
+        height: 100px;
+      }
+
+      @media (max-width: 1250px) {
+        height: 120px;
+      }
+    }
   }
 
   .competency-card-footer {
