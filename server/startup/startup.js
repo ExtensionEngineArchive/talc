@@ -169,6 +169,11 @@ function mockGraphA() {
       nodes: [],
       edges: []
     },
+    stats: {
+      nodes: {
+        total: 27
+      }
+    },
     createdAt: new Date()
   });
 
@@ -463,6 +468,11 @@ function mockGraphB(users) {
       elements: {
         nodes: [],
         edges: []
+      },
+      stats: {
+        nodes: {
+          total: 105
+        }
       },
       createdAt: new Date()
     }));
