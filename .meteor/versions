@@ -76,6 +76,8 @@ ryanswrt:lazyjs@0.0.1
 service-configuration@1.0.4
 session@1.1.0
 sha@1.0.3
+slava:miniredis@1.0.0
+slava:redis-livedata@1.0.2
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3
