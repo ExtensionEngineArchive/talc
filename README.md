@@ -18,7 +18,7 @@ For more details on current progress visit our [Roadmap](https://github.com/Exte
 1. Install the [meteor](https://github.com/meteor/meteor)
 2. Install and run redis
 2. Edit the settings.json
-3. Run it: env REDIS_URL=redis://127.0.0.1:6379 meteor --settings settings-development.json
+3. Run it: env REDIS_URL=redis://127.0.0.1:6379 meteor --settings settings.json
 
 Interested in contributing to TALC ?
 
