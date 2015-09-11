@@ -11,6 +11,10 @@ Template.navbarComponent.helpers({
   },
   onDashboard: function() {
     return Router.current().route.getName() === 'dashboard';
+  },
+  showActiveUsers: function() {
+    var route = Router.current().route.getName();
+    return (route === 'graph.editor') || (route === 'graph.settings');
   }
 });
 

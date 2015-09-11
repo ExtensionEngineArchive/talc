@@ -15,6 +15,9 @@
           </a>
         </div>
         <div id="navOptions" class="navbar-collapse collapse">
+          {{#if showActiveUsers}}
+            {{> activeUsersComponent}}
+          {{/if}}
           <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
               {{#if $not onDashboard}}
