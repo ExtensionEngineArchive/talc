@@ -54,7 +54,34 @@ Dependency.add('activityService', (function activityService() {
       }).fetch();
     }
 
-    data.users.set(users);
+    updateUsers(users);
+  }
+
+  function updateUsers(newValue) {
+    var oldValue = Lazy(data.users.get()).pluck('_id');
+    var intersection = Lazy(Lazy(newValue).pluck('_id')).intersection(oldValue).toArray();
+
+    var colors = [
+      '#F44236', '#EA1E63', '#9C28B1', '#673BB7', '#3F51B5',
+      '#FFEB3C', '#FF9700', '#FE5722', '#9E9E9E', '#607D8B'
+    ];
+
+    if (intersection.length != newValue.length) {
+      var result = [];
+      Lazy(oldValue).each(function(it) {
+        if (Lazy(intersection).contains(it._id)) {
+          result.push(it);
+        }
+      });
+
+      Lazy(newValue).each(function(it) {
+        if (!Lazy(oldValue).contains(it._id)) {
+          result.push({ _id: it._id, profile: it.profile, color: colors[Math.floor(Math.random() * 10)] });
+        }
+      });
+
+      data.users.set(result);
+    }
   }
 
   // Track
@@ -69,7 +96,7 @@ Dependency.add('activityService', (function activityService() {
     if (data.graph.get()) {
       update();
     }
-  }, data.threshold);
+  }, 30000);
 
   return s;
 })());
