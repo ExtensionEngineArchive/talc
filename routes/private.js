@@ -9,14 +9,16 @@ Router.route('/graph/:_id/editor', {
   subscriptions: function() {
     this.subscribe('knowledgeGraphNodes', this.params._id).wait();
     this.subscribe('graphComments', this.params._id);
+    this.subscribe('graphActivities', this.params._id);
   },
   data: function() {
     var graphRoot = Nodes.findOne({ _id: this.params._id });
     if (graphRoot) {
       Dependency.get('editorService').init(graphRoot);
+      Dependency.get('activityService').start(graphRoot._id);
     }
   },
-  action: function () {
+  action: function() {
     if (this.ready()) {
       this.render();
     }

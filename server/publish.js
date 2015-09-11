@@ -43,3 +43,7 @@ Meteor.publish("graphComments", function(graphId) {
     this.ready();
   }
 });
+
+Meteor.publish("graphActivities", function(graphId) {
+  return Redis.matching("user::*::graph::" + graphId);
+});
