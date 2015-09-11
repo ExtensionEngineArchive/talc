@@ -3,7 +3,13 @@
     <ul>
       {{#each users}}
         <li>
-          <span class="label label-primary">{{initials this}}</span>
+          <span
+            class="label label-primary"
+            data-toggle="tooltip"
+            data-placement="left"
+            title="{{profile.firstName}} {{profile.lastName}}">
+            {{initials this}}
+          </span>
         </li>
       {{/each}}
     </ul>
