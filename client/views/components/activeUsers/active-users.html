@@ -1,0 +1,11 @@
+<template name="activeUsersComponent">
+  <div class="nav navbar-nav active-users-component">
+    <ul>
+      {{#each users}}
+        <li>
+          <span class="label label-primary">{{initials this}}</span>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
