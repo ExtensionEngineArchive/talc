@@ -10,6 +10,7 @@ Router.route('/graph/:_id/editor', {
     this.subscribe('knowledgeGraphNodes', this.params._id).wait();
     this.subscribe('graphComments', this.params._id);
     this.subscribe('graphActivities', this.params._id);
+    this.subscribe('nodeActivities', this.params._id);
   },
   data: function() {
     var graphRoot = Nodes.findOne({ _id: this.params._id });

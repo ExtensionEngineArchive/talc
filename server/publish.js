@@ -44,6 +44,10 @@ Meteor.publish("graphComments", function(graphId) {
   }
 });
 
-Meteor.publish("graphActivities", function(graphId) {
-  return Redis.matching("user::*::graph::" + graphId);
+Meteor.publish('graphActivities', function(graphId) {
+  return Redis.matching('u::*::g::' + graphId);
+});
+
+Meteor.publish('nodeActivities', function(graphId) {
+  return Redis.matching('u::*::g::' + graphId + '::n::*');
 });

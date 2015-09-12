@@ -60,7 +60,7 @@ Dependency.add('activityService', (function activityService() {
    */
   function getActiveUsers() {
     var users = [];
-    var activities = Redis.matching('user::*::graph::' + data.graph.get()).fetch();
+    var activities = Redis.matching('u::*::g::' + data.graph.get()).fetch();
 
     if (activities.length > 0) {
       var threshold = new Date();
