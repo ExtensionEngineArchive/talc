@@ -7,7 +7,10 @@ Dependency.autorun(function() {
 
 Template.activeUsersComponent.onRendered(function() {
   $('.active-users-component ul').on('DOMNodeInserted', function() {
-    $(this).find('[data-toggle="tooltip"]').tooltip();
+    var that = this;
+    setTimeout(function() {
+      $(that).find('[data-toggle="tooltip"]').tooltip();
+    }, 0);
   });
 });
 
