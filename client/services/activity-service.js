@@ -26,7 +26,6 @@ function Marker() {
   };
 }
 
-// TODO: NTP
 Dependency.add('activityService', (function activityService() {
   var s = { node: {} };
 
@@ -34,8 +33,7 @@ Dependency.add('activityService', (function activityService() {
     graph: new ReactiveVar(null), // Graph being edited (root node)
     users: new ReactiveVar({}),   // Other users that are editing the graph
     nodes: new ReactiveVar({}),   // Nodes being edited (by others)
-    inactivityThreshold: 30,      // For detecting inactivity of other users, in seconds
-    reportStatusInterval: 20000,  // For reporting activity, in milliseconds (ping)
+    reportStatusInterval: 50000,  // For reporting activity, in milliseconds (ping)
     marker: new Marker()
   };
 
@@ -110,16 +108,10 @@ Dependency.add('activityService', (function activityService() {
     var activities = Redis.matching('u::*::g::' + data.graph.get()).fetch();
 
     if (activities.length > 0) {
-      var threshold = new Date();
-      threshold.setSeconds(threshold.getSeconds() - data.inactivityThreshold);
-
       Lazy(activities).each(function(it) {
-        it.value = new Date(it.value);
-        if (it.value > threshold) {
-          var userId = it.key.split('::')[1];
-          if (userId != Meteor.userId()) {
-            users.push(userId);
-          }
+        var userId = it.key.split('::')[1];
+        if (userId != Meteor.userId()) {
+          users.push(userId);
         }
       });
 
