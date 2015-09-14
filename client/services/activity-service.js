@@ -1,19 +1,36 @@
 
+/**
+ * Helper class for generating marker color that is used to
+ * annotate changes.
+ *
+ * @class Marker
+ */
+function Marker() {
+  var i = -1;
+  var colors = ['#EC407A', '#3F51B5', '#9CCC65'];
+
+  /**
+   * @summary Get marker color
+   * @method getColor
+   * @return {String} Hex color code
+   */
+  this.getColor = function() {
+    i++;
+    return colors[i % 3];
+  };
+}
+
 // TODO: NTP
 Dependency.add('activityService', (function activityService() {
-  var s = {};
+  var s = { node: {} };
 
   var data = {
     graph: new ReactiveVar(null), // Graph being edited (root node)
-    users: new ReactiveVar([]),   // Other users that are editing the graph
-    nodes: new ReactiveVar([]),   // Nodes being edited (by others)
+    users: new ReactiveVar({}),   // Other users that are editing the graph
+    nodes: new ReactiveVar({}),   // Nodes being edited (by others)
     inactivityThreshold: 30,      // For detecting inactivity of other users, in seconds
     reportStatusInterval: 20000,  // For reporting activity, in milliseconds (ping)
-    markerColors: [
-      '#EC407A',                  // Pink
-      '#3F51B5',                  // Indigo
-      '#9CCC65'                   // Green
-    ]
+    marker: new Marker()
   };
 
   /**
@@ -42,7 +59,26 @@ Dependency.add('activityService', (function activityService() {
    * @return {Array}
    */
   s.users = function() {
-    return data.users.get();
+    return Lazy(data.users.get()).values().toArray();
+  };
+
+  /**
+   * @summary Report node activity
+   * @method node.reportActivity
+   * @param {String} [nodeId]
+   */
+  s.node.reportActivity = function(nodeId) {
+    Meteor.call('activity.node', data.graph.curValue, nodeId);
+  };
+
+  /**
+   * @summary Get node activities
+   * @method node.activities
+   * @param {String} [nodeId]
+   * @return {Array}
+   */
+  s.node.activities = function(nodeId) {
+    return data.nodes.get()[nodeId];
   };
 
   /**
@@ -95,25 +131,25 @@ Dependency.add('activityService', (function activityService() {
     var oldValue = data.users.curValue;
 
     // Calculate diff
-    var oldValueIds = Lazy(oldValue).pluck('_id');
-    var newValueIds = Lazy(newValue).pluck('_id');
+    var oldValueIds = Lazy(oldValue).keys().toArray();
+    var newValueIds = Lazy(newValue).pluck('_id').toArray();
     var intersection = Lazy(newValueIds).intersection(oldValueIds).toArray();
 
-    var result = [];
-    if ((intersection.length != newValue.length) || (newValue.length != oldValue.length)) {
-      Lazy(oldValue).each(function(it) {
-        if (Lazy(intersection).contains(it._id)) {
-          result.push(it);
+    var result = {};
+    if ((intersection.length != newValueIds.length) || (newValueIds.length != oldValueIds.length)) {
+      Lazy(oldValue).each(function(v, k) {
+        if (Lazy(intersection).contains(k)) {
+          result[k] = v;
         }
       });
 
       Lazy(newValue).each(function(it) {
         if (!Lazy(oldValueIds).contains(it._id)) {
-          result.push({
+          result[it._id] = {
             _id: it._id,
             profile: it.profile,
-            color: data.markerColors[result.length % 3]
-          });
+            color: data.marker.getColor()
+          };
         }
       });
 
@@ -121,10 +157,43 @@ Dependency.add('activityService', (function activityService() {
     }
   }
 
+  /**
+   * @summary Retrieve nodes that are being edited
+   * @method getNodesWithActivity
+   * @return {Object}
+   */
+  function getNodesWithActivity() {
+    var nodes = {};
+    var activities = Redis.matching('u::*::g::' + data.graph.get() + '::n::*').fetch();
+
+    if (activities.length > 0) {
+      var threshold = new Date();
+      threshold.setSeconds(threshold.getSeconds() - 10);
+
+      Lazy(activities).each(function(it) {
+        it.value = new Date(it.value);
+        if (it.value > threshold) {
+          var userId = it.key.split('::')[1];
+          if (userId != Meteor.userId()) {
+            var nodeId = it.key.split('::')[5];
+            if (nodes[nodeId]) {
+              nodes[nodeId].push(userId);
+            } else {
+              nodes[nodeId] = [userId];
+            }
+          }
+        }
+      });
+    }
+
+    return nodes;
+  }
+
   // Track activities
   Tracker.autorun(function() {
     if (data.graph.get()) {
       setActiveUsers(getActiveUsers());
+      data.nodes.set(getNodesWithActivity());
     }
   });
 
