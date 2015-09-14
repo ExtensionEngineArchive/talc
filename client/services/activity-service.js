@@ -78,7 +78,12 @@ Dependency.add('activityService', (function activityService() {
    * @return {Array}
    */
   s.node.activities = function(nodeId) {
-    return data.nodes.get()[nodeId];
+    var activities = data.nodes.get()[nodeId];
+    if (activities) {
+      return Lazy(activities).map(function(it) { return data.users.get()[it]; }).toArray();
+    } else {
+      return [];
+    }
   };
 
   /**
