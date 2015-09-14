@@ -1,8 +1,10 @@
 
 var editorService;
+var activityService;
 
 Dependency.autorun(function() {
   editorService = Dependency.get('editorService');
+  activityService = Dependency.get('activityService');
 });
 
 Template.gevmSkills.onRendered(function() {
@@ -27,6 +29,10 @@ Template.gevmSkills.helpers({
   },
   nodeNumber: function(node) {
     return editorService.nodes.number(node._id);
+  },
+  activityMarker: function(nodeId) {
+    var activities = activityService.node.activities(nodeId);
+    return activities.length > 0 ? ('background-color: ' + activities[0].color) : '';
   }
 });
 
