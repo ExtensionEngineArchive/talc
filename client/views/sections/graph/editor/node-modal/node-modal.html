@@ -12,7 +12,11 @@
             <div class="form-group">
               <label for="nodeNameInput" class="col-sm-2 control-label">Name</label>
               <div class="col-sm-9">
-                <input id="nodeNameInput" class="form-control" name="name" type="text" value="{{name}}">
+                {{#if create}}
+                  <input id="nodeNameInput" class="form-control" name="name" type="text" value="{{name}}">
+                {{else}}
+                  {{> editableText context=node collection="nodes" field="name" eventType="dblclick"}}
+                {{/if}}
               </div>
             </div>
             <div class="form-group">

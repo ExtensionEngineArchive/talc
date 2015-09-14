@@ -55,6 +55,14 @@ Template.geNodeModal.helpers({
   create: function() {
     return Template.instance().storage.create;
   },
+  node: function() {
+    var nodeId = Template.instance().storage._id;
+    if (nodeId) {
+      return Nodes.findOne({ _id: nodeId });
+    } else {
+      return undefined;
+    }
+  },
   nodeNumber: function(node) {
     return editor.nodes.number(node._id);
   }
