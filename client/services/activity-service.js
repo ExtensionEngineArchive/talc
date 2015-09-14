@@ -1,4 +1,10 @@
 
+var editor;
+
+Dependency.autorun(function() {
+  editor = Dependency.get('editorService');
+});
+
 /**
  * Helper class for generating marker color that is used to
  * annotate changes.
@@ -172,20 +178,14 @@ Dependency.add('activityService', (function activityService() {
     var activities = Redis.matching('u::*::g::' + data.graph.get() + '::n::*').fetch();
 
     if (activities.length > 0) {
-      var threshold = new Date();
-      threshold.setSeconds(threshold.getSeconds() - 10);
-
       Lazy(activities).each(function(it) {
-        it.value = new Date(it.value);
-        if (it.value > threshold) {
-          var userId = it.key.split('::')[1];
-          if (userId != Meteor.userId()) {
-            var nodeId = it.key.split('::')[5];
-            if (nodes[nodeId]) {
-              nodes[nodeId].push(userId);
-            } else {
-              nodes[nodeId] = [userId];
-            }
+        var userId = it.key.split('::')[1];
+        if (userId != Meteor.userId()) {
+          var nodeId = it.key.split('::')[5];
+          if (nodes[nodeId]) {
+            nodes[nodeId].push(userId);
+          } else {
+            nodes[nodeId] = [userId];
           }
         }
       });
@@ -208,6 +208,15 @@ Dependency.add('activityService', (function activityService() {
       updateStatus();
     }
   }, data.reportStatusInterval);
+
+  Tracker.autorun(function() {
+    if (data.graph.get()) {
+      var node = editor.context.selected.node();
+      if (node) {
+        s.node.reportActivity(node._id);
+      }
+    }
+  });
 
   return s;
 })());
