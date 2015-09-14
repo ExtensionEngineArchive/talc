@@ -12,7 +12,7 @@ Template.gevmBrowser.helpers({
     return browser.path();
   },
   root: function() {
-    return browser.root();
+    return Nodes.findOne({ _id: browser.root()._id });
   },
   topics: function() {
     var result = [];
