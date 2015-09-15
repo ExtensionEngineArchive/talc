@@ -19,7 +19,7 @@ Dependency.add('browserService', (function browserService() {
    */
   s.init = function() {
     var path = data.path.get();
-    if (!path.length || (path[0]._id !== editor.context.root()._id)) {
+    if (!path.length || (path[0] !== editor.context.root()._id)) {
       data.path.set([]);
       s.forward(editor.context.root());
     }
@@ -35,7 +35,7 @@ Dependency.add('browserService', (function browserService() {
   s.forward = function(node) {
     if ((node.type === 'T') || node.type === 'R') {
       var path = data.path.get();
-      path.push(node);
+      path.push(node._id);
       data.path.set(path);
       editor.select(node);
     }
@@ -49,7 +49,7 @@ Dependency.add('browserService', (function browserService() {
   s.back = function(root) {
     var path = data.path.get();
 
-    while (path[path.length-1]._id !== root._id) {
+    while (path[path.length-1] !== root._id) {
       path.pop();
     }
 
@@ -64,7 +64,7 @@ Dependency.add('browserService', (function browserService() {
    */
   s.root = function() {
     var path = data.path.get();
-    return path[path.length-1];
+    return Nodes.findOne({ _id: path[path.length-1] });
   };
 
   /**
@@ -75,7 +75,7 @@ Dependency.add('browserService', (function browserService() {
   s.parent = function() {
     var path = data.path.get();
     if (path.length > 1) {
-      return path[path.length-2];
+      return Nodes.findOne({ _id: path[path.length-2] });
     }
 
     return null;
@@ -87,7 +87,12 @@ Dependency.add('browserService', (function browserService() {
    * @return {Array}
    */
   s.path = function() {
-    return data.path.get();
+    var path = data.path.get();
+
+    var nodes = Nodes.find({ _id: { $in: path } }).fetch();
+    nodes = Lazy(nodes).indexBy('_id').toObject();
+
+    return Lazy(path).map(function(nodeId) { return nodes[nodeId]; }).toArray();
   };
 
   /**
