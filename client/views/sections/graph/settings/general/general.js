@@ -7,6 +7,7 @@ Dependency.autorun(function() {
 
 Template.gsGeneral.helpers({
   root: function() {
-    return Template.parentData(1).graphRoot || {};
+    var parentContext = Template.parentData(1);
+    return parentContext && parentContext.graphRoot || {};
   }
 });
