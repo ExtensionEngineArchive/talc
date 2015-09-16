@@ -1,6 +1,6 @@
 
 Meteor.startup(function() {
-  if (1) {
+  if (!Meteor.users.findOne() && Meteor.settings.private.dev.mocks) {
     Nodes.remove({});
     Comments.remove({});
 
