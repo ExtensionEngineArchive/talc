@@ -14,23 +14,8 @@ Template.gevmBrowser.helpers({
   root: function() {
     return Nodes.findOne({ _id: browser.root()._id });
   },
-  topics: function() {
-    var result = [];
-    if (browser.items()) {
-      var topics = Lazy(browser.items()).groupBy('type').toObject().T;
-      result = topics ? topics : [];
-    }
-
-    return result;
-  },
-  objectives: function() {
-    var result = [];
-    if (browser.items()) {
-      var objectives = Lazy(browser.items()).groupBy('type').toObject().O;
-      result = objectives ? objectives : [];
-    }
-
-    return result;
+  items: function() {
+    return browser.items();
   },
   total: function() {
     return browser.items().length;

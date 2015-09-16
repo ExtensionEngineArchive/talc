@@ -15,25 +15,9 @@
       </ul>
     </div>
     <div class="node-list">
-      {{#if topics}}
+      {{#if items}}
         <div>
-          {{#each topics}}
-            <div class="browser-card navigate-forward">
-              <div class="block-a">
-                <h3>
-                  <a href="#">
-                    <span class="node-number">{{nodeNumber this}}</span>
-                    {{cutString name 120}}
-                  </a>
-                </h3>
-              </div>
-            </div>
-          {{/each}}
-        </div>
-      {{/if}}
-      {{#if objectives}}
-        <div>
-          {{#each objectives}}
+          {{#each items}}
             <div class="browser-card">
               <div class="block-a">
                 <h3>
