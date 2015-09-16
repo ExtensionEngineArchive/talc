@@ -101,6 +101,34 @@ function createUsers() {
 
   users.push({
     _id: Accounts.createUser({
+      email: 'stjepan@extensionengine.com',
+      password: 'test',
+      profile: {
+        firstName: 'Stjepan',
+        lastName: 'Radovic'
+      }
+    }),
+    roles: {
+      'global': ['admin']
+    }
+  });
+
+  users.push({
+    _id: Accounts.createUser({
+      email: 'iroglic@extensionengine.com',
+      password: 'test',
+      profile: {
+        firstName: 'Igor',
+        lastName: 'Roglic'
+      }
+    }),
+    roles: {
+      'global': ['admin']
+    }
+  });
+
+  users.push({
+    _id: Accounts.createUser({
       email: 'evan@extensionengine.com',
       password: 'test',
       profile: {
