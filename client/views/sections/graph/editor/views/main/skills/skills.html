@@ -10,10 +10,10 @@
             <ul class="list-group">
               {{#each skills}}
                 <li id="skill{{this._id}}" class="list-group-item skill">
-                  <span class="activity-marker" style="{{activityMarker this._id}}"></span>
                   <span class="node-number">{{nodeNumber this}}</span>
                   <div class="editable-text">
                     {{> editableText context=this collection="nodes" field="name" eventType="dblclick"}}
+                    <span style="{{activityMarker this._id}}" class="activity-marker zmdi zmdi-edit"></span>
                   </div>
                 </li>
               {{else}}

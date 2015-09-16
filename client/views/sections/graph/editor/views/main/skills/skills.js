@@ -32,7 +32,7 @@ Template.gevmSkills.helpers({
   },
   activityMarker: function(nodeId) {
     var activities = activityService.node.activities(nodeId);
-    return activities.length > 0 ? ('background-color: ' + activities[0].color) : '';
+    return activities.length > 0 ? ('color: ' + activities[0].color) : '';
   }
 });
 
