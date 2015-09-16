@@ -238,6 +238,18 @@ Dependency.add('editorService', (function editorService() {
    * @param {String} [nodeId] Node id
    */
   s.nodes.remove = function(nodeId) {
+    var path = Lazy(browser.path()).pluck('_id').toArray();
+    if (Lazy(path).contains(nodeId)) {
+      for (var i = 0; i < path.length; i++) {
+        if (path[i] === nodeId) {
+          browser.back(Nodes.findOne({ _id: path[i-1] }));
+          break;
+        }
+      }
+    } else {
+      s.select(browser.root());
+    }
+
     Meteor.call('graph.node.remove', nodeId, s.context.root()._id);
   };
 
