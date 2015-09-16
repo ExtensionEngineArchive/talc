@@ -26,6 +26,13 @@ Template.geNodeModal.onCreated(function() {
   }
 });
 
+Template.geNodeModal.onRendered(function() {
+  var node = editor.modals.edit.node();
+  if (node) {
+    this.$('.radio input').attr('disabled', 'disabled');
+  }
+});
+
 Template.geNodeModal.helpers({
   name: function() {
     return Template.instance().storage.name;
