@@ -1,6 +1,6 @@
 # TALC
 
-Knowledge graph authoring platform which can be used to create adaptive learning experience. 
+Knowledge graph authoring platform which can be used to create adaptive learning experience.
 
 Using TALC you can:
 
@@ -10,7 +10,7 @@ Using TALC you can:
  - track student progress
  - retrieve recommendations from TALC adaptive engine
  - collaborate with other users
- 
+
 For more details on current progress visit our [Roadmap](https://github.com/ExtensionEngine/talc/milestones).
 
 ## Installation
@@ -23,3 +23,5 @@ For more details on current progress visit our [Roadmap](https://github.com/Exte
 Interested in contributing to TALC ?
 
 Issue tracker: https://github.com/ExtensionEngine/talc/issues
+
+[![Code Climate](https://codeclimate.com/github/ExtensionEngine/talc/badges/gpa.svg)](https://codeclimate.com/github/ExtensionEngine/talc)
