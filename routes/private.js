@@ -41,6 +41,6 @@ Router.route('/profile', {
   name: 'user.profile',
   template: 'uProfile',
   data: function() {
-    return Meteor.user();
+    return { user: Meteor.users.findOne(Meteor.userId()) };
   }
 });
