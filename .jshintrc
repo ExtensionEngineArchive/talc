@@ -123,11 +123,15 @@
       "_": false,               // Underscore.js
       "$": false,               // jQuery
       "Router": false,          // iron-router
-      "TALCH": false,           // talc helpers
+      "TALCH": true,            // talc helpers
       "Lazy": false,            // Lazy.js
       "Files": true,
+      "Comments": true,
+      "Nodes": true,
+      "Redis": true,
+      "SimpleSchema": true,
       "FS": false,
-      "Nodes": false,
-      "Dependency": true
+      "Dependency": true,
+      "Roles": true
     }
 }
