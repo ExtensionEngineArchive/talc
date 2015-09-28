@@ -49,7 +49,7 @@ Template.geDetails.events({
   'click .zmdi-delete': function() {
     editor.nodes.remove(editor.context.selected.node()._id);
   },
-  'submit': function(e, t) {
+  'submit': function(e) {
     e.preventDefault();
 
     var params = {
