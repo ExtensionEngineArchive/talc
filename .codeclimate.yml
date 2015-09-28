@@ -47,3 +47,4 @@ engines:
 
 exclude_paths:
   - client/lib/**/*
+  - server/startup/**/*
