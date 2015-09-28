@@ -36,3 +36,11 @@ Router.route('/graph/:_id/settings', {
     }
   }
 });
+
+Router.route('/profile', {
+  name: 'user.profile',
+  template: 'uProfile',
+  data: function() {
+    return Meteor.user();
+  }
+});

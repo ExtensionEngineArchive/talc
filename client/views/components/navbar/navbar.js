@@ -3,6 +3,7 @@ Template.navbarComponent.helpers({
   user: function() {
     if (Meteor.user()) {
       return {
+        _id: Meteor.user()._id,
         firstName: Meteor.user().profile.firstName,
         lastName: Meteor.user().profile.lastName,
         email: Meteor.user().emails[0].address

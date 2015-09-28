@@ -126,6 +126,8 @@
       "TALCH": false,           // talc helpers
       "Lazy": false,            // Lazy.js
       "Files": true,
-      "FS": false
+      "FS": false,
+      "Nodes": false,
+      "Dependency": true
     }
 }
