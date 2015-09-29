@@ -9,11 +9,13 @@ Meteor.methods({
 
     params.firstName = params.firstName || user.profile.firstName;
     params.lastName = params.lastName || user.profile.lastName;
+    params.photo = params.photo || user.profile.photo;
 
     Meteor.users.update({ _id: user._id }, {
       $set: {
         "profile.firstName": params.firstName,
-        "profile.lastName": params.lastName
+        "profile.lastName": params.lastName,
+        "profile.photo": params.photo
       }
     });
   }
