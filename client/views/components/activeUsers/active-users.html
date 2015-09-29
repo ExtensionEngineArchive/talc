@@ -3,14 +3,24 @@
     <ul>
       {{#each users}}
         <li>
-          <span
-            class="label label-primary"
-            data-toggle="tooltip"
-            data-placement="left"
-            title="{{profile.firstName}} {{profile.lastName}}"
-            style="border-bottom: 4px solid {{color}}">
-            {{initials this}}
-          </span>
+          {{#unless profile.photo}}
+            <span class="label label-primary"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="{{profile.firstName}} {{profile.lastName}}"
+              style="border-bottom: 4px solid {{color}}">
+              {{initials this}}
+            </span>
+          {{else}}
+            <div class="image-container">
+              <img src="{{photo.url store='files'}}"
+                data-toggle="tooltip"
+                data-placement="left"
+                title="{{profile.firstName}} {{profile.lastName}}"
+                alt="thumbnail"
+                style="border-bottom: 4px solid {{color}}">
+            </div>
+          {{/unless}}
         </li>
       {{/each}}
     </ul>
