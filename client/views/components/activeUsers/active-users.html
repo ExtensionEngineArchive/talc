@@ -12,13 +12,12 @@
               {{initials this}}
             </span>
           {{else}}
-            <div class="image-container">
+            <div class="image-container" style="border-bottom: 4px solid {{color}}">
               <img src="{{photo.url store='files'}}"
                 data-toggle="tooltip"
                 data-placement="left"
                 title="{{profile.firstName}} {{profile.lastName}}"
-                alt="thumbnail"
-                style="border-bottom: 4px solid {{color}}">
+                alt="thumbnail">
             </div>
           {{/unless}}
         </li>
