@@ -43,3 +43,5 @@ spacebars
 check
 cfs:standard-packages
 cfs:gridfs
+pfafman:photo-up
+cfs:ui
