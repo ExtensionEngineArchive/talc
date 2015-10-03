@@ -132,6 +132,7 @@
       "SimpleSchema": true,
       "FS": false,
       "Dependency": true,
-      "Roles": true
+      "Roles": true,
+      "Avatars": true
     }
 }
