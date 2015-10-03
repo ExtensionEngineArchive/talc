@@ -3,7 +3,13 @@
     <div class="row">
       <div class="col-md-8">
         <form class="form-horizontal">
+          {{#if avatar}}
+            {{> photoUp avatarOptions}}
+          {{else}}
+            {{> photoUp avatarOptions}}
+          {{/if}}
           <div class="form-group">
+            <!-- Remove or set id -->
             <label class="col-sm-2 control-label">First Name</label>
             <div class="col-sm-10">
               {{> editableText context=user collection="users" field="profile.firstName" eventType="dblclick"}}
