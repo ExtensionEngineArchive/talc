@@ -27,7 +27,16 @@ Meteor.publish("knowledgeGraphNodes", function(_id) {
 
 Meteor.publish("users", function() {
   if (this.userId) {
-    return Meteor.users.find({}, { fields: { 'profile.firstName': 1, 'profile.lastName': 1, 'emails': 1, 'status': 1, 'roles': 1 }});
+    return Meteor.users.find({}, {
+      fields: {
+        'profile.firstName': 1,
+        'profile.lastName': 1,
+        'profile.photo': 1,
+        'emails': 1,
+        'status': 1,
+        'roles': 1
+      }
+    });
   } else {
     this.ready();
   }
@@ -48,6 +57,8 @@ Meteor.publish('graphActivities', function(graphId) {
   return Redis.matching('u::*::g::' + graphId);
 });
 
-Meteor.publish('nodeActivities', function(graphId) {
+Meteor.publish("nodeActivities", function(graphId) {
   return Redis.matching('u::*::g::' + graphId + '::n::*');
 });
+
+Meteor.publish("avatars", function() { return Avatars.find(); });
