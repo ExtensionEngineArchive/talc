@@ -21,7 +21,7 @@ Template.activeUsersComponent.helpers({
   initials: function(user) {
     return user.profile.firstName[0];
   },
-  photo: function() {
-    return Files.findOne(this.profile.photo);
+  avatar: function() {
+    return Avatars.findOne(this.profile.photo);
   }
 });
