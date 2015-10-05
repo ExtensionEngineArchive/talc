@@ -18,5 +18,18 @@ Meteor.methods({
         "profile.photo": params.photo
       }
     });
+  },
+  'users.role.set': function(userId, role) {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    var user = Meteor.user();
+    if (!TALCH.user.isAdmin(user)) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    var roles = role ? [role] : [];
+    Roles.setUserRoles(userId, roles, 'global');
   }
 });
