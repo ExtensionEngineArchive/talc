@@ -16,6 +16,13 @@ Template.navbarComponent.helpers({
   showActiveUsers: function() {
     var route = Router.current().route.getName();
     return (route === 'graph.editor') || (route === 'graph.settings');
+  },
+  userIsAdmin: function() {
+    if (Meteor.user()) {
+      return TALCH.user.isAdmin(Meteor.user());
+    } else {
+      return false;
+    }
   }
 });
 

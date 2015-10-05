@@ -36,8 +36,26 @@
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a id="logout" href="#">Logout</a></li>
-                  <li><a href="{{pathFor route='user.profile'}}">Profile</a></li>
+                  <li>
+                    <a href="{{pathFor route='user.profile'}}">
+                      <span class="zmdi zmdi-account"></span>
+                      Profile
+                    </a>
+                  </li>
+                  {{#if userIsAdmin}}
+                    <li>
+                      <a href="{{pathFor route='settings'}}">
+                        <span class="zmdi zmdi-settings"></span>
+                        Settings
+                      </a>
+                    </li>
+                  {{/if}}
+                  <li>
+                    <a id="logout" href="#">
+                      <span class="zmdi zmdi-sign-in"></span>
+                      Logout
+                    </a>
+                  </li>
                 </ul>
               </li>
             {{/if}}
