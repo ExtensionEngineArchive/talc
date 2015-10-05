@@ -44,3 +44,9 @@ Router.route('/profile', {
     return { user: Meteor.users.findOne(Meteor.userId()) };
   }
 });
+
+// TODO: Add auth
+Router.route('/settings', {
+  name: 'settings',
+  template: 'settings'
+});
