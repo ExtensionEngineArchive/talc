@@ -1,0 +1,44 @@
+<template name="sGlobalAccessManagement">
+  <div class="gs-access-management">
+    <div class="panel">
+      <div class="panel-body">
+        <form class="form" id="addUser" name="addUser">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                {{> inputAutocomplete name="email" settings=autocompleteEmail class="form-control" placeholder="Email" autocomplete="off"}}
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-default">Add</button>
+            </div>
+          </div>
+        </form>
+        {{#if members}}
+          <table class="table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th class="center">Global admin</th>
+                <th class="center">Graph author</th>
+                <th class="center">Standard</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each members}}
+                <tr>
+                  <td>{{this.profile.firstName}} {{this.profile.lastName}} - {{this.emails.[0].address}}</td>
+                  <td class="center"><input class="select-role" type="radio" value="admin" {{hasRole this 'admin'}}></td>
+                  <td class="center"><input class="select-role" type="radio" value="graph-create" {{hasRole this 'graph-create'}}></td>
+                  <td class="center"><input class="select-role" type="radio" value="" {{hasRole this ''}}></td>
+                  <td class="center"><span class="zmdi zmdi-close remove"></span></td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>
