@@ -12,36 +12,11 @@
     </div>
     <div class="row row-b">
       {{#each knowledgeGraphs}}
-        <div class="col-lg-4">
-          <div class="competency-card-a">
-            <div class="competency-card-body">
-              <h2 class="competency-card-title">
-                <a href="{{pathFor route='graph.editor' data=this}}">{{cutString name 65}}</a>
-              </h2>
-              <p>{{cutString description 160}}</p>
-            </div>
-            <div class="competency-card-footer row">
-              <div class="col-md-4">
-                <span class="item item-a">
-                  <span class="zmdi zmdi-circle"></span>
-                  <span class="block-a">{{stats.nodes.total}}</span>
-                </span>
-              </div>
-              <div class="col-md-4">
-                <span class="item item-b">
-                  <span class="zmdi zmdi-assignment"></span>
-                  <span class="block-a">0</span>
-                </span>
-              </div>
-              <div class="col-md-4">
-                <span class="item item-c">
-                  <span class="zmdi zmdi-flag"></span>
-                  <span class="block-a">0</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {{#if $eq view 'grid'}}
+          {{> dcGridView}}
+        {{else}}
+          {{> dcListView}}
+        {{/if}}
       {{else}}
         <div class="col-lg-12">
           <div class="well">

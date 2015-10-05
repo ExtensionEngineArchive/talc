@@ -1,0 +1,16 @@
+<template name="dcListView">
+  <div class="col-xs-12">
+    <div class="competency-card-b">
+      <div class="competency-card-body">
+        <div class="row">
+          <div class="col-md-10 col-lg-11">
+            <h2 class="competency-card-title">
+              <a href="{{pathFor route='graph.editor' data=this}}">{{cutString name 65}}</a>
+            </h2>
+            <p>{{cutString description 160}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

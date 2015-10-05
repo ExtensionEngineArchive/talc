@@ -1,4 +1,10 @@
 
+var dashboardService;
+
+Dependency.autorun(function() {
+  dashboardService = Dependency.get('dashboardService');
+});
+
 Template.dCatalog.onCreated(function() {
   this.search = new ReactiveVar('');
 });
@@ -14,6 +20,9 @@ Template.dCatalog.helpers({
     } else {
       return Nodes.find({ type: 'R' });
     }
+  },
+  view: function() {
+    return dashboardService.view.current();
   }
 });
 
