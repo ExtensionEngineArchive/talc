@@ -17,7 +17,7 @@ Template.sGlobalAccessManagement.helpers({
   },
   hasRole: function(user, role) {
     var expectedResult = role === '' ? false : true;
-    role = role === '' ? ['admin', 'graph-create'] : [role];
+    role = role === '' ? ['admin', 'graph-create', 'inactive'] : [role];
     var result = Roles.userIsInRole(user, role, 'global');
 
     return expectedResult === result ? 'checked' : '';

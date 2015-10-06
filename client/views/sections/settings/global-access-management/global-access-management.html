@@ -22,7 +22,7 @@
                 <th class="center">Global admin</th>
                 <th class="center">Graph author</th>
                 <th class="center">Standard</th>
-                <th></th>
+                <th class="center">Deactivated</th>
               </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@
                   <td class="center"><input class="select-role" type="radio" value="admin" {{hasRole this 'admin'}}></td>
                   <td class="center"><input class="select-role" type="radio" value="graph-create" {{hasRole this 'graph-create'}}></td>
                   <td class="center"><input class="select-role" type="radio" value="" {{hasRole this ''}}></td>
-                  <td class="center"><span class="zmdi zmdi-close remove"></span></td>
+                  <td class="center"><input class="select-role" type="radio" value="inactive" {{hasRole this 'inactive'}}></td>
                 </tr>
               {{/each}}
             </tbody>

@@ -9,4 +9,13 @@ Meteor.startup(function() {
   Accounts.urls.resetPassword = function(token) {
     return Meteor.absoluteUrl('reset-password/' + token);
   };
+
+  Accounts.validateLoginAttempt(function(attempt) {
+    if (Roles.userIsInRole(attempt.user._id, ['inactive'], 'global')) {
+      attempt.allowed = false;
+      throw new Meteor.Error(403, "User account is inactive !");
+    }
+
+    return true;
+  });
 });
