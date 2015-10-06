@@ -1,6 +1,19 @@
 
 // TODO: Transactions
 Meteor.methods({
+  'invites.global': function(email) {
+    if (!Meteor.userId() || !TALCH.user.isAdmin(Meteor.user())) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    var user = Meteor.users.findOne({
+      emails: { $elemMatch: { address: email } }
+    });
+
+    if (!user) {
+      user = createUser(email);
+    }
+  },
   'invites.graph': function(email, graphId, role) {
     if (!Meteor.userId() || !TALCH.user.isGraphAdmin(Meteor.user(), graphId)) {
       throw new Meteor.Error("not-authorized");
@@ -10,7 +23,10 @@ Meteor.methods({
       throw new Meteor.Error("Invalid role");
     }
 
-    var user = Meteor.users.findOne({ emails: { $elemMatch: { address: email } } });
+    var user = Meteor.users.findOne({
+      emails: { $elemMatch: { address: email } }
+    });
+
     if (!user) {
       user = createUser(email);
     }

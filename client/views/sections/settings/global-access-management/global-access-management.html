@@ -28,7 +28,12 @@
             <tbody>
               {{#each members}}
                 <tr>
-                  <td>{{this.profile.firstName}} {{this.profile.lastName}} - {{this.emails.[0].address}}</td>
+                  <td>
+                    {{this.profile.firstName}}
+                    {{this.profile.lastName}}
+                    {{#if this.profile.firstName}} - {{/if}}
+                    {{this.emails.[0].address}}
+                  </td>
                   <td class="center"><input class="select-role" type="radio" value="admin" {{hasRole this 'admin'}}></td>
                   <td class="center"><input class="select-role" type="radio" value="graph-create" {{hasRole this 'graph-create'}}></td>
                   <td class="center"><input class="select-role" type="radio" value="" {{hasRole this ''}}></td>

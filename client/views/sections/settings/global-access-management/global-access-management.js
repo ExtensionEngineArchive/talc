@@ -28,5 +28,10 @@ Template.sGlobalAccessManagement.events({
   'click .select-role': function(e) {
     var role = e.currentTarget.value;
     Meteor.call('users.role.set', this._id, role);
+  },
+  'submit #addUser': function(e) {
+    e.preventDefault();
+    Meteor.call('invites.global', e.target.email.value);
+    e.target.email.value = '';
   }
 });
