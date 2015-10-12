@@ -23,7 +23,10 @@ Router.route('/enroll-account/:token', {
   }
 });
 
-Router.route('/reset-password/:token', {
+Router.route('/reset-password/:token?', {
   name: 'resetPassword',
-  layoutTemplate: 'AuthLayout'
+  layoutTemplate: 'AuthLayout',
+  data: function() {
+    return { token: this.params.token };
+  }
 });
