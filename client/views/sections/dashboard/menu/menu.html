@@ -1,9 +1,11 @@
 <template name="dMenu">
   <div class="sidebar-a">
     <ul>
-      <li class="btn-side-a btn-wide">
-        <a id="showCreateModal" href="#"><span class="zmdi zmdi-plus"></span></a>
-      </li>
+      {{#if userCanCreateGraph}}
+        <li class="btn-side-a btn-wide">
+          <a id="showCreateModal" href="#"><span class="zmdi zmdi-plus"></span></a>
+        </li>
+      {{/if}}
       <li>
         <a id="showGridView" href="#"><span class="zmdi zmdi-view-module"></span></a>
       </li>
