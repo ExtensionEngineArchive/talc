@@ -16,11 +16,10 @@ Template.enrollAccount.helpers({
 
 Template.enrollAccount.events({
   'submit': function(e, t) {
-    // TODO: Validation
     e.preventDefault();
 
     var password = t.$('[name=password]').val();
-    var confirmPassword = t.$('[name=confirmPassword]').val();
+    var passwordConfirmation = t.$('[name=confirmPassword]').val();
 
     var profile = {
       firstName: t.$('[name=firstName]').val(),
@@ -29,16 +28,29 @@ Template.enrollAccount.events({
 
     var errors = {};
 
+    if (profile.firstName.length < 2) {
+      errors.firstName = 'First name is too short';
+    }
+
+    if (profile.lastName.length < 2) {
+      errors.lastName = 'Last name is too short';
+    }
+
     if (!password) {
       errors.password = 'Password is required';
     }
 
-    if (password != confirmPassword) {
-      errors.confirmPassword = 'Passwords do not match';
+    var validationResult = TALCH.validate.password(password);
+    if (!validationResult.isValid()) {
+      errors.password = validationResult.message;
     }
 
-    if (!confirmPassword) {
+    if (!passwordConfirmation) {
       errors.confirmPassword = 'Password confirmation is required';
+    }
+
+    if (password !== passwordConfirmation) {
+      errors.none = 'Passwords do not match';
     }
 
     Session.set(ERRORS_KEY, errors);

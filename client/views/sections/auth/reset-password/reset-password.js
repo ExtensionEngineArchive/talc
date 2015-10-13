@@ -50,7 +50,7 @@ Template.resetPassword.events({
     var token = Template.currentData().token;
 
     var validationResult = TALCH.validate.password(password);
-    if (validationResult.isValid()) {
+    if (!validationResult.isValid()) {
       Session.set(ERRORS_KEY, { 'password': validationResult.message });
       return false;
     }
