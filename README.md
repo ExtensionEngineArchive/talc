@@ -2,6 +2,11 @@
 
 Knowledge graph authoring platform which can be used to create adaptive learning experience.
 
+## Demo
+http://talc.extensionengine.com
+username: talc@extensionengine.com
+pw: talcdemo1
+
 Using TALC you can:
 
  - create knowledge graph
