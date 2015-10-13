@@ -45,3 +45,4 @@ cfs:standard-packages
 cfs:gridfs
 pfafman:photo-up
 cfs:ui
+babrahams:transactions
