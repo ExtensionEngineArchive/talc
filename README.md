@@ -25,3 +25,5 @@ Interested in contributing to TALC ?
 Issue tracker: https://github.com/ExtensionEngine/talc/issues
 
 [![Code Climate](https://codeclimate.com/github/ExtensionEngine/talc/badges/gpa.svg)](https://codeclimate.com/github/ExtensionEngine/talc)
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ExtensionEngine/talc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
