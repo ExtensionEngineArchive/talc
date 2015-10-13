@@ -15,7 +15,9 @@ For more details on current progress visit our [Roadmap](https://github.com/Exte
 
 ## Demo
 
-http://talc.extensionengine.com (talc@extensionengine.com / talcdemo1). Brief walkthrough: https://www.youtube.com/watch?v=IlsTZNm6Y5U
+http://talc.extensionengine.com (talc@extensionengine.com / talcdemo1). 
+
+Brief walkthrough: https://www.youtube.com/watch?v=IlsTZNm6Y5U
 
 ## Installation
 
