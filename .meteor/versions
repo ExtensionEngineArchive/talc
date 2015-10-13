@@ -51,6 +51,7 @@ ecmascript@0.1.5
 ecmascript-collections@0.1.6
 ejson@1.0.7
 email@1.0.7
+extensionengine:assessments@0.0.1
 fastclick@1.0.7
 fongandrew:find-and-modify@0.2.1
 fortawesome:fontawesome@4.4.0
@@ -97,6 +98,9 @@ npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
+peerlibrary:assert@0.2.5
+peerlibrary:base-component@0.10.0
+peerlibrary:blaze-components@0.13.0
 percolate:momentum@0.7.2
 percolate:velocityjs@1.2.1_1
 pfafman:photo-up@0.4.0
@@ -131,4 +135,5 @@ underscore@1.0.4
 url@1.0.5
 webapp@1.2.2
 webapp-hashing@1.0.5
+zeroasterisk:s-enum@1.0.2
 zimme:iron-router-auth@3.1.0
