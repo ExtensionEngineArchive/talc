@@ -1,7 +1,30 @@
 <template name="gevMain">
   <div class="container-a">
     {{> gevmBrowser}}
-    {{> gevmAssessments}}
-    {{> gevmSkills}}
+    <div class="container-inner">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#home" data-toggle="tab" aria-expanded="true">Skills</a>
+        </li>
+        <li class="">
+          <a href="#profile" data-toggle="tab" aria-expanded="false">Assessments</a>
+        </li>
+        <li class="">
+          <a href="#both" data-toggle="tab" aria-expanded="false">Both</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade active in" id="home">
+          {{> gevmSkills}}
+        </div>
+        <div class="tab-pane" id="profile">
+          {{> gevmAssessments}}
+        </div>
+        <div class="tab-pane" id="both">
+          {{> gevmAssessments}}
+          {{> gevmSkills}}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
