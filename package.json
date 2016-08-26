@@ -1,0 +1,17 @@
+{
+  "name": "talc",
+  "version": "1.0.0",
+  "description": "Knowledge graph authoring platform.",
+  "scripts": {
+    "start": "REDIS_URL=redis://127.0.0.1:6379  meteor --settings settings.json"
+  },
+  "devDependencies": {
+    "babel-preset-meteor": "^6.11.1",
+    "faker": "^3.1.0"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "jquery": "^2.2.4",
+    "jquery-validation": "^1.15.0"
+  }
+}

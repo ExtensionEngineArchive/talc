@@ -4,13 +4,13 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-less
+less@2.7.5
 iron:router
-accounts-password
+accounts-password@1.3.0
 zimme:iron-router-auth
 fortawesome:fontawesome
 mizzao:autocomplete
-reactive-var
+reactive-var@1.0.10
 maxkfranz:cytoscape
 raix:handlebar-helpers
 meteorflux:reactive-dependency
@@ -19,8 +19,8 @@ fongandrew:find-and-modify
 multiply:iron-router-progress
 alanning:roles
 reywood:publish-composite
-random
-email
+random@1.0.10
+email@1.1.17
 mrt:moment
 aldeed:collection2
 mizzao:user-status
@@ -28,21 +28,23 @@ ixdi:material-design-iconic-font
 percolate:momentum
 babrahams:editable-text
 slava:redis-livedata
-standard-minifiers
-meteor-base
-mobile-experience
-mongo
-blaze-html-templates
-session
-jquery
-tracker
-logging
-reload
-ejson
-spacebars
-check
+meteor-base@1.0.4
+mobile-experience@1.0.4
+mongo@1.1.12
+blaze-html-templates@1.0.4
+session@1.1.6
+jquery@1.11.9
+tracker@1.1.0
+logging@1.1.15
+reload@1.1.10
+ejson@1.0.12
+spacebars@1.0.12
+check@1.2.3
 cfs:standard-packages
 cfs:gridfs
 pfafman:photo-up
 cfs:ui
 babrahams:transactions
+standard-minifier-css
+standard-minifier-js
+shell-server
